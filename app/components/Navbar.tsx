@@ -13,9 +13,9 @@ const navLinks = [
 
 const regions = [
   { code: "NP", flag: "🇳🇵", name: "Nepal" },
-  { code: "IN", flag: "🇮🇳", name: "India" },
-  { code: "US", flag: "🇺🇸", name: "United States" },
-  { code: "SG", flag: "🇸🇬", name: "Singapore" },
+  { code: "IN", flag: "🇮🇳", name: "India", comingSoon: true },
+  { code: "LK", flag: "🇱🇰", name: "Sri Lanka", comingSoon: true },
+  { code: "DE", flag: "🇩🇪", name: "Germany", comingSoon: true },
 ];
 
 function RegionDropdown() {
@@ -56,14 +56,24 @@ function RegionDropdown() {
           {regions.map((r) => (
             <button
               key={r.code}
-              className={`w-full flex items-center gap-2.5 px-3 py-2 text-sm text-left transition-colors hover:bg-neutral-50 ${
-                selected.code === r.code ? "bg-neutral-50" : ""
-              }`}
-              onClick={() => { setSelected(r); setOpen(false); }}
+              className={`w-full flex items-center gap-2.5 px-3 py-2 text-sm text-left transition-colors ${
+                r.comingSoon ? "cursor-not-allowed opacity-70" : "hover:bg-neutral-50"
+              } ${selected.code === r.code && !r.comingSoon ? "bg-neutral-50" : ""}`}
+              onClick={() => { 
+                if (!r.comingSoon) {
+                  setSelected(r); 
+                  setOpen(false); 
+                }
+              }}
+              disabled={r.comingSoon}
             >
               <span className="text-base">{r.flag}</span>
               <span className="font-medium text-neutral-700">{r.name}</span>
-              <span className="ml-auto text-xs text-neutral-400">{r.code}</span>
+              {r.comingSoon ? (
+                <span className="ml-auto text-[10px] font-semibold text-[#007BE5] bg-[#EBF5FF] px-1.5 py-0.5 rounded">Soon</span>
+              ) : (
+                <span className="ml-auto text-xs text-neutral-400">{r.code}</span>
+              )}
             </button>
           ))}
         </div>

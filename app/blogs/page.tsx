@@ -212,7 +212,7 @@ export default function BlogsPage() {
                       trust infrastructure.
                     </p>
                     <Link
-                      href="#"
+                      href="/blogs/tingting-web-summit-qatar"
                       style={{
                         marginTop: "auto",
                         paddingTop: "24px",
@@ -315,7 +315,7 @@ export default function BlogsPage() {
                           {item.title}
                         </h3>
                         <div style={{ marginTop: "auto", paddingTop: "20px" }}>
-                          <Link href="#" style={{ color: "#007BE5", fontSize: "14px", fontWeight: 500, textDecoration: "none" }}>
+                          <Link href={`/blogs/${item.title.toLowerCase().replace(/\\s+/g, '-')}`} style={{ color: "#007BE5", fontSize: "14px", fontWeight: 500, textDecoration: "none" }}>
                             Read article &rarr;
                           </Link>
                         </div>
