@@ -11,118 +11,60 @@ const stats = [
 
 export default function Testimonial() {
   return (
-    <section className="bg-[#EBF5FF] py-20">
-      <div
-        style={{
-          maxWidth: "1200px",
-          margin: "0 auto",
-          padding: "0 24px",
-        }}
-      >
+    <section className="bg-[#EBF5FF] py-12">
+      <div className="max-w-[1200px] mx-auto px-6">
+        
         {/* Top row — quote left, stats right */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "flex-start",
-            gap: "64px",
-          }}
-        >
+        <div className="flex flex-col md:flex-row justify-between items-start gap-12 lg:gap-16">
+          
           {/* Left — quote block */}
-          <div
-            style={{
-              maxWidth: "540px",
-              display: "flex",
-              flexDirection: "column",
-              gap: "24px",
-            }}
-          >
+          <div className="flex flex-col gap-6 max-w-[540px]">
             {/* Logo */}
-            <div style={{ display: "flex", alignItems: "center", height: "36px" }}>
+            <div className="flex items-center h-8 relative w-[120px]">
               <Image
                 src="/illustrations/vianetlogo.png"
                 alt="Vianet"
-                width={140}
-                height={36}
-                style={{ height: "100%", width: "auto", objectFit: "contain" }}
+                fill
+                className="object-contain object-left"
               />
             </div>
 
             {/* Quote */}
-            <blockquote
-              style={{
-                fontFamily: "var(--font-geist-sans, system-ui)",
-                fontWeight: 400,
-                fontSize: "18px",
-                lineHeight: 1.6,
-                color: "#111827",
-                margin: 0,
-              }}
-            >
+            <blockquote className="font-sans text-[18px] leading-[1.5] text-neutral-900 m-0">
               &ldquo;ThirdFactor has become the backbone of our digital
               onboarding. It lets our risk and compliance teams catch forged
               documents instantly while giving customers a verification
               experience that feels effortless and genuinely built for
-              Nepal&rdquo;
+              Nepal.&rdquo;
             </blockquote>
 
             {/* Attribution */}
-            <p
-              style={{
-                fontFamily: "var(--font-geist-sans, system-ui)",
-                fontWeight: 400,
-                fontSize: "15px",
-                color: "#6b7280",
-                margin: 0,
-              }}
-            >
+            <p className="font-sans text-[15px] text-neutral-500 m-0">
               Khemraj Bhujel, CEO
             </p>
+            
+            {/* Read Case Study button */}
+            <div className="mt-2">
+              <Link
+                href="#"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-neutral-300 bg-white text-neutral-900 text-[14px] font-medium font-sans hover:bg-neutral-50 hover:border-neutral-400 transition-colors"
+              >
+                Read Case Study
+              </Link>
+            </div>
           </div>
 
           {/* Right — stat cards */}
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "16px",
-              flexShrink: 0,
-            }}
-          >
+          <div className="flex flex-col gap-3 shrink-0 w-full md:w-[380px]">
             {stats.map((s, i) => (
               <div
                 key={i}
-                style={{
-                  background: "#fff",
-                  borderRadius: "12px",
-                  padding: "24px 32px",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "20px",
-                  minWidth: "380px",
-                }}
+                className="bg-white rounded-[12px] px-6 py-4 flex items-center gap-5 shadow-sm"
               >
-                <span
-                  style={{
-                    fontFamily: "var(--font-geist-sans, system-ui)",
-                    fontWeight: 500,
-                    fontSize: "32px",
-                    letterSpacing: "-0.5px",
-                    color: "#111827",
-                    flexShrink: 0,
-                  }}
-                >
+                <span className="font-sans font-medium text-[28px] tracking-tight text-neutral-900 shrink-0">
                   {s.value}
                 </span>
-                <span
-                  style={{
-                    fontFamily: "var(--font-geist-sans, system-ui)",
-                    fontWeight: 400,
-                    fontSize: "14px",
-                    lineHeight: 1.4,
-                    color: "#6b7280",
-                  }}
-                >
+                <span className="font-sans text-[14px] leading-tight text-neutral-500">
                   {s.label}
                 </span>
               </div>
@@ -130,50 +72,11 @@ export default function Testimonial() {
           </div>
         </div>
 
-        {/* Read Case Study button */}
-        <div style={{ marginTop: "48px" }}>
-          <Link
-            href="#"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              justifyContent: "center",
-              padding: "14px 28px",
-              borderRadius: "100px",
-              border: "1px solid #d1d5db",
-              background: "#fff",
-              color: "#111827",
-              fontSize: "14px",
-              fontWeight: 500,
-              fontFamily: "var(--font-geist-sans, system-ui)",
-              textDecoration: "none",
-              transition: "background 150ms, border-color 150ms",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = "#f9fafb";
-              e.currentTarget.style.borderColor = "#9ca3af";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = "#fff";
-              e.currentTarget.style.borderColor = "#d1d5db";
-            }}
-          >
-            Read Case Study
-          </Link>
-        </div>
-
         {/* Bottom separator with arrow */}
-        <div
-          style={{
-            marginTop: "48px",
-            borderTop: "1px solid #c7d2e0",
-            paddingTop: "16px",
-            display: "flex",
-            justifyContent: "flex-end",
-          }}
-        >
-          <ArrowRight size={20} color="#374151" />
+        <div className="mt-8 border-t border-[#c7d2e0] pt-4 flex justify-end">
+          <ArrowRight size={20} className="text-neutral-700" />
         </div>
+        
       </div>
     </section>
   );

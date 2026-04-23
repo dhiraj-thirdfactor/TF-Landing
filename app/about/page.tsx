@@ -8,28 +8,28 @@ import Testimonial from "../components/Testimonial";
 
 const team = [
   {
-    name: "Sudip Dawadi",
-    role: "Chief Executive Officer",
+    name: "Manish Sharma",
+    role: "Founder, CEO",
     desc: "A visionary leader with a decade of experience in identity and security.",
-    img: "https://i.pravatar.cc/300?img=11"
+    img: "/illustrations/manish.png"
   },
   {
-    name: "Suman Bhattarai",
-    role: "Chief Technology Officer",
-    desc: "Engineering leader focused on scalable distributed systems and AI.",
-    img: "https://i.pravatar.cc/300?img=12"
+    name: "Sojan Prajapati",
+    role: "Chief Business Officer",
+    desc: "Driving strategic partnerships and business growth across emerging markets.",
+    img: "/illustrations/sojan.png"
   },
   {
-    name: "Aarav Sharma",
-    role: "Head of Product",
+    name: "Sudip Dawadi",
+    role: "Chief Product Officer",
     desc: "Product strategist dedicated to building frictionless user experiences.",
-    img: "https://i.pravatar.cc/300?img=60"
+    img: "/illustrations/sudip.png"
   },
   {
-    name: "Priya Thapa",
-    role: "Head of Growth",
-    desc: "Growth hacker scaling operations across emerging markets.",
-    img: "https://i.pravatar.cc/300?img=5"
+    name: "Niranjan Udas",
+    role: "COO",
+    desc: "Operations expert focused on scaling infrastructure and compliance pipelines.",
+    img: "/illustrations/niranjan.png"
   },
 ];
 
@@ -89,31 +89,16 @@ export default function AboutPage() {
       <Navbar />
 
       <main>
-        {/* Abstract Hero Graphic */}
+        {/* Hero Graphic */}
         <section className="w-full max-w-[1200px] mx-auto pt-24 px-6 overflow-hidden">
-          <div className="w-full h-[300px] md:h-[400px] relative grid grid-cols-12 grid-rows-6 gap-2 opacity-90">
-            {/* Generate random-looking blocks for the top graphic */}
-            {Array.from({ length: 72 }).map((_, i) => {
-              const isSolid = i % 8 === 0;
-              const isLight = i % 5 === 0;
-              const isImage = i === 15 || i === 34 || i === 45;
-              
-              if (isImage) {
-                return (
-                  <div key={i} className="col-span-2 row-span-2 bg-[#E5E5E5] overflow-hidden rounded-sm">
-                    <img src={`https://i.pravatar.cc/150?img=${i}`} alt="" className="w-full h-full object-cover grayscale mix-blend-multiply" />
-                  </div>
-                );
-              }
-              
-              if (isSolid) {
-                return <div key={i} className="col-span-2 row-span-2 bg-[#007BE5] rounded-sm mix-blend-multiply opacity-80" />;
-              }
-              if (isLight) {
-                return <div key={i} className="col-span-1 row-span-1 bg-[#F0F7FF] rounded-sm" />;
-              }
-              return <div key={i} className="col-span-1 row-span-1" />; // empty space
-            })}
+          <div className="w-full h-[300px] md:h-[450px] relative rounded-2xl overflow-hidden flex items-center justify-center">
+            <Image 
+              src="/illustrations/about.png" 
+              alt="About ThirdFactor" 
+              fill 
+              className="object-contain"
+              priority
+            />
           </div>
         </section>
 
@@ -125,7 +110,7 @@ export default function AboutPage() {
               style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontWeight: 400 }}
             >
               Experience Instant,<br />
-              Trusted Identity Verification
+              Trusted <span className="font-pixel tracking-normal font-normal">Identity Verification</span>
             </h1>
             
             <div className="grid md:grid-cols-2 gap-12 md:gap-24">
@@ -144,19 +129,15 @@ export default function AboutPage() {
         <section className="bg-[#F0F7FF] py-24 px-6 relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#007BE5 1px, transparent 1px)', backgroundSize: '24px 24px' }}></div>
           <div className="max-w-[800px] mx-auto text-center relative z-10">
-            {/* Center abstract node graphic */}
-            <div className="w-[120px] h-[80px] mx-auto mb-8 relative flex items-center justify-center">
-              <div className="absolute w-full h-full bg-[#007BE5]/10 rounded-full blur-xl"></div>
-              <div className="grid grid-cols-4 gap-2">
-                 <div className="w-3 h-3 rounded-full bg-[#007BE5]"></div>
-                 <div className="w-3 h-3 rounded-full bg-[#007BE5]/40"></div>
-                 <div className="w-3 h-3 rounded-full bg-[#007BE5]/70"></div>
-                 <div className="w-3 h-3 rounded-full bg-[#007BE5]"></div>
-                 <div className="w-3 h-3 rounded-full bg-[#007BE5]/50"></div>
-                 <div className="w-3 h-3 rounded-full bg-[#007BE5]"></div>
-                 <div className="w-3 h-3 rounded-full bg-[#007BE5]/30"></div>
-                 <div className="w-3 h-3 rounded-full bg-[#007BE5]"></div>
-              </div>
+            {/* Center human icon graphic */}
+            <div className="w-[120px] h-[120px] mx-auto mb-8 relative flex items-center justify-center">
+              <div className="absolute w-full h-full bg-[#007BE5]/10 rounded-full blur-2xl pointer-events-none"></div>
+              <Image 
+                src="/illustrations/human.png" 
+                alt="Humans at the center" 
+                fill 
+                className="object-contain"
+              />
             </div>
             
             <h2 className="text-[28px] md:text-[36px] text-[#00274A] tracking-[-0.02em] mb-6" style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontWeight: 400 }}>
@@ -177,16 +158,17 @@ export default function AboutPage() {
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {team.map((member) => (
-                <div key={member.name} className="flex flex-col group">
-                  <div className="w-full aspect-square bg-[#F5F5F5] mb-6 overflow-hidden relative">
-                    <img 
+                <div key={member.name} className="flex flex-col group cursor-pointer">
+                  <div className="w-full aspect-[4/5] bg-[#F5F5F5] mb-6 overflow-hidden relative rounded-xl shadow-sm border border-[#E5E5E5]">
+                    <Image 
                       src={member.img} 
                       alt={member.name}
-                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                      fill
+                      className="object-cover transition-all duration-500 ease-in-out group-hover:scale-105"
                     />
                   </div>
-                  <h3 className="text-[18px] text-[#00274A] mb-1" style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontWeight: 500 }}>{member.name}</h3>
-                  <p className="text-[14px] text-[#007BE5] mb-3">{member.role}</p>
+                  <h3 className="text-[18px] text-[#00274A] mb-1 tracking-tight" style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontWeight: 500 }}>{member.name}</h3>
+                  <p className="text-[14px] text-[#007BE5] mb-3 font-medium">{member.role}</p>
                   <p className="text-[14px] text-[#525252] leading-relaxed">{member.desc}</p>
                 </div>
               ))}

@@ -6,9 +6,9 @@ import { ChevronDown, Menu, X, ShieldCheck, FileText, Activity, Key, PieChart, S
 
 const navLinks = [
   { label: "Products", href: "#product", dropdown: true },
-  { label: "About us", href: "#about" },
-  { label: "Resources", href: "#resources" },
-  { label: "Pricing", href: "pricing" },
+  { label: "About us", href: "/about" },
+  { label: "Developers", href: "/dev" },
+  { label: "Pricing", href: "/pricing" },
 ];
 
 const regions = [

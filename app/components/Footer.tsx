@@ -89,13 +89,23 @@ export default function Footer() {
             {/* Products */}
             <FooterCol
               heading="PRODUCTS"
-              links={["Documentation", "Blogs", "FAQs", "Contact Us"]}
+              links={[
+                { label: "Documentation", href: "/dev" },
+                { label: "Pricing", href: "/pricing" },
+                { label: "ThirdFactor Verify", href: "#" },
+                { label: "ThirdFactor Shield", href: "#" },
+              ]}
             />
 
             {/* Resources */}
             <FooterCol
-              heading="RESOURCES"
-              links={["Blogs", "Documentation", "FAQs", "Contact Us"]}
+              heading="COMPANY"
+              links={[
+                { label: "About Us", href: "/about" },
+                { label: "Blogs", href: "/blogs" },
+                { label: "Contact Us", href: "/contact" },
+                { label: "FAQs", href: "/faq" },
+              ]}
             />
 
             {/* Contact */}
@@ -218,7 +228,7 @@ function FooterCol({
   links,
 }: {
   heading: string;
-  links: string[];
+  links: { label: string; href: string }[];
 }) {
   return (
     <div>
@@ -246,9 +256,9 @@ function FooterCol({
         }}
       >
         {links.map((l) => (
-          <li key={l}>
+          <li key={l.label}>
             <Link
-              href="#"
+              href={l.href}
               style={{
                 fontFamily: "var(--font-geist-sans, system-ui)",
                 fontSize: "14px",
@@ -256,7 +266,7 @@ function FooterCol({
                 textDecoration: "none",
               }}
             >
-              {l}
+              {l.label}
             </Link>
           </li>
         ))}
