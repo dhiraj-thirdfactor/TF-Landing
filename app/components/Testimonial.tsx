@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
 const stats = [
@@ -43,18 +44,15 @@ export default function Testimonial() {
             }}
           >
             {/* Logo */}
-            <p
-              style={{
-                fontFamily: "var(--font-geist-sans, system-ui)",
-                fontWeight: 700,
-                fontSize: "28px",
-                color: "#111827",
-                margin: 0,
-                letterSpacing: "-0.5px",
-              }}
-            >
-              vianet
-            </p>
+            <div style={{ display: "flex", alignItems: "center", height: "36px" }}>
+              <Image
+                src="/illustrations/vianetlogo.png"
+                alt="Vianet"
+                width={140}
+                height={36}
+                style={{ height: "100%", width: "auto", objectFit: "contain" }}
+              />
+            </div>
 
             {/* Quote */}
             <blockquote

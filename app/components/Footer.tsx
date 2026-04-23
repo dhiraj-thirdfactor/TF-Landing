@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { GeistPixelCircle } from "geist/font/pixel";
 import {
   ExternalLink,
   Share2,
@@ -15,7 +16,7 @@ export default function Footer() {
       <footer style={{ background: "#fff", borderTop: "1px solid #e5e7eb" }}>
         <div
           style={{
-            maxWidth: "1200px",
+            maxWidth: "1163px",
             margin: "0 auto",
             padding: "64px 24px 48px",
           }}
@@ -24,51 +25,65 @@ export default function Footer() {
             style={{
               display: "grid",
               gridTemplateColumns: "1fr repeat(3, auto)",
-              gap: "48px",
+              gap: "116px",
               alignItems: "flex-start",
             }}
           >
             {/* Brand */}
-            <div style={{ maxWidth: "260px" }}>
-              <Image
-                src="/logo.svg"
-                alt="ThirdFactor.ai"
-                width={140}
-                height={28}
-                style={{ marginBottom: "16px" }}
-              />
-              <p
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "16px",
+                width: "267.5px",
+              }}
+            >
+              <h2
                 style={{
                   fontFamily: "var(--font-geist-sans, system-ui)",
-                  fontSize: "14px",
-                  lineHeight: 1.6,
+                  fontSize: "24.04px",
+                  lineHeight: "100%",
                   color: "#111827",
-                  margin: "0 0 20px",
-                  fontWeight: 500,
+                  margin: 0,
+                  fontWeight: 400,
+                  letterSpacing: "-1px",
                 }}
               >
                 Instant{" "}
-                <span style={{ fontStyle: "italic" }}>Identity</span>
+                <span
+                  className={GeistPixelCircle.className}
+                  style={{
+                    fontWeight: 400,
+                    fontSize: "24.04px",
+                    lineHeight: "100%",
+                    letterSpacing: "-1px",
+                  }}
+                >
+                  Identity
+                </span>
                 <br />
                 Verification for regulated
                 <br />
                 markets.
-              </p>
-              <Link
-                href="#"
-                style={{
-                  display: "inline-block",
-                  padding: "8px 20px",
-                  borderRadius: "100px",
-                  border: "1px solid #d1d5db",
-                  fontSize: "13px",
-                  color: "#111827",
-                  fontFamily: "var(--font-geist-sans, system-ui)",
-                  textDecoration: "none",
-                }}
-              >
-                Learn More
-              </Link>
+              </h2>
+              <div>
+                <Link
+                  href="#"
+                  style={{
+                    display: "inline-block",
+                    padding: "10px 24px",
+                    borderRadius: "100px",
+                    background: "#f0f6ff",
+                    fontSize: "14px",
+                    color: "#111827",
+                    fontFamily: "var(--font-geist-sans, system-ui)",
+                    textDecoration: "none",
+                    fontWeight: 500,
+                  }}
+                >
+                  Learn More
+                </Link>
+              </div>
             </div>
 
             {/* Products */}
@@ -161,20 +176,13 @@ export default function Footer() {
               justifyContent: "space-between",
             }}
           >
-            <p
-              style={{
-                fontFamily: "var(--font-geist-sans, system-ui)",
-                fontSize: "14px",
-                color: "#111827",
-                margin: 0,
-              }}
-            >
-              A{" "}
-              <span style={{ fontWeight: 700, letterSpacing: "0.06em" }}>
-                PRI<span style={{ fontStyle: "italic" }}>X</span>A
-              </span>{" "}
-              Company
-            </p>
+            <Image
+              src="/illustrations/prixa.png"
+              alt="A PRIXA Company"
+              width={180}
+              height={28}
+              style={{ height: "28px", width: "auto" }}
+            />
             <Link
               href="#"
               style={{
@@ -193,7 +201,7 @@ export default function Footer() {
       {/* ── Dot-grid strip ──────────────────────────── */}
       <div style={{ width: "100%", lineHeight: 0 }}>
         <Image
-          src="/illustrations/background.png"
+          src="/illustrations/footer.png"
           alt=""
           width={1440}
           height={220}
