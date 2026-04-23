@@ -2,7 +2,7 @@
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X, ShieldCheck, FileText, Activity, Key, PieChart, Settings, Database, ArrowRight } from "lucide-react";
 
 const navLinks = [
   { label: "Products", href: "#product", dropdown: true },
@@ -96,18 +96,95 @@ export default function Navbar() {
         </Link>
 
         {/* Nav links — centered */}
-        <nav className="hidden lg:flex items-center justify-center gap-0.5">
-          {navLinks.map((l) => (
-            <Link
-              key={l.label}
-              href={l.href}
-              className="flex items-center gap-0.5 px-3 py-1.5 text-sm rounded-full hover:bg-neutral-100 transition-colors duration-150"
-              style={{ color: "#A3A3A3" }}
-            >
-              {l.label}
-              {l.dropdown && <ChevronDown size={13} className="text-neutral-300" />}
-            </Link>
-          ))}
+        <nav className="hidden lg:flex items-center justify-center gap-0.5 relative">
+          {navLinks.map((l) => {
+            if (l.label === "Products") {
+              return (
+                <div key={l.label} className="relative group">
+                  <button
+                    className="flex items-center gap-0.5 px-3 py-1.5 text-sm rounded-full hover:bg-neutral-100 transition-colors duration-150"
+                    style={{ color: "#A3A3A3" }}
+                  >
+                    {l.label}
+                    <ChevronDown size={13} className="text-neutral-300 transition-transform group-hover:rotate-180" />
+                  </button>
+                  
+                  {/* Mega Menu Dropdown - Minimalist Ultra-Flat Style */}
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                    <div className="w-[840px] bg-white border border-neutral-200 rounded-xl shadow-md overflow-hidden flex">
+                      
+                      {/* Left: Products Grid */}
+                      <div className="flex-[2] p-5 grid grid-cols-2 gap-x-4 gap-y-1">
+                        {[
+                          { name: "ThirdFactor Verify", desc: "Core identity & document checks", imgSrc: "/illustrations/image.png" },
+                          { name: "ThirdFactor Shield", desc: "Fraud prevention & liveness", imgSrc: "/illustrations/image2.png" },
+                          { name: "ThirdFactor Comply", desc: "AML & compliance monitoring", imgSrc: "/illustrations/image3.png" },
+                          { name: "ThirdFactor Access", desc: "Seamless authentication flows", imgSrc: "/illustrations/image.png" },
+                          { name: "ThirdFactor Lens", desc: "Analytics & risk scoring", imgSrc: "/illustrations/image2.png" },
+                          { name: "ThirdFactor Charter", desc: "Enterprise policy builder", imgSrc: "/illustrations/image3.png" },
+                          { name: "ThirdFactor Bedrock", desc: "Foundational infrastructure", imgSrc: "/illustrations/image.png" }
+                        ].map((prod) => {
+                          return (
+                            <Link
+                              key={prod.name}
+                              href="#"
+                              className="flex items-start gap-3 p-3 rounded-md hover:bg-neutral-50 transition-colors group/item"
+                            >
+                              <div className="mt-0.5 shrink-0 w-8 h-8 relative rounded overflow-hidden flex items-center justify-center opacity-70 group-hover/item:opacity-100 transition-opacity">
+                                <Image src={prod.imgSrc} alt={prod.name} fill className="object-contain p-0.5" />
+                              </div>
+                              <div className="flex flex-col">
+                                <span className="text-[14px] font-medium text-neutral-900">
+                                  {prod.name}
+                                </span>
+                                <span className="text-[13px] text-neutral-500 mt-0.5 leading-snug">
+                                  {prod.desc}
+                                </span>
+                              </div>
+                            </Link>
+                          );
+                        })}
+                      </div>
+
+                      {/* Right: Featured Section */}
+                      <div className="flex-[1] bg-[#fafafa] p-6 border-l border-neutral-200 flex flex-col justify-between">
+                        <div>
+                          <span className="text-[11px] font-semibold uppercase tracking-wider text-neutral-500 mb-2 block">New</span>
+                          <h3 className="text-[15px] font-medium text-neutral-900 mb-2 leading-tight">Explore ThirdFactor Bedrock</h3>
+                          <p className="text-[13px] text-neutral-500 mb-6 leading-relaxed">
+                            The scalable foundational infrastructure designed to run global identity systems.
+                          </p>
+                        </div>
+                        <div className="relative w-full h-[140px] rounded-md overflow-hidden border border-neutral-200">
+                          <Image 
+                            src="/illustrations/herosection.png" 
+                            alt="ThirdFactor Bedrock" 
+                            fill 
+                            className="object-cover"
+                          />
+                        </div>
+                        <Link href="#" className="mt-6 flex items-center gap-1 text-[13px] font-medium text-neutral-900 hover:text-neutral-500 transition-colors">
+                          Learn more <ArrowRight size={14} />
+                        </Link>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              );
+            }
+
+            return (
+              <Link
+                key={l.label}
+                href={l.href}
+                className="flex items-center gap-0.5 px-3 py-1.5 text-sm rounded-full hover:bg-neutral-100 transition-colors duration-150"
+                style={{ color: "#A3A3A3" }}
+              >
+                {l.label}
+              </Link>
+            );
+          })}
         </nav>
 
         {/* Right side */}
