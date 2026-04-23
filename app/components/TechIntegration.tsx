@@ -84,189 +84,71 @@ export default function TechIntegration() {
   const tab = tabs.find((t) => t.id === active)!;
 
   return (
-    <section
-      className="bg-white py-20 border-t border-neutral-200 overflow-hidden"
-    >
-      <div
-        className="max-w-[1441px] mx-auto"
-        style={{ paddingLeft: "140px", paddingRight: "140px" }}
-      >
+    <section className="bg-white py-16 md:py-20 border-t border-neutral-200 overflow-hidden">
+      <div className="max-w-[1441px] mx-auto px-6 md:px-[140px]">
         {/* ── Section header ─────────────────────────────── */}
-        <div style={{ marginBottom: "64px" }}>
-          {/* H2 — 48px, weight 400, -0.025em, lh 1.15 */}
-          <h2
-            style={{
-              fontFamily: "var(--font-geist-sans, system-ui)",
-              fontWeight: 400,
-              fontSize: "48px",
-              lineHeight: "1.15",
-              letterSpacing: "-0.025em",
-              color: "#00274A",
-              margin: "0 0 12px 0",
-            }}
-          >
+        <div className="mb-10 md:mb-16">
+          <h2 className="font-sans font-normal text-[32px] md:text-[48px] leading-[1.15] tracking-[-0.025em] text-[#00274A] mb-3">
             Technical Integration Made Simple
           </h2>
-          {/* Body-1 — 16px, regular */}
-          <p
-            style={{
-              fontFamily: "var(--font-geist-sans, system-ui)",
-              fontWeight: 400,
-              fontSize: "16px",
-              lineHeight: "1.5",
-              letterSpacing: "0",
-              color: "#525252",
-              margin: 0,
-            }}
-          >
+          <p className="font-sans font-normal text-[16px] leading-[1.5] text-[#525252] m-0">
             Flexible APIs, SDKs, and fast implementation
           </p>
         </div>
 
-        {/* ── Tab bar — 1161×48, gap 10px, each tab 282.75×48 ── */}
-        <div
-          style={{
-            width: "1161px",
-            height: "48px",
-            display: "flex",
-            gap: "10px",
-            alignItems: "center",
-            marginBottom: "48px",
-          }}
-        >
+        {/* ── Tab bar ── */}
+        <div className="flex flex-row lg:flex-row w-full gap-2 lg:gap-3 overflow-x-auto scrollbar-hide pb-4 lg:pb-0 mb-8 md:mb-12">
           {tabs.map((t) => (
             <button
               key={t.id}
               onClick={() => setActive(t.id)}
+              className="flex-shrink-0 lg:flex-1 h-[48px] px-6 lg:px-4 flex items-center justify-center gap-2.5 rounded-[100px] border text-[14px] font-sans transition-all duration-150"
               style={{
-                width: "282.75px",
-                height: "48px",
-                flexShrink: 0,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "10px",
-                borderRadius: "100px",
-                border: "1px solid",
                 borderColor: active === t.id ? "#A9D5F5" : "#D4D4D4",
-                fontSize: "14px",
                 fontWeight: active === t.id ? 500 : 400,
-                fontFamily: "var(--font-geist-sans, system-ui)",
-                cursor: "pointer",
-                transition: "all 150ms",
                 background: active === t.id
                   ? "linear-gradient(90deg, rgba(169,213,245,0.2) 0%, rgba(169,213,245,0.2) 57.35%, rgba(255,255,255,0.2) 57.83%), #FFFFFF"
                   : "#FFFFFF",
                 color: active === t.id ? "#00274A" : "#737373",
               }}
             >
-              <span style={{ color: active === t.id ? "#007BE5" : "#A3A3A3", flexShrink: 0 }}>
+              <span className="shrink-0" style={{ color: active === t.id ? "#007BE5" : "#A3A3A3" }}>
                 {TabIcons[t.iconKey]}
               </span>
-              {t.label}
+              <span className="whitespace-nowrap">{t.label}</span>
             </button>
           ))}
         </div>
 
         {/* ── Two columns ────────────────────────────────── */}
-        <div
-          style={{
-            display: "flex",
-            gap: "41px",
-            alignItems: "flex-start",
-          }}
-        >
-          {/* Left — 495.32×522, gap 17px */}
-          <div
-            style={{
-              width: "495.32px",
-              flexShrink: 0,
-              display: "flex",
-              flexDirection: "column",
-              gap: "17px",
-            }}
-          >
-            {/* H4 heading — 32px, weight 400, -0.015em, lh 1.25 */}
-            <h3
-              style={{
-                fontFamily: "var(--font-geist-sans, system-ui)",
-                fontWeight: 400,
-                fontSize: "32px",
-                lineHeight: "1.25",
-                letterSpacing: "-0.015em",
-                color: "#00274A",
-                margin: 0,
-              }}
-            >
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-[41px] items-start w-full">
+          
+          {/* Left */}
+          <div className="w-full lg:w-[495px] shrink-0 flex flex-col gap-4 lg:gap-[17px]">
+            <h3 className="font-sans font-normal text-[24px] md:text-[32px] leading-[1.25] tracking-[-0.015em] text-[#00274A] m-0">
               {tab.heading}
             </h3>
 
-            {/* H6 subtext — 18px, weight 400, lh 1.35 — 438.51×48 */}
-            <p
-              style={{
-                fontFamily: "var(--font-geist-sans, system-ui)",
-                fontWeight: 400,
-                fontSize: "18px",
-                lineHeight: "1.35",
-                letterSpacing: "0",
-                color: "#525252",
-                margin: 0,
-                width: "438.51px",
-                maxWidth: "100%",
-              }}
-            >
+            <p className="font-sans font-normal text-[16px] md:text-[18px] leading-[1.35] text-[#525252] m-0 w-full lg:max-w-[438px]">
               {tab.subtext}
             </p>
 
-            {/* CTA — 208×60, radius 100px, padding 16/28, gap 8 */}
             <Link
               href="#"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "8px",
-                width: "208px",
-                height: "60px",
-                paddingTop: "16px",
-                paddingBottom: "16px",
-                paddingLeft: "28px",
-                paddingRight: "28px",
-                borderRadius: "100px",
-                background: "#007BE5",
-                color: "#ffffff",
-                fontSize: "15px",
-                fontWeight: 500,
-                fontFamily: "var(--font-geist-sans, system-ui)",
-                textDecoration: "none",
-                transition: "background 150ms",
-                marginTop: "8px",
-              }}
-              onMouseEnter={e => (e.currentTarget.style.background = "#0069C2")}
-              onMouseLeave={e => (e.currentTarget.style.background = "#007BE5")}
+              className="inline-flex items-center justify-center gap-2 h-[60px] px-7 mt-2 md:mt-4 rounded-[100px] bg-[#007BE5] hover:bg-[#0069C2] text-white text-[15px] font-medium font-sans transition-colors w-full sm:w-auto sm:self-start"
             >
               Experience Center
             </Link>
           </div>
 
-          {/* Right — 625.68×678.7, border-radius 24px */}
-          <div
-            style={{
-              width: "625.68px",
-              height: "678.7px",
-              borderRadius: "24px",
-              overflow: "hidden",
-              flexShrink: 0,
-              background: "#F5F9FF",
-              position: "relative",
-            }}
-          >
+          {/* Right */}
+          <div className="w-full h-[300px] md:h-[400px] lg:h-[678px] rounded-2xl lg:rounded-[24px] overflow-hidden shrink-0 bg-[#F5F9FF] relative">
             <Image
               src={tab.img}
-              alt="Face detection interface"
+              alt="Integration interface"
               fill
               style={{ objectFit: "contain", padding: "40px" }}
-              sizes="626px"
+              sizes="(max-width: 1024px) 100vw, 626px"
               priority
             />
           </div>

@@ -206,7 +206,7 @@ export default function Navbar() {
         <div className="hidden lg:flex items-center gap-2">
           <RegionDropdown />
           <Link
-            href="#"
+            href="/book-demo"
             className="px-4 py-1.5 text-sm font-medium text-white rounded-full bg-[#007BE5] hover:bg-[#0069C2] transition-colors duration-150"
           >
             Book a Demo
@@ -240,7 +240,7 @@ export default function Navbar() {
           ))}
           <div className="flex items-center gap-2 mt-3 pt-3 border-t border-neutral-200">
             <RegionDropdown />
-            <Link href="#" className="flex-1 text-center px-4 py-2 text-sm font-medium text-white rounded-full bg-[#007BE5]">
+            <Link href="/book-demo" className="flex-1 text-center px-4 py-2 text-sm font-medium text-white rounded-full bg-[#007BE5]">
               Book a Demo
             </Link>
           </div>

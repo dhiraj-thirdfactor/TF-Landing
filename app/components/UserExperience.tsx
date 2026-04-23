@@ -76,115 +76,43 @@ export default function UserExperience() {
   }, []);
 
   return (
-    <section
-      className="bg-white py-20 border-t border-neutral-200 overflow-hidden"
-    >
-      <div
-        className="max-w-[1441px] mx-auto"
-        style={{ paddingLeft: "140px", paddingRight: "140px" }}
-      >
-        <div style={{ display: "flex", gap: "72px", alignItems: "flex-start" }}>
+    <section className="bg-white py-16 md:py-20 border-t border-neutral-200 overflow-hidden">
+      <div className="max-w-[1441px] mx-auto px-6 md:px-[140px]">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-[72px] items-start w-full">
 
-          {/* ── Left — 485×771, space-between ─────────────── */}
-          <div
-            style={{
-              width: "485px",
-              height: "771px",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-              flexShrink: 0,
-            }}
-          >
-            {/* Heading — 40px, weight 400, 48px lh, -3% ls */}
-            <h2
-              style={{
-                fontFamily: "var(--font-geist-sans, system-ui)",
-                fontWeight: 400,
-                fontSize: "40px",
-                lineHeight: "48px",
-                letterSpacing: "-1.2px", // -3% of 40px
-                color: "#00274A",
-                margin: 0,
-              }}
-            >
+          {/* ── Left ─────────────── */}
+          <div className="w-full lg:w-[485px] min-h-[auto] lg:h-[771px] flex flex-col justify-between shrink-0 gap-8 lg:gap-0">
+            {/* Heading */}
+            <h2 className="font-sans font-normal text-[32px] md:text-[40px] leading-[1.2] tracking-[-1.2px] text-[#00274A] m-0">
               What your users see
             </h2>
 
-            {/* Dropdown — 485×71, padding 20/32, radius 100px */}
-            <div ref={dropRef} style={{ position: "relative", width: "485px" }}>
+            {/* Dropdown */}
+            <div ref={dropRef} className="relative w-full">
               <button
                 onClick={() => setOpen(!open)}
-                style={{
-                  width: "485px",
-                  height: "71px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  paddingTop: "20px",
-                  paddingBottom: "20px",
-                  paddingLeft: "32px",
-                  paddingRight: "32px",
-                  borderRadius: "100px",
-                  border: "1px solid #E5E5E5",
-                  background: "#FFFFFF",
-                  cursor: "pointer",
-                  fontFamily: "var(--font-geist-sans, system-ui)",
-                  fontSize: "15px",
-                  fontWeight: 500,
-                  color: "#00274A",
-                  transition: "background 150ms",
-                }}
-                onMouseEnter={e => (e.currentTarget.style.background = "#FAFAFA")}
-                onMouseLeave={e => (e.currentTarget.style.background = "#FFFFFF")}
+                className="w-full h-[60px] md:h-[71px] flex items-center justify-between px-6 md:px-[32px] rounded-[100px] border border-[#E5E5E5] bg-white cursor-pointer font-sans text-[14px] md:text-[15px] font-medium text-[#00274A] transition-colors hover:bg-[#FAFAFA] outline-none"
               >
                 {selected.label}
                 <ChevronDown
                   size={18}
-                  style={{
-                    color: "#A3A3A3",
-                    transition: "transform 150ms",
-                    transform: open ? "rotate(180deg)" : "rotate(0deg)",
-                    flexShrink: 0,
-                  }}
+                  className="text-[#A3A3A3] shrink-0 transition-transform duration-150"
+                  style={{ transform: open ? "rotate(180deg)" : "rotate(0deg)" }}
                 />
               </button>
 
               {/* Dropdown menu */}
               {open && (
-                <div
-                  style={{
-                    position: "absolute",
-                    top: "calc(100% + 8px)",
-                    left: 0,
-                    width: "485px",
-                    background: "#FFFFFF",
-                    border: "1px solid #E5E5E5",
-                    borderRadius: "16px",
-                    overflow: "hidden",
-                    zIndex: 20,
-                    boxShadow: "0 4px 24px rgba(0,0,0,0.06)",
-                  }}
-                >
+                <div className="absolute top-[calc(100%+8px)] left-0 w-full bg-white border border-[#E5E5E5] rounded-[16px] overflow-hidden z-20 shadow-[0_4px_24px_rgba(0,0,0,0.06)]">
                   {flows.map((f) => (
                     <button
                       key={f.id}
                       onClick={() => { setSelected(f); setOpen(false); }}
+                      className="w-full h-[56px] flex items-center px-6 md:px-[32px] bg-transparent border-none cursor-pointer font-sans text-[14px] text-left transition-colors outline-none"
                       style={{
-                        width: "100%",
-                        height: "56px",
-                        display: "flex",
-                        alignItems: "center",
-                        padding: "0 32px",
                         background: selected.id === f.id ? "#F5F9FF" : "transparent",
-                        border: "none",
-                        cursor: "pointer",
-                        fontFamily: "var(--font-geist-sans, system-ui)",
-                        fontSize: "14px",
                         fontWeight: selected.id === f.id ? 500 : 400,
                         color: selected.id === f.id ? "#007BE5" : "#404040",
-                        textAlign: "left",
-                        transition: "background 150ms",
                       }}
                       onMouseEnter={e => { if (selected.id !== f.id) e.currentTarget.style.background = "#FAFAFA"; }}
                       onMouseLeave={e => { if (selected.id !== f.id) e.currentTarget.style.background = "transparent"; }}
@@ -196,40 +124,14 @@ export default function UserExperience() {
               )}
             </div>
 
-            {/* Text block — 485×309, gap 40px, 3 items */}
-            <div
-              style={{
-                width: "485px",
-                height: "309px",
-                display: "flex",
-                flexDirection: "column",
-                gap: "40px",
-              }}
-            >
+            {/* Text block */}
+            <div className="w-full flex flex-col gap-6 md:gap-[40px]">
               {selected.items.map((item, i) => (
-                <div key={i} style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-                  <p
-                    style={{
-                      fontFamily: "var(--font-geist-sans, system-ui)",
-                      fontWeight: 500,
-                      fontSize: "15px",
-                      lineHeight: "1.4",
-                      color: "#00274A",
-                      margin: 0,
-                    }}
-                  >
+                <div key={i} className="flex flex-col gap-2">
+                  <p className="font-sans font-medium text-[15px] leading-[1.4] text-[#00274A] m-0">
                     {item.title}
                   </p>
-                  <p
-                    style={{
-                      fontFamily: "var(--font-geist-sans, system-ui)",
-                      fontWeight: 400,
-                      fontSize: "14px",
-                      lineHeight: "1.6",
-                      color: "#525252",
-                      margin: 0,
-                    }}
-                  >
+                  <p className="font-sans font-normal text-[14px] leading-[1.6] text-[#525252] m-0">
                     {item.desc}
                   </p>
                 </div>
@@ -238,44 +140,25 @@ export default function UserExperience() {
           </div>
 
           {/* ── Right — background.png + phone.png ─────────── */}
-          <div
-            style={{
-              flex: 1,
-              height: "771px",
-              borderRadius: "24px",
-              overflow: "hidden",
-              position: "relative",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
+          <div className="w-full lg:flex-1 h-[500px] lg:h-[771px] rounded-2xl md:rounded-[24px] overflow-hidden relative flex items-center justify-center shrink-0">
             {/* Background texture */}
             <Image
               src="/illustrations/background.png"
               alt=""
               fill
               style={{ objectFit: "cover" }}
-              sizes="600px"
+              sizes="(max-width: 1024px) 100vw, 600px"
               aria-hidden="true"
             />
 
-            {/* Phone on top — centered */}
-            <div
-              style={{
-                position: "relative",
-                zIndex: 2,
-                width: "320px",
-                height: "660px",
-                filter: "drop-shadow(0 32px 64px rgba(0,0,0,0.22))",
-              }}
-            >
+            {/* Phone on top */}
+            <div className="relative z-10 w-[240px] md:w-[320px] h-[480px] md:h-[660px]" style={{ filter: "drop-shadow(0 32px 64px rgba(0,0,0,0.22))" }}>
               <Image
                 src="/illustrations/phone.png"
                 alt="ThirdFactor face verification on iPhone"
                 fill
                 style={{ objectFit: "contain" }}
-                sizes="320px"
+                sizes="(max-width: 768px) 240px, 320px"
                 priority
               />
             </div>

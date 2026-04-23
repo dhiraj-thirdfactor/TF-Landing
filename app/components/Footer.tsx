@@ -13,52 +13,14 @@ export default function Footer() {
   return (
     <>
       {/* ── Main footer ─────────────────────────────── */}
-      <footer style={{ background: "#fff", borderTop: "1px solid #e5e7eb" }}>
-        <div
-          style={{
-            maxWidth: "1163px",
-            margin: "0 auto",
-            padding: "64px 24px 48px",
-          }}
-        >
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr repeat(4, auto)",
-              gap: "72px",
-              alignItems: "flex-start",
-            }}
-          >
+      <footer className="bg-white border-t border-gray-200">
+        <div className="max-w-[1163px] mx-auto py-12 md:pt-16 md:pb-12 px-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_repeat(4,auto)] gap-10 lg:gap-[72px] items-start">
             {/* Brand */}
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "16px",
-                width: "267.5px",
-              }}
-            >
-              <h2
-                style={{
-                  fontFamily: "var(--font-geist-sans, system-ui)",
-                  fontSize: "24.04px",
-                  lineHeight: "100%",
-                  color: "#111827",
-                  margin: 0,
-                  fontWeight: 400,
-                  letterSpacing: "-1px",
-                }}
-              >
+            <div className="flex flex-col gap-4 w-full lg:max-w-[267px]">
+              <h2 className="font-sans text-[24px] leading-none text-gray-900 m-0 font-normal tracking-[-1px]">
                 Instant{" "}
-                <span
-                  className={GeistPixelCircle.className}
-                  style={{
-                    fontWeight: 400,
-                    fontSize: "24.04px",
-                    lineHeight: "100%",
-                    letterSpacing: "-1px",
-                  }}
-                >
+                <span className={`${GeistPixelCircle.className} font-normal text-[24px] leading-none tracking-[-1px]`}>
                   Identity
                 </span>
                 <br />
@@ -69,17 +31,7 @@ export default function Footer() {
               <div>
                 <Link
                   href="#"
-                  style={{
-                    display: "inline-block",
-                    padding: "10px 24px",
-                    borderRadius: "100px",
-                    background: "#f0f6ff",
-                    fontSize: "14px",
-                    color: "#111827",
-                    fontFamily: "var(--font-geist-sans, system-ui)",
-                    textDecoration: "none",
-                    fontWeight: 500,
-                  }}
+                  className="inline-block px-6 py-2.5 rounded-full bg-blue-50 text-[14px] text-gray-900 font-sans font-medium no-underline hover:bg-blue-100 transition-colors"
                 >
                   Learn More
                 </Link>
@@ -120,39 +72,13 @@ export default function Footer() {
 
             {/* Contact */}
             <div>
-              <p
-                style={{
-                  fontFamily: "var(--font-geist-sans, system-ui)",
-                  fontSize: "11px",
-                  fontWeight: 700,
-                  letterSpacing: "0.08em",
-                  color: "#6b7280",
-                  textTransform: "uppercase",
-                  margin: "0 0 16px",
-                }}
-              >
+              <p className="font-sans text-[11px] font-bold tracking-[0.08em] text-gray-500 uppercase m-0 mb-4">
                 CONTACT
               </p>
-              <ul
-                style={{
-                  listStyle: "none",
-                  margin: 0,
-                  padding: 0,
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "10px",
-                }}
-              >
+              <ul className="list-none m-0 p-0 flex flex-col gap-2.5">
                 {["info@thirdfactor.ai", "9705180020", "Kupondole, Lalitpur"].map(
                   (item) => (
-                    <li
-                      key={item}
-                      style={{
-                        fontFamily: "var(--font-geist-sans, system-ui)",
-                        fontSize: "14px",
-                        color: "#374151",
-                      }}
-                    >
+                    <li key={item} className="font-sans text-[14px] text-gray-700">
                       {item}
                     </li>
                   )
@@ -160,7 +86,7 @@ export default function Footer() {
               </ul>
 
               {/* Social */}
-              <div style={{ display: "flex", gap: "12px", marginTop: "20px" }}>
+              <div className="flex gap-3 mt-5">
                 {[
                   { icon: <ExternalLink size={16} />, label: "Twitter" },
                   { icon: <Share2 size={16} />, label: "LinkedIn" },
@@ -171,12 +97,7 @@ export default function Footer() {
                     key={s.label}
                     href="#"
                     aria-label={s.label}
-                    style={{
-                      color: "#374151",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
+                    className="text-gray-700 flex items-center justify-center hover:text-gray-900 transition-colors"
                   >
                     {s.icon}
                   </a>
@@ -186,31 +107,17 @@ export default function Footer() {
           </div>
 
           {/* Bottom bar */}
-          <div
-            style={{
-              borderTop: "1px solid #e5e7eb",
-              marginTop: "48px",
-              paddingTop: "24px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}
-          >
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 mt-12 border-t border-gray-200">
             <Image
               src="/illustrations/prixa.png"
               alt="A PRIXA Company"
               width={180}
               height={28}
-              style={{ height: "28px", width: "auto" }}
+              className="h-[28px] w-auto"
             />
             <Link
               href="#"
-              style={{
-                fontFamily: "var(--font-geist-sans, system-ui)",
-                fontSize: "14px",
-                color: "#374151",
-                textDecoration: "none",
-              }}
+              className="font-sans text-[14px] text-gray-700 no-underline hover:text-gray-900 transition-colors"
             >
               Terms and Conditions
             </Link>

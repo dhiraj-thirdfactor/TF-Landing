@@ -94,7 +94,7 @@ export default function AboutPage() {
           <div className="w-full h-[300px] md:h-[450px] relative rounded-2xl overflow-hidden flex items-center justify-center">
             <Image 
               src="/illustrations/about.png" 
-              alt="About ThirdFactor" 
+              alt="About Third Factor" 
               fill 
               className="object-contain"
               priority

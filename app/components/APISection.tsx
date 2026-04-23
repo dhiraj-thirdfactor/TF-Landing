@@ -35,168 +35,69 @@ export default function APISection() {
   const [openId, setOpenId] = useState<string | null>("rest");
 
   return (
-    <section
-      className="bg-white py-20 border-t border-neutral-200"
-    >
-      <div
-        className="max-w-[1441px] mx-auto"
-        style={{ paddingLeft: "140px", paddingRight: "140px" }}
-      >
-        <div style={{ display: "flex", gap: "72px", alignItems: "flex-start" }}>
+    <section className="bg-white py-16 md:py-20 border-t border-neutral-200">
+      <div className="max-w-[1441px] mx-auto px-6 md:px-[140px]">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-[72px] items-start w-full">
 
-          {/* ── Left: apis.png illustration — 575.84×559.55 ── */}
-          <div
-            style={{
-              width: "575.84px",
-              height: "559.55px",
-              borderRadius: "16px",
-              overflow: "hidden",
-              flexShrink: 0,
-              background: "#F0F7FF",
-              position: "relative",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
+          {/* ── Left: apis.png illustration ── */}
+          <div className="w-full lg:w-[575px] h-[300px] sm:h-[450px] lg:h-[559px] rounded-2xl lg:rounded-[16px] overflow-hidden shrink-0 bg-[#F0F7FF] relative flex items-center justify-center">
             <Image
               src="/illustrations/apis.png"
               alt="ThirdFactor API infrastructure"
               fill
               style={{ objectFit: "contain", padding: "32px" }}
-              sizes="576px"
+              sizes="(max-width: 1024px) 100vw, 576px"
               priority
             />
           </div>
 
-          {/* ── Right: copy + accordion — 513 wide ─────────── */}
-          <div
-            style={{
-              width: "513px",
-              display: "flex",
-              flexDirection: "column",
-              gap: "32px",
-              flexShrink: 0,
-            }}
-          >
-            {/* Heading — 40px, weight 400, -2px tracking, 48px lh */}
+          {/* ── Right: copy + accordion ─────────── */}
+          <div className="w-full lg:w-[513px] flex flex-col gap-8 shrink-0">
+            {/* Heading */}
             <div>
-              <h2
-                style={{
-                  fontFamily: "var(--font-geist-sans, system-ui)",
-                  fontWeight: 400,
-                  fontSize: "40px",
-                  lineHeight: "48px",
-                  letterSpacing: "-2px",
-                  color: "#00274A",
-                  margin: "0 0 16px 0",
-                }}
-              >
+              <h2 className="font-sans font-normal text-[32px] md:text-[40px] leading-[1.2] tracking-[-2px] text-[#00274A] mb-4">
                 Build anything with
-                <br />a powerful host of APIs
+                <br className="hidden md:block" /> a powerful host of APIs
               </h2>
-              <p
-                style={{
-                  fontFamily: "var(--font-geist-sans, system-ui)",
-                  fontWeight: 400,
-                  fontSize: "16px",
-                  lineHeight: "1.5",
-                  color: "#525252",
-                  margin: 0,
-                }}
-              >
+              <p className="font-sans font-normal text-[16px] leading-[1.5] text-[#525252] m-0">
                 Every verification capability is exposed as a clean REST endpoint. Ship production integrations in days, not months.
               </p>
             </div>
 
-            {/* View Documentation — 227×60, gap 16 */}
+            {/* View Documentation */}
             <Link
               href="#"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "16px",
-                width: "227px",
-                height: "60px",
-                borderRadius: "100px",
-                background: "#007BE5",
-                color: "#ffffff",
-                fontSize: "15px",
-                fontWeight: 500,
-                fontFamily: "var(--font-geist-sans, system-ui)",
-                textDecoration: "none",
-                flexShrink: 0,
-                transition: "background 150ms",
-              }}
-              onMouseEnter={e => (e.currentTarget.style.background = "#0069C2")}
-              onMouseLeave={e => (e.currentTarget.style.background = "#007BE5")}
+              className="inline-flex items-center justify-center gap-4 w-full sm:w-[227px] h-[60px] rounded-[100px] bg-[#007BE5] text-white text-[15px] font-medium font-sans shrink-0 transition-colors hover:bg-[#0069C2]"
             >
               View Documentation
               <ChevronRight size={16} />
             </Link>
 
-            {/* Expandable rows — each 513×69, gap via borders */}
-            <div style={{ display: "flex", flexDirection: "column" }}>
+            {/* Expandable rows */}
+            <div className="flex flex-col w-full mt-2 lg:mt-0">
               {items.map((item, idx) => {
                 const isOpen = openId === item.id;
                 return (
                   <div
                     key={item.id}
-                    style={{
-                      borderTop: idx === 0 ? "1px solid #E5E5E5" : "none",
-                      borderBottom: "1px solid #E5E5E5",
-                    }}
+                    className={`w-full border-b border-[#E5E5E5] ${idx === 0 ? "border-t" : ""}`}
                   >
                     <button
                       onClick={() => setOpenId(isOpen ? null : item.id)}
-                      style={{
-                        width: "513px",
-                        height: "69px",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "space-between",
-                        gap: "32px",
-                        background: "transparent",
-                        border: "none",
-                        cursor: "pointer",
-                        padding: "0",
-                        textAlign: "left",
-                      }}
+                      className="w-full h-[69px] flex items-center justify-between gap-4 bg-transparent border-none cursor-pointer p-0 text-left outline-none"
                     >
-                      <span
-                        style={{
-                          fontFamily: "var(--font-geist-sans, system-ui)",
-                          fontWeight: isOpen ? 500 : 400,
-                          fontSize: "15px",
-                          color: isOpen ? "#00274A" : "#404040",
-                          transition: "color 150ms",
-                        }}
-                      >
+                      <span className={`font-sans text-[15px] transition-colors ${isOpen ? "font-medium text-[#00274A]" : "font-normal text-[#404040]"}`}>
                         {item.label}
                       </span>
                       <ChevronDown
                         size={16}
-                        style={{
-                          color: "#A3A3A3",
-                          flexShrink: 0,
-                          transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
-                          transition: "transform 200ms",
-                        }}
+                        className="text-[#A3A3A3] shrink-0 transition-transform duration-200"
+                        style={{ transform: isOpen ? "rotate(180deg)" : "rotate(0deg)" }}
                       />
                     </button>
                     {isOpen && (
-                      <div style={{ paddingBottom: "20px" }}>
-                        <p
-                          style={{
-                            fontFamily: "var(--font-geist-sans, system-ui)",
-                            fontWeight: 400,
-                            fontSize: "14px",
-                            lineHeight: "1.6",
-                            color: "#525252",
-                            margin: 0,
-                          }}
-                        >
+                      <div className="pb-5">
+                        <p className="font-sans font-normal text-[14px] leading-[1.6] text-[#525252] m-0">
                           {item.content}
                         </p>
                       </div>

@@ -4,6 +4,7 @@ import TopBar from "../components/TopBar";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import AskQuestionChat from "../components/AskQuestionChat";
+import DocSearch from "../components/DocSearch";
 
 export const metadata = {
   title: "Developer Documentation | ThirdFactor",
@@ -50,13 +51,7 @@ export default function DevDocsPage() {
           <aside className="w-[260px] shrink-0 sticky top-14 h-[calc(100vh-56px)] overflow-y-auto pl-6 pr-6 py-8 hidden md:flex flex-col gap-8">
             
             {/* Search Box */}
-            <button className="flex items-center justify-between w-full px-3 py-2 text-[13px] text-neutral-400 bg-white border border-neutral-200 rounded-lg hover:border-neutral-300 hover:text-neutral-700 transition-all shadow-sm group">
-              <span className="flex items-center gap-2">
-                <Search size={14} className="text-neutral-400 group-hover:text-neutral-500" />
-                Search docs...
-              </span>
-              <span className="text-[10px] font-medium px-1.5 py-0.5 rounded border border-neutral-200 bg-neutral-50 text-neutral-500">⌘K</span>
-            </button>
+            <DocSearch />
 
             <nav className="flex flex-col gap-6">
               {navigation.map((section) => (

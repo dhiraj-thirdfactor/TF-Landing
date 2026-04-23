@@ -24,7 +24,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ThirdFactor | Instant Identity Verification",
+    title: "Third Factor | Instant Identity Verification",
     description: "Fast, secure, and compliant onboarding infrastructure.",
   },
 };

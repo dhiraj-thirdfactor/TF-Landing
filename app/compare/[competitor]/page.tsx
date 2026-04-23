@@ -237,7 +237,7 @@ export default async function ComparePage({ params }: { params: Promise<{ compet
             </div>
             
             {/* Abstract Graphic representing network/nodes */}
-            <div className="w-full h-full min-h-[400px] rounded-2xl relative overflow-hidden bg-white border border-[#E5E5E5] flex items-center justify-center p-8">
+            {/* <div className="w-full h-full min-h-[400px] rounded-2xl relative overflow-hidden bg-white border border-[#E5E5E5] flex items-center justify-center p-8">
                <div className="w-full h-full grid grid-cols-10 grid-rows-10 gap-1 md:gap-2">
                  {Array.from({ length: 100 }).map((_, i) => {
                    const isBlue = i === 12 || i === 25 || i === 34 || i === 48 || i === 76 || i === 89;
@@ -247,7 +247,7 @@ export default async function ComparePage({ params }: { params: Promise<{ compet
                    );
                  })}
                </div>
-            </div>
+            </div> */}
           </div>
         </section>
 

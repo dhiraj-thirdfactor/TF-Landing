@@ -40,93 +40,36 @@ export default function FeaturesSection() {
       <div className="max-w-[1440px] mx-auto">
 
         {/* Header */}
-        <div className="px-6 md:px-[140px] flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
+        <div className="px-6 md:px-[140px] flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
           <div className="max-w-2xl">
-            <p
-              style={{
-                fontFamily: "var(--font-geist-sans, system-ui)",
-                fontWeight: 400,
-                fontSize: "16px",
-                lineHeight: "1.5",
-                color: "#525252",
-                marginBottom: "12px",
-              }}
-            >
+            <p className="font-sans font-normal text-[16px] leading-[1.5] text-[#525252] mb-3">
               One Platform for Every Identity Workflow
             </p>
-            <h2
-              style={{
-                fontFamily: "var(--font-geist-sans, system-ui)",
-                fontWeight: 400,
-                fontSize: "40px",
-                lineHeight: "1.25",
-                letterSpacing: "-0.02em",
-                color: "#00274A",
-                margin: 0,
-              }}
-            >
+            <h2 className="font-sans font-normal text-[32px] md:text-[40px] leading-[1.25] tracking-[-0.02em] text-[#00274A] m-0">
               Verify users, read documents, and manage compliance from a single dashboard
             </h2>
           </div>
           <a
             href="#"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "8px",
-              height: "44px",
-              padding: "6px 24px",
-              fontSize: "14px",
-              fontWeight: 500,
-              color: "#ffffff",
-              background: "#007BE5",
-              borderRadius: "100px",
-              textDecoration: "none",
-              whiteSpace: "nowrap",
-              flexShrink: 0,
-            }}
+            className="inline-flex items-center justify-center gap-2 h-[44px] px-6 text-[14px] font-medium text-white bg-[#007BE5] rounded-[100px] whitespace-nowrap shrink-0 hover:bg-[#0069C2] transition-colors w-full lg:w-auto"
           >
             Book a Demo
           </a>
         </div>
 
-        {/* Cards — horizontal scroll, total 1831px, 36px gaps */}
+        {/* Cards — horizontal scroll */}
         <div
           className="overflow-x-auto scrollbar-hide px-6 md:px-[140px]"
           style={{ WebkitOverflowScrolling: "touch" }}
         >
-          <div style={{ display: "flex", gap: "36px", width: "max-content", paddingBottom: "8px" }}>
+          <div className="flex gap-6 md:gap-[36px] w-max pb-4">
             {cards.map((c, i) => (
               <div
                 key={i}
-                style={{
-                  width: "370px",
-                  height: "452px",
-                  borderRadius: "16px",
-                  border: "1px solid #E5E5E5",
-                  padding: "32px",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "32px",
-                  background: "white",
-                  flexShrink: 0,
-                }}
+                className="w-[300px] md:w-[370px] h-[420px] md:h-[452px] rounded-2xl border border-[#E5E5E5] p-6 md:p-8 flex flex-col gap-6 md:gap-8 bg-white shrink-0"
               >
-                {/* Illustration — 157.94×200, blue border */}
-                <div
-                  style={{
-                    width: "157.94px",
-                    height: "200px",
-                    border: "2.06px solid #2563EB",
-                    borderRadius: "12px",
-                    overflow: "hidden",
-                    background: "#EFF6FF",
-                    flexShrink: 0,
-                    alignSelf: "center",
-                    position: "relative",
-                  }}
-                >
+                {/* Illustration */}
+                <div className="w-[140px] md:w-[158px] h-[180px] md:h-[200px] border-[2px] border-[#2563EB] rounded-xl overflow-hidden bg-[#EFF6FF] shrink-0 self-center relative">
                   <Image
                     src={c.img}
                     alt={c.imgAlt}
@@ -136,31 +79,12 @@ export default function FeaturesSection() {
                   />
                 </div>
 
-                {/* Text block — 306×136, gap 12 */}
-                <div style={{ width: "306px", display: "flex", flexDirection: "column", gap: "12px" }}>
-                  <p
-                    style={{
-                      fontFamily: "var(--font-geist-sans, system-ui)",
-                      fontWeight: 600,
-                      fontSize: "18px",
-                      lineHeight: "1.3",
-                      letterSpacing: "-0.01em",
-                      color: "#00274A",
-                      margin: 0,
-                    }}
-                  >
+                {/* Text block */}
+                <div className="w-full flex flex-col gap-3">
+                  <p className="font-sans font-semibold text-[16px] md:text-[18px] leading-[1.3] tracking-[-0.01em] text-[#00274A] m-0">
                     {c.title}
                   </p>
-                  <p
-                    style={{
-                      fontFamily: "var(--font-geist-sans, system-ui)",
-                      fontWeight: 400,
-                      fontSize: "14px",
-                      lineHeight: "1.5",
-                      color: "#525252",
-                      margin: 0,
-                    }}
-                  >
+                  <p className="font-sans font-normal text-[13px] md:text-[14px] leading-[1.5] text-[#525252] m-0">
                     {c.desc}
                   </p>
                 </div>

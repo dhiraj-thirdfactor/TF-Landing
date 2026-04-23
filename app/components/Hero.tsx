@@ -12,134 +12,40 @@ export default function Hero() {
         {/* ── Centered copy ─────────────────────────────── */}
         <div className="text-center pt-16 pb-10 flex flex-col items-center">
 
-          {/* Heading — 64px, weight 400, -3px tracking, 110% lh */}
-          <h1
-            style={{
-              fontFamily: "var(--font-geist-sans, system-ui)",
-              fontWeight: 400,
-              fontSize: "64px",
-              lineHeight: "110%",
-              letterSpacing: "-3px",
-              color: "#00274A",
-              marginBottom: "24px",
-            }}
-          >
+          {/* Heading */}
+          <h1 className="font-sans font-normal text-[42px] leading-[1.1] md:text-[64px] tracking-[-2px] md:tracking-[-3px] text-[#00274A] mb-6">
             Instant Identity Verification
             <br />
             For{" "}
-            <span
-              className={GeistPixelCircle.className}
-              style={{
-                fontWeight: 400,
-                fontSize: "64px",
-                lineHeight: "110%",
-                letterSpacing: "-3px",
-              }}
-            >
+            <span className={`${GeistPixelCircle.className} text-[42px] md:text-[64px]`}>
               Regulated Markets
             </span>
           </h1>
 
-          {/* Subtext — 20px, #272727, 140% lh */}
-          <p
-            style={{
-              fontFamily: "var(--font-geist-sans, system-ui)",
-              fontWeight: 400,
-              fontSize: "20px",
-              lineHeight: "140%",
-              color: "#272727",
-              marginBottom: "32px",
-              maxWidth: "560px",
-              textAlign: "center",
-            }}
-          >
+          {/* Subtext */}
+          <p className="font-sans font-normal text-[16px] leading-[1.4] md:text-[20px] text-[#272727] mb-8 max-w-[560px] text-center px-4 sm:px-0">
             Full-stack platform for fast, secure, and compliant onboarding. Switch providers in a day.
             Deploy on-premise and maintain zero data retention.
           </p>
 
-          {/* CTAs — 353px wide, 76px tall, space-between */}
-          <div
-            style={{
-              width: "353px",
-              height: "76px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              marginBottom: "20px",
-            }}
-          >
-            {/* Book a Demo — 149×44, padding 6/24, radius 100px, gap 8 */}
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6 w-full px-6 sm:px-0 sm:w-auto">
             <Link
-              href="#"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "8px",
-                width: "149px",
-                height: "44px",
-                paddingTop: "6px",
-                paddingBottom: "6px",
-                paddingLeft: "24px",
-                paddingRight: "24px",
-                fontSize: "14px",
-                fontWeight: 500,
-                color: "#ffffff",
-                background: "#007BE5",
-                borderRadius: "100px",
-                textDecoration: "none",
-                transition: "background 150ms",
-                whiteSpace: "nowrap",
-                flexShrink: 0,
-              }}
-              onMouseEnter={e => (e.currentTarget.style.background = "#0069C2")}
-              onMouseLeave={e => (e.currentTarget.style.background = "#007BE5")}
+              href="/book-demo"
+              className="inline-flex items-center justify-center gap-2 w-full sm:w-[149px] h-[44px] px-6 text-[14px] font-medium text-white bg-[#007BE5] rounded-[100px] hover:bg-[#0069C2] transition-colors whitespace-nowrap shrink-0"
             >
               Book a Demo
             </Link>
             <Link
               href="#"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "8px",
-                width: "188px",
-                height: "44px",
-                paddingTop: "6px",
-                paddingBottom: "6px",
-                paddingLeft: "24px",
-                paddingRight: "24px",
-                fontSize: "14px",
-                fontWeight: 500,
-                color: "#222222",
-                background: "transparent",
-                border: "1px solid #E5E5E5",
-                borderRadius: "100px",
-                textDecoration: "none",
-                transition: "background 150ms",
-                whiteSpace: "nowrap",
-                flexShrink: 0,
-              }}
-              onMouseEnter={e => (e.currentTarget.style.background = "#FAFAFA")}
-              onMouseLeave={e => (e.currentTarget.style.background = "transparent")}
+              className="inline-flex items-center justify-center gap-2 w-full sm:w-[188px] h-[44px] px-6 text-[14px] font-medium text-[#222222] bg-transparent border border-[#E5E5E5] rounded-[100px] hover:bg-[#FAFAFA] transition-colors whitespace-nowrap shrink-0"
             >
               Experience Center
             </Link>
           </div>
 
-          {/* Trust badges — 14px, #1A1A1A99 */}
-          <p
-            style={{
-              fontFamily: "var(--font-geist-sans, system-ui)",
-              fontWeight: 400,
-              fontSize: "14px",
-              lineHeight: "1.5",
-              color: "rgba(26, 26, 26, 0.6)",
-              letterSpacing: "0",
-              marginBottom: "0",
-            }}
-          >
+          {/* Trust badges */}
+          <p className="font-sans font-normal text-[12px] md:text-[14px] leading-[1.5] text-[#1A1A1A]/60 m-0">
             NRB Compliant • VAPT Certified • Sub-0.1ms 1:N Search
           </p>
         </div>
