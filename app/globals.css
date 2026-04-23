@@ -2,7 +2,14 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #00274A;
+  --tf-blue: #007BE5;
+  --tf-blue-hover: #0069C2;
+  --tf-navy: #00274A;
+  --tf-mid-blue: #54AFFF;
+  --tf-sky: #BDE5FF;
+  --tf-lilac: #E1BCFF;
+  --tf-charcoal: #222222;
 }
 
 @theme inline {
@@ -10,17 +17,30 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-pixel: var(--font-geist-pixel-circle);
+  --color-tf-blue: var(--tf-blue);
+  --color-tf-blue-hover: var(--tf-blue-hover);
+  --color-tf-navy: var(--tf-navy);
+  --color-tf-mid-blue: var(--tf-mid-blue);
+  --color-tf-sky: var(--tf-sky);
+  --color-tf-lilac: var(--tf-lilac);
+  --color-tf-charcoal: var(--tf-charcoal);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #ffffff;
+  color: var(--tf-charcoal);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
