@@ -8,7 +8,7 @@ const navLinks = [
   { label: "Products", href: "#product", dropdown: true },
   { label: "About us", href: "#about" },
   { label: "Resources", href: "#resources" },
-  { label: "Pricing", href: "#pricing" },
+  { label: "Pricing", href: "pricing" },
 ];
 
 const regions = [

@@ -2,26 +2,57 @@
 import { useState } from "react";
 import { Plus } from "lucide-react";
 
-const faqs = [
+const faqSections = [
   {
-    q: "What payment methods do you accept?",
-    a: "We accept all major credit cards (Visa, MasterCard, American Express) and offer invoice-based billing for Enterprise customers. Annual plans can also be paid via bank transfer.",
+    title: "Product & Integration",
+    items: [
+      {
+        q: "How quickly can we integrate ThirdFactor?",
+        a: "Most teams complete a production rollout in 3-5 business days. We provide SDKs, API references, and direct support during implementation.",
+      },
+      {
+        q: "Do you support both web and mobile onboarding?",
+        a: "Yes. You can use web components, native mobile SDKs, or API-first integration depending on your onboarding stack.",
+      },
+      {
+        q: "Can we keep our own branding and UI?",
+        a: "Yes. ThirdFactor supports white-label experiences so your users stay in your brand throughout verification.",
+      },
+    ],
   },
   {
-    q: "What payment methods do you accept?",
-    a: "We accept all major credit cards (Visa, MasterCard, American Express) and offer invoice-based billing for Enterprise customers. Annual plans can also be paid via bank transfer.",
+    title: "Security & Compliance",
+    items: [
+      {
+        q: "Is zero-retention deployment available?",
+        a: "Yes. We support zero-retention and deployment options that align with strict data residency and governance requirements.",
+      },
+      {
+        q: "How does ThirdFactor prevent spoofing attacks?",
+        a: "Our liveness and anti-spoofing models are built to detect replay, printed image, and mask-based fraud attempts in real time.",
+      },
+      {
+        q: "Do you provide audit-ready records?",
+        a: "Yes. Session events, consent logs, and verification traces are available for compliance and review workflows.",
+      },
+    ],
   },
   {
-    q: "What payment methods do you accept?",
-    a: "We accept all major credit cards (Visa, MasterCard, American Express) and offer invoice-based billing for Enterprise customers. Annual plans can also be paid via bank transfer.",
-  },
-  {
-    q: "What payment methods do you accept?",
-    a: "We accept all major credit cards (Visa, MasterCard, American Express) and offer invoice-based billing for Enterprise customers. Annual plans can also be paid via bank transfer.",
-  },
-  {
-    q: "What payment methods do you accept?",
-    a: "We accept all major credit cards (Visa, MasterCard, American Express) and offer invoice-based billing for Enterprise customers. Annual plans can also be paid via bank transfer.",
+    title: "Pricing & Support",
+    items: [
+      {
+        q: "Do you offer enterprise pricing?",
+        a: "Yes. Enterprise plans include volume pricing, tailored SLA options, and dedicated technical support.",
+      },
+      {
+        q: "Can we start with a pilot?",
+        a: "Absolutely. Most teams begin in sandbox or pilot mode and then move to production once flows are validated.",
+      },
+      {
+        q: "What support channels are available?",
+        a: "We provide onboarding guidance, implementation support, and priority channels for active production customers.",
+      },
+    ],
   },
 ];
 
@@ -134,15 +165,34 @@ export default function FAQ() {
           Frequently Asked Questions
         </h2>
 
-        {/* Accordion list */}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
-          {faqs.map((f, i) => (
-            <FAQItem key={i} q={f.q} a={f.a} defaultOpen={i === 0} />
+        {/* Sectioned accordions */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "40px" }}>
+          {faqSections.map((section, sectionIndex) => (
+            <div key={section.title} style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+              <h3
+                style={{
+                  fontFamily: "var(--font-geist-sans, system-ui)",
+                  fontWeight: 500,
+                  fontSize: "22px",
+                  lineHeight: 1.3,
+                  letterSpacing: "-0.01em",
+                  color: "#00274A",
+                  margin: 0,
+                }}
+              >
+                {section.title}
+              </h3>
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                {section.items.map((f, itemIndex) => (
+                  <FAQItem
+                    key={`${section.title}-${itemIndex}`}
+                    q={f.q}
+                    a={f.a}
+                    defaultOpen={sectionIndex === 0 && itemIndex === 0}
+                  />
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </div>
