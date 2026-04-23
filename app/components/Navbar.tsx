@@ -109,22 +109,20 @@ export default function Navbar() {
                     <ChevronDown size={13} className="text-neutral-300 transition-transform group-hover:rotate-180" />
                   </button>
                   
-                  {/* Mega Menu Dropdown - Minimalist Ultra-Flat Style */}
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                    <div className="w-[840px] bg-white border border-neutral-200 rounded-xl shadow-md overflow-hidden flex">
+                  {/* Mega Menu Dropdown - Enterprise Structural Style */}
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                    <div className="w-[1000px] bg-white border border-neutral-200 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] overflow-hidden grid grid-cols-[1fr_1fr_300px]">
                       
-                      {/* Left: Products Grid */}
-                      <div className="flex-[2] p-5 grid grid-cols-2 gap-x-4 gap-y-1">
-                        {[
-                          { name: "ThirdFactor Verify", desc: "Core identity & document checks", imgSrc: "/illustrations/image.png" },
-                          { name: "ThirdFactor Shield", desc: "Fraud prevention & liveness", imgSrc: "/illustrations/image2.png" },
-                          { name: "ThirdFactor Comply", desc: "AML & compliance monitoring", imgSrc: "/illustrations/image3.png" },
-                          { name: "ThirdFactor Access", desc: "Seamless authentication flows", imgSrc: "/illustrations/image.png" },
-                          { name: "ThirdFactor Lens", desc: "Analytics & risk scoring", imgSrc: "/illustrations/image2.png" },
-                          { name: "ThirdFactor Charter", desc: "Enterprise policy builder", imgSrc: "/illustrations/image3.png" },
-                          { name: "ThirdFactor Bedrock", desc: "Foundational infrastructure", imgSrc: "/illustrations/image.png" }
-                        ].map((prod) => {
-                          return (
+                      {/* Column 1: Solutions */}
+                      <div className="p-6">
+                        <span className="text-[12px] font-semibold uppercase tracking-wider text-neutral-400 mb-3 block px-3">Identity Solutions</span>
+                        <div className="flex flex-col gap-1">
+                          {[
+                            { name: "ThirdFactor Verify", desc: "Core identity & document checks", imgSrc: "/illustrations/image.png" },
+                            { name: "ThirdFactor Shield", desc: "Fraud prevention & liveness", imgSrc: "/illustrations/image2.png" },
+                            { name: "ThirdFactor Comply", desc: "AML & compliance monitoring", imgSrc: "/illustrations/image3.png" },
+                            { name: "ThirdFactor Access", desc: "Seamless authentication flows", imgSrc: "/illustrations/image.png" }
+                          ].map((prod) => (
                             <Link
                               key={prod.name}
                               href="#"
@@ -134,36 +132,53 @@ export default function Navbar() {
                                 <Image src={prod.imgSrc} alt={prod.name} fill className="object-contain p-0.5" />
                               </div>
                               <div className="flex flex-col">
-                                <span className="text-[14px] font-medium text-neutral-900">
-                                  {prod.name}
-                                </span>
-                                <span className="text-[13px] text-neutral-500 mt-0.5 leading-snug">
-                                  {prod.desc}
-                                </span>
+                                <span className="text-[14px] font-medium text-neutral-900">{prod.name}</span>
+                                <span className="text-[13px] text-neutral-500 mt-0.5 leading-snug">{prod.desc}</span>
                               </div>
                             </Link>
-                          );
-                        })}
+                          ))}
+                        </div>
                       </div>
 
-                      {/* Right: Featured Section */}
-                      <div className="flex-[1] bg-[#fafafa] p-6 border-l border-neutral-200 flex flex-col justify-between">
+                      {/* Column 2: Platform */}
+                      <div className="p-6 border-l border-neutral-100">
+                        <span className="text-[12px] font-semibold uppercase tracking-wider text-neutral-400 mb-3 block px-3">Platform</span>
+                        <div className="flex flex-col gap-1">
+                          {[
+                            { name: "ThirdFactor Lens", desc: "Analytics & risk scoring", imgSrc: "/illustrations/image2.png" },
+                            { name: "ThirdFactor Charter", desc: "Enterprise policy builder", imgSrc: "/illustrations/image3.png" },
+                            { name: "ThirdFactor Bedrock", desc: "Foundational infrastructure", imgSrc: "/illustrations/image.png" }
+                          ].map((prod) => (
+                            <Link
+                              key={prod.name}
+                              href="#"
+                              className="flex items-start gap-3 p-3 rounded-md hover:bg-neutral-50 transition-colors group/item"
+                            >
+                              <div className="mt-0.5 shrink-0 w-8 h-8 relative rounded overflow-hidden flex items-center justify-center opacity-70 group-hover/item:opacity-100 transition-opacity">
+                                <Image src={prod.imgSrc} alt={prod.name} fill className="object-contain p-0.5" />
+                              </div>
+                              <div className="flex flex-col">
+                                <span className="text-[14px] font-medium text-neutral-900">{prod.name}</span>
+                                <span className="text-[13px] text-neutral-500 mt-0.5 leading-snug">{prod.desc}</span>
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Column 3: Featured Section */}
+                      <div className="bg-[#fafafa] p-6 border-l border-neutral-200 flex flex-col justify-between">
                         <div>
-                          <span className="text-[11px] font-semibold uppercase tracking-wider text-neutral-500 mb-2 block">New</span>
-                          <h3 className="text-[15px] font-medium text-neutral-900 mb-2 leading-tight">Explore ThirdFactor Bedrock</h3>
-                          <p className="text-[13px] text-neutral-500 mb-6 leading-relaxed">
+                          <span className="text-[11px] font-semibold uppercase tracking-wider text-neutral-500 mb-3 block">New Release</span>
+                          <div className="relative w-full h-[120px] rounded-lg overflow-hidden border border-neutral-200 mb-4">
+                            <Image src="/illustrations/herosection.png" alt="ThirdFactor Bedrock" fill className="object-cover" />
+                          </div>
+                          <h3 className="text-[15px] font-medium text-neutral-900 mb-1 leading-tight">Explore ThirdFactor Bedrock</h3>
+                          <p className="text-[13px] text-neutral-500 leading-relaxed">
                             The scalable foundational infrastructure designed to run global identity systems.
                           </p>
                         </div>
-                        <div className="relative w-full h-[140px] rounded-md overflow-hidden border border-neutral-200">
-                          <Image 
-                            src="/illustrations/herosection.png" 
-                            alt="ThirdFactor Bedrock" 
-                            fill 
-                            className="object-cover"
-                          />
-                        </div>
-                        <Link href="#" className="mt-6 flex items-center gap-1 text-[13px] font-medium text-neutral-900 hover:text-neutral-500 transition-colors">
+                        <Link href="#" className="mt-6 flex items-center gap-1 text-[13px] font-medium text-[#007BE5] hover:text-[#0069C2] transition-colors">
                           Learn more <ArrowRight size={14} />
                         </Link>
                       </div>

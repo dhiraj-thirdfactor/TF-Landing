@@ -1,7 +1,9 @@
 import Link from "next/link";
+import { Search } from "lucide-react";
 import TopBar from "../components/TopBar";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import AskQuestionChat from "../components/AskQuestionChat";
 
 export const metadata = {
   title: "Developer Documentation | ThirdFactor",
@@ -41,135 +43,119 @@ export default function DevDocsPage() {
       <TopBar />
       <Navbar />
       
-      {/* CSS styles for docs */}
-      <style dangerouslySetInnerHTML={{__html: `
-        .doc-link {
-          color: #4b5563;
-          font-size: 14px;
-          text-decoration: none;
-          display: block;
-          transition: color 0.15s ease;
-        }
-        .doc-link:hover {
-          color: #007BE5;
-        }
-        .code-block {
-          background: #0a0d12;
-          border-radius: 12px;
-          border: 1px solid #1f2937;
-          overflow: hidden;
-        }
-        .code-header {
-          padding: 12px 16px;
-          border-bottom: 1px solid #1f2937;
-          display: flex;
-          gap: 8px;
-        }
-        .mac-dot {
-          width: 12px;
-          height: 12px;
-          border-radius: 50%;
-        }
-        .mac-dot.red { background: #ef4444; }
-        .mac-dot.yellow { background: #eab308; }
-        .mac-dot.green { background: #22c55e; }
-        
-        .code-pre {
-          margin: 0;
-          padding: 24px;
-          overflow-x: auto;
-          font-size: 14px;
-          color: #e5e7eb;
-          font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-          line-height: 1.5;
-        }
-      `}} />
-
-      <div style={{ display: "flex", minHeight: "calc(100vh - 120px)", background: "#fafafa", fontFamily: "var(--font-geist-sans, system-ui)" }}>
-        
-        {/* Sidebar */}
-        <aside style={{ width: "260px", background: "#ffffff", borderRight: "1px solid #e5e7eb", padding: "40px 24px", position: "sticky", top: "0", height: "100vh", overflowY: "auto", flexShrink: 0 }}>
-          <h2 style={{ fontSize: "18px", fontWeight: 600, color: "#111827", marginBottom: "32px", letterSpacing: "-0.5px" }}>Documentation</h2>
+      <div className="bg-[#fafafa] min-h-[calc(100vh-120px)] w-full font-sans">
+        <div className="max-w-[1440px] mx-auto flex w-full relative items-start">
           
-          <nav style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
-            {navigation.map((section) => (
-              <div key={section.title}>
-                <h3 style={{ fontSize: "12px", fontWeight: 700, color: "#9ca3af", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "12px" }}>
-                  {section.title}
-                </h3>
-                <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "10px" }}>
-                  {section.links.map((link) => (
-                    <li key={link.label}>
-                      <Link href={link.href} className="doc-link">
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </nav>
-        </aside>
-
-        {/* Main Content */}
-        <main style={{ flex: 1, padding: "64px 80px", maxWidth: "900px" }}>
-          <div style={{ marginBottom: "64px" }}>
-            <span style={{ fontSize: "13px", fontWeight: 500, color: "#007BE5", background: "#EBF5FF", padding: "4px 12px", borderRadius: "100px", marginBottom: "16px", display: "inline-block" }}>v1.0 API</span>
-            <h1 style={{ fontSize: "40px", fontWeight: 500, color: "#111827", letterSpacing: "-1px", margin: "0 0 16px 0" }}>Introduction</h1>
-            <p style={{ fontSize: "18px", color: "#4b5563", lineHeight: 1.6, margin: 0 }}>
-              Welcome to the ThirdFactor API documentation. Our APIs allow you to seamlessly integrate secure, AI-driven identity verification into your applications.
-            </p>
-          </div>
-
-          <section style={{ marginBottom: "48px" }}>
-            <h2 style={{ fontSize: "24px", fontWeight: 500, color: "#111827", letterSpacing: "-0.5px", margin: "0 0 20px 0" }}>Authentication</h2>
-            <p style={{ fontSize: "16px", color: "#374151", lineHeight: 1.6, marginBottom: "24px" }}>
-              All API requests must be authenticated using a Bearer token. You can generate API keys from your ThirdFactor developer dashboard.
-            </p>
+          {/* Left Sidebar - Fixed to Logo Width */}
+          <aside className="w-[260px] shrink-0 sticky top-14 h-[calc(100vh-56px)] overflow-y-auto pl-6 pr-6 py-8 hidden md:flex flex-col gap-8">
             
-            <div className="code-block">
-              <div className="code-header">
-                <div className="mac-dot red"></div>
-                <div className="mac-dot yellow"></div>
-                <div className="mac-dot green"></div>
-              </div>
-              <pre className="code-pre">
+            {/* Search Box */}
+            <button className="flex items-center justify-between w-full px-3 py-2 text-[13px] text-neutral-400 bg-white border border-neutral-200 rounded-lg hover:border-neutral-300 hover:text-neutral-700 transition-all shadow-sm group">
+              <span className="flex items-center gap-2">
+                <Search size={14} className="text-neutral-400 group-hover:text-neutral-500" />
+                Search docs...
+              </span>
+              <span className="text-[10px] font-medium px-1.5 py-0.5 rounded border border-neutral-200 bg-neutral-50 text-neutral-500">⌘K</span>
+            </button>
+
+            <nav className="flex flex-col gap-6">
+              {navigation.map((section) => (
+                <div key={section.title}>
+                  <h3 className="text-[11px] font-bold text-neutral-400 uppercase tracking-wider mb-3">
+                    {section.title}
+                  </h3>
+                  <ul className="flex flex-col gap-2.5">
+                    {section.links.map((link) => (
+                      <li key={link.label}>
+                        <Link href={link.href} className="text-[13px] text-neutral-600 hover:text-[#007BE5] transition-colors block font-medium">
+                          {link.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </nav>
+          </aside>
+
+          {/* Main Content */}
+          <main className="flex-1 px-8 lg:px-12 py-10 bg-white border-x border-neutral-200 min-h-[calc(100vh-56px)] shadow-sm max-w-[800px]">
+            <div className="mb-16">
+              <span className="text-[12px] font-semibold text-[#007BE5] bg-[#EBF5FF] px-2.5 py-1 rounded-full mb-4 inline-block">v1.0 API</span>
+              <h1 className="text-[36px] font-medium text-neutral-900 tracking-tight mb-4 leading-tight">Introduction</h1>
+              <p className="text-[16px] text-neutral-600 leading-relaxed">
+                Welcome to the ThirdFactor API documentation. Our APIs allow you to seamlessly integrate secure, AI-driven identity verification into your applications.
+              </p>
+            </div>
+
+            <section className="mb-12">
+              <h2 className="text-[22px] font-medium text-neutral-900 tracking-tight mb-4">Authentication</h2>
+              <p className="text-[15px] text-neutral-600 leading-relaxed mb-6">
+                All API requests must be authenticated using a Bearer token. You can generate API keys from your ThirdFactor developer dashboard.
+              </p>
+              
+              <div className="bg-[#0a0d12] rounded-xl border border-neutral-800 overflow-hidden shadow-lg">
+                <div className="px-4 py-3 border-b border-neutral-800 flex gap-2">
+                  <div className="w-2.5 h-2.5 rounded-full bg-red-500"></div>
+                  <div className="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
+                  <div className="w-2.5 h-2.5 rounded-full bg-green-500"></div>
+                </div>
+                <pre className="p-5 overflow-x-auto text-[13px] text-neutral-300 font-mono leading-relaxed">
 <code>curl -X POST https://api.thirdfactor.ai/v1/verify \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Content-Type: application/json"</code>
-              </pre>
-            </div>
-          </section>
+                </pre>
+              </div>
+            </section>
 
-          <section style={{ marginBottom: "48px" }}>
-            <h2 style={{ fontSize: "24px", fontWeight: 500, color: "#111827", letterSpacing: "-0.5px", margin: "0 0 20px 0" }}>Base URLs</h2>
-            <p style={{ fontSize: "16px", color: "#374151", lineHeight: 1.6, marginBottom: "16px" }}>
-              We provide separate environments for testing and production to ensure safe integration.
-            </p>
+            <section className="mb-12">
+              <h2 className="text-[22px] font-medium text-neutral-900 tracking-tight mb-4">Base URLs</h2>
+              <p className="text-[15px] text-neutral-600 leading-relaxed mb-6">
+                We provide separate environments for testing and production to ensure safe integration.
+              </p>
+              
+              <div className="bg-white border border-neutral-200 rounded-xl overflow-hidden shadow-sm">
+                <table className="w-full text-left text-[14px]">
+                  <thead>
+                    <tr className="bg-neutral-50 border-b border-neutral-200">
+                      <th className="px-5 py-3.5 text-neutral-900 font-medium">Environment</th>
+                      <th className="px-5 py-3.5 text-neutral-900 font-medium">Base URL</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="border-b border-neutral-200">
+                      <td className="px-5 py-4 text-neutral-600 font-medium">Sandbox</td>
+                      <td className="px-5 py-4 text-[#007BE5] font-mono text-[13px]">https://sandbox.api.thirdfactor.ai</td>
+                    </tr>
+                    <tr>
+                      <td className="px-5 py-4 text-neutral-600 font-medium">Production</td>
+                      <td className="px-5 py-4 text-[#007BE5] font-mono text-[13px]">https://api.thirdfactor.ai</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          </main>
+
+          {/* Right Sidebar - On this page */}
+          <aside className="w-[280px] shrink-0 sticky top-14 h-[calc(100vh-56px)] pl-8 pr-6 py-10 hidden xl:flex flex-col">
             
-            <div style={{ background: "#ffffff", border: "1px solid #e5e7eb", borderRadius: "12px", overflow: "hidden" }}>
-              <table style={{ width: "100%", borderCollapse: "collapse", textAlign: "left", fontSize: "14px" }}>
-                <thead>
-                  <tr style={{ background: "#f9fafb", borderBottom: "1px solid #e5e7eb" }}>
-                    <th style={{ padding: "16px 24px", color: "#111827", fontWeight: 500 }}>Environment</th>
-                    <th style={{ padding: "16px 24px", color: "#111827", fontWeight: 500 }}>Base URL</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr style={{ borderBottom: "1px solid #e5e7eb" }}>
-                    <td style={{ padding: "16px 24px", color: "#4b5563" }}>Sandbox</td>
-                    <td style={{ padding: "16px 24px", color: "#007BE5", fontFamily: "monospace" }}>https://sandbox.api.thirdfactor.ai</td>
-                  </tr>
-                  <tr>
-                    <td style={{ padding: "16px 24px", color: "#4b5563" }}>Production</td>
-                    <td style={{ padding: "16px 24px", color: "#007BE5", fontFamily: "monospace" }}>https://api.thirdfactor.ai</td>
-                  </tr>
-                </tbody>
-              </table>
+            {/* Table of Contents */}
+            <div>
+              <h4 className="text-[13px] font-semibold text-neutral-900 mb-4">On this page</h4>
+              <ul className="flex flex-col gap-3 text-[13px] text-neutral-500 font-medium border-l border-neutral-200">
+                <li className="pl-3 -ml-[1px] border-l border-[#007BE5] text-[#007BE5]">Introduction</li>
+                <li className="pl-3 -ml-[1px] border-l border-transparent hover:border-neutral-300 hover:text-neutral-900 cursor-pointer transition-colors">Authentication</li>
+                <li className="pl-3 -ml-[1px] border-l border-transparent hover:border-neutral-300 hover:text-neutral-900 cursor-pointer transition-colors">Base URLs</li>
+              </ul>
             </div>
-          </section>
-        </main>
+          </aside>
+
+        </div>
       </div>
+
+      {/* Floating Ask a Question Chat Box */}
+      <AskQuestionChat />
       <Footer />
     </>
   );
