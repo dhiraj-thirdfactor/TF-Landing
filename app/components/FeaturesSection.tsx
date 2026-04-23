@@ -36,7 +36,7 @@ const cards = [
 
 export default function FeaturesSection() {
   return (
-    <section className="py-20 md:py-28 bg-white border-t border-neutral-200 overflow-hidden">
+    <section className="py-20 bg-white border-t border-neutral-200 overflow-hidden">
       <div className="max-w-[1440px] mx-auto">
 
         {/* Header */}

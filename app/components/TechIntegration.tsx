@@ -85,11 +85,7 @@ export default function TechIntegration() {
 
   return (
     <section
-      className="bg-white border-t border-neutral-200 overflow-hidden"
-      style={{
-        paddingTop: "96px",
-        paddingBottom: "96px",
-      }}
+      className="bg-white py-20 border-t border-neutral-200 overflow-hidden"
     >
       <div
         className="max-w-[1441px] mx-auto"

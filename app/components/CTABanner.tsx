@@ -5,14 +5,7 @@ import { GeistPixelCircle } from "geist/font/pixel";
 
 export default function CTABanner() {
   return (
-    <section
-      style={{
-        background: "#fff",
-        display: "flex",
-        justifyContent: "center",
-        padding: "64px 24px",
-      }}
-    >
+    <section className="bg-white flex justify-center py-20 px-6">
       {/* Card — 1160 × 454.4 */}
       <div
         style={{

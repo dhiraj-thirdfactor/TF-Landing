@@ -36,8 +36,7 @@ export default function APISection() {
 
   return (
     <section
-      className="bg-white border-t border-neutral-200"
-      style={{ paddingTop: "96px", paddingBottom: "96px" }}
+      className="bg-white py-20 border-t border-neutral-200"
     >
       <div
         className="max-w-[1441px] mx-auto"

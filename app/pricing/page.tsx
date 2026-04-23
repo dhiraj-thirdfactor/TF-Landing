@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Box, ChevronDown, Link2, Plus, ScanFace, Shield, Upload } from "lucide-react";
+import { Box, ChevronDown, Link2, Plus, ScanFace, Shield, Upload, CheckCircle2 } from "lucide-react";
 import Image from "next/image";
 import TopBar from "../components/TopBar";
 import Navbar from "../components/Navbar";
@@ -51,44 +51,26 @@ function FAQRow({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div style={{ borderBottom: "1px solid #e5e7eb" }}>
+    <div className="border-b border-neutral-200">
       <button
         onClick={() => setOpen((prev) => !prev)}
-        style={{
-          width: "100%",
-          background: "transparent",
-          border: "none",
-          padding: "18px 0",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          textAlign: "left",
-          cursor: "pointer",
-        }}
+        className="w-full h-16 bg-transparent border-none p-0 flex items-center justify-between text-left cursor-pointer group"
       >
-        <span style={{ fontSize: "15px", color: "#1f2937", fontWeight: 500 }}>{q}</span>
+        <span className={`font-sans text-[16px] leading-[1.4] transition-colors ${open ? 'font-semibold text-[#00274A]' : 'font-normal text-[#00274A]'}`}>
+          {q}
+        </span>
         <Plus
-          size={17}
-          style={{
-            color: "#374151",
-            transform: open ? "rotate(45deg)" : "rotate(0deg)",
-            transition: "transform 180ms ease",
-          }}
+          size={18}
+          className={`shrink-0 text-neutral-500 transition-transform duration-300 ease-in-out ${open ? "rotate-45 text-neutral-900" : "rotate-0"}`}
         />
       </button>
-      {open && (
-        <p
-          style={{
-            margin: "0 0 18px",
-            fontSize: "14px",
-            lineHeight: 1.6,
-            color: "#6b7280",
-            maxWidth: "820px",
-          }}
-        >
-          {a}
-        </p>
-      )}
+      <div className={`grid transition-all duration-300 ease-in-out ${open ? "grid-rows-[1fr] opacity-100 pb-6" : "grid-rows-[0fr] opacity-0 pb-0"}`}>
+        <div className="overflow-hidden">
+          <p className="font-sans font-normal text-[15px] leading-[1.7] text-[#525252] m-0 max-w-[820px]">
+            {a}
+          </p>
+        </div>
+      </div>
     </div>
   );
 }
@@ -103,193 +85,162 @@ export default function PricingPage() {
   const sliderPercent = (monthlyVolume / 10000) * 100;
 
   return (
-    <>
+    <div className="bg-white min-h-screen">
       <TopBar />
       <Navbar />
-      <main>
-        <section className="section-block bg-white">
-          <div className="content-wrap">
-            <div
-              style={{
-                maxWidth: "1080px",
-                width: "100%",
-                margin: "0 auto",
-                display: "flex",
-                flexDirection: "column",
-                gap: "44px",
-                paddingTop: "24px",
-              }}
+      
+      <main className="pb-0">
+        {/* Header Section */}
+        <section className="pt-24 pb-16 px-6 bg-white">
+          <div className="max-w-[760px] mx-auto text-center flex flex-col items-center">
+            <span className="text-[12px] font-semibold tracking-wider text-[#007BE5] uppercase bg-[#F0F7FF] px-3 py-1 rounded-full mb-6">
+              Pricing Plans
+            </span>
+            <h1 
+              className="text-[48px] md:text-[56px] text-[#00274A] tracking-[-0.02em] leading-[1.1] mb-6"
+              style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontWeight: 400 }}
             >
-            <div style={{ textAlign: "center", maxWidth: "760px", margin: "0 auto" }}>
-              <h1 style={{ margin: 0, fontSize: "46px", color: "#111827", fontWeight: 400, letterSpacing: "-0.02em" }}>
-                Simple, Transparent Pricing
-              </h1>
-              <p style={{ margin: "14px 0 0", fontSize: "16px", lineHeight: 1.6, color: "#6b7280" }}>
-                Build your verification stack one capability at a time. Pay only for what you use.
-              </p>
-            </div>
+              Simple, Transparent Pricing
+            </h1>
+            <p 
+              className="text-[18px] text-[#525252] leading-relaxed max-w-[600px]"
+              style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontWeight: 400 }}
+            >
+              Build your verification stack one capability at a time. Pay only for what you use, with zero hidden fees.
+            </p>
+          </div>
+        </section>
 
-            <div className="grid gap-4 lg:grid-cols-[1.35fr_1fr_1fr]" style={{ alignItems: "stretch" }}>
-              <div
-                style={{
-                  borderRadius: "14px",
-                  padding: "26px 22px",
-                  minHeight: "500px",
-                  display: "flex",
-                  flexDirection: "column",
-                }}
-              >
-                <label style={{ margin: 0, fontSize: "14px", color: "#374151", fontWeight: 500 }}>
-                  What do you need?
-                </label>
-                <div style={{ position: "relative", marginTop: "10px" }}>
-                  <select
-                    value={need}
-                    onChange={(e) => setNeed(e.target.value)}
-                    style={{
-                      width: "100%",
-                      height: "44px",
-                      borderRadius: "10px",
-                      border: "none",
-                      background: "#fff",
-                      padding: "0 36px 0 12px",
-                      fontSize: "14px",
-                      color: "#111827",
-                      appearance: "none",
-                    }}
-                  >
-                    {needs.map((item) => (
-                      <option key={item} value={item}>
-                        {item}
-                      </option>
-                    ))}
-                  </select>
-                  <ChevronDown size={16} style={{ position: "absolute", right: "12px", top: "14px", color: "#6b7280", pointerEvents: "none" }} />
-                </div>
-
-                <label style={{ margin: "20px 0 0", fontSize: "14px", color: "#374151", fontWeight: 500 }}>
-                  Do you require extra features?
-                </label>
-                <div style={{ position: "relative", marginTop: "10px" }}>
-                  <select
-                    value={extraFeatures}
-                    onChange={(e) => setExtraFeatures(e.target.value)}
-                    style={{
-                      width: "100%",
-                      height: "44px",
-                      borderRadius: "10px",
-                      border: "none",
-                      background: "#fff",
-                      padding: "0 36px 0 12px",
-                      fontSize: "14px",
-                      color: "#111827",
-                      appearance: "none",
-                    }}
-                  >
-                    {extras.map((item) => (
-                      <option key={item} value={item}>
-                        {item}
-                      </option>
-                    ))}
-                  </select>
-                  <ChevronDown size={16} style={{ position: "absolute", right: "12px", top: "14px", color: "#6b7280", pointerEvents: "none" }} />
-                </div>
-
-                <div style={{ marginTop: "22px" }}>
-                  <p style={{ margin: 0, fontSize: "14px", color: "#374151", fontWeight: 500 }}>
-                    What is your monthly volume of checks?
-                  </p>
-                  <p style={{ margin: "6px 0 0", fontSize: "13px", color: "#6b7280" }}>
-                    {requiresSales ? "6k+ checks/month" : `0-6000 range (${monthlyVolume} selected)`}
-                  </p>
-                </div>
-                <div style={{ marginTop: "12px", paddingTop: "6px" }}>
-                  <input
-                    className="premium-slider"
-                    type="range"
-                    min={0}
-                    max={10000}
-                    step={100}
-                    value={monthlyVolume}
-                    onChange={(e) => setMonthlyVolume(Number(e.target.value))}
-                    style={{
-                      width: "100%",
-                      background: `linear-gradient(90deg, #2563eb 0%, #3b82f6 ${sliderPercent}%, #d1d5db ${sliderPercent}%, #d1d5db 100%)`,
-                    }}
-                  />
-                </div>
-                {requiresSales && (
-                  <p style={{ margin: "8px 0 0", fontSize: "13px", color: "#1d4ed8", fontWeight: 500 }}>
-                    Volume above 6,000 requires a sales plan.
-                  </p>
-                )}
-              </div>
-
-              <div
-                style={{
-                  borderRadius: "14px",
-                  padding: "24px",
-                  minHeight: "500px",
-                  background: "#FAFAFA",
-                  display: "flex",
-                  flexDirection: "column",
-                }}
-              >
-                <p
-                  style={{
-                    margin: 0,
-                    fontFamily: "var(--font-geist-sans, system-ui)",
-                    fontWeight: 400,
-                    fontSize: "18px",
-                    lineHeight: "28px",
-                    letterSpacing: "0",
-                    color: "#111827",
-                  }}
+        {/* Pricing Calculator & Cards */}
+        <section className="px-6 mb-24 bg-white">
+          <div className="max-w-[1200px] mx-auto">
+            <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr_1fr] items-stretch">
+              
+              {/* Calculator Panel */}
+              <div className="bg-white border border-[#E5E5E5] rounded-[16px] p-8 flex flex-col h-full relative">
+                <h3 
+                  className="text-[18px] text-[#00274A] mb-8 tracking-tight"
+                  style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontWeight: 500 }}
                 >
-                  Free
-                </p>
-                <p style={{ margin: "4px 0 0", fontSize: "48px", color: "#030712", lineHeight: 1, fontWeight: 600 }}>$0</p>
-                <div style={{ marginTop: "44px" }}>
-                  <p style={{ margin: "0 0 14px", color: "#374151", fontSize: "18px", fontWeight: 500 }}>Features</p>
-                  <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-                    <p
-                      style={{
-                        margin: 0,
-                        color: "#374151",
-                        fontFamily: "var(--font-geist-sans, system-ui)",
-                        fontWeight: 400,
-                        fontSize: "14px",
-                        lineHeight: "20px",
-                        letterSpacing: "0",
-                        display: "flex",
-                        gap: "9px",
-                      }}
-                    >
-                      <Box size={16} />500 credits/month
-                    </p>
-                    <p style={{ margin: 0, color: "#374151", fontSize: "14px", lineHeight: "20px", display: "flex", gap: "9px" }}><Upload size={16} />Auto-publish to package manager</p>
-                    <p style={{ margin: 0, color: "#374151", fontSize: "14px", lineHeight: "20px", display: "flex", gap: "9px" }}><Link2 size={16} />Access to our OpenAPI toolchain</p>
+                  Customize your estimate
+                </h3>
+                
+                <div className="flex flex-col gap-6 flex-1">
+                  {/* Select 1 */}
+                  <div>
+                    <label className="block text-[14px] font-medium text-[#00274A] mb-2" style={{ fontFamily: "var(--font-geist-sans, system-ui)" }}>
+                      What do you need?
+                    </label>
+                    <div className="relative">
+                      <select
+                        value={need}
+                        onChange={(e) => setNeed(e.target.value)}
+                        className="w-full h-[48px] bg-white border border-[#E5E5E5] rounded-xl px-4 text-[14px] text-[#272727] appearance-none focus:outline-none focus:ring-1 focus:ring-[#007BE5] focus:border-[#007BE5] transition-all cursor-pointer shadow-sm"
+                      >
+                        {needs.map((item) => (
+                          <option key={item} value={item}>{item}</option>
+                        ))}
+                      </select>
+                      <ChevronDown size={16} className="absolute right-4 top-1/2 -translate-y-1/2 text-neutral-400 pointer-events-none" />
+                    </div>
+                  </div>
+
+                  {/* Select 2 */}
+                  <div>
+                    <label className="block text-[14px] font-medium text-[#00274A] mb-2" style={{ fontFamily: "var(--font-geist-sans, system-ui)" }}>
+                      Do you require extra features?
+                    </label>
+                    <div className="relative">
+                      <select
+                        value={extraFeatures}
+                        onChange={(e) => setExtraFeatures(e.target.value)}
+                        className="w-full h-[48px] bg-white border border-[#E5E5E5] rounded-xl px-4 text-[14px] text-[#272727] appearance-none focus:outline-none focus:ring-1 focus:ring-[#007BE5] focus:border-[#007BE5] transition-all cursor-pointer shadow-sm"
+                      >
+                        {extras.map((item) => (
+                          <option key={item} value={item}>{item}</option>
+                        ))}
+                      </select>
+                      <ChevronDown size={16} className="absolute right-4 top-1/2 -translate-y-1/2 text-neutral-400 pointer-events-none" />
+                    </div>
+                  </div>
+
+                  {/* Slider */}
+                  <div className="mt-4">
+                    <div className="flex justify-between items-end mb-4">
+                      <label className="block text-[14px] font-medium text-[#00274A]" style={{ fontFamily: "var(--font-geist-sans, system-ui)" }}>
+                        Monthly volume of checks
+                      </label>
+                      <span className={`text-[12px] font-semibold px-2 py-1 rounded-md ${requiresSales ? 'bg-[#F0F7FF] text-[#007BE5]' : 'bg-neutral-100 text-[#525252]'}`}>
+                        {requiresSales ? "6k+ checks" : `${monthlyVolume} checks`}
+                      </span>
+                    </div>
+                    
+                    <div className="relative pt-2 pb-6">
+                      <input
+                        className="brand-slider w-full"
+                        type="range"
+                        min={0}
+                        max={10000}
+                        step={100}
+                        value={monthlyVolume}
+                        onChange={(e) => setMonthlyVolume(Number(e.target.value))}
+                        style={{
+                          background: `linear-gradient(90deg, #007BE5 0%, #007BE5 ${sliderPercent}%, #E5E5E5 ${sliderPercent}%, #E5E5E5 100%)`,
+                        }}
+                      />
+                      <div className="flex justify-between text-[11px] text-[#A3A3A3] font-medium mt-3 px-1">
+                        <span>0</span>
+                        <span>5k</span>
+                        <span>10k+</span>
+                      </div>
+                    </div>
+                    
+                    {requiresSales && (
+                      <div className="bg-[#F0F7FF] border border-[#A9D5F5] rounded-lg p-3 flex items-start gap-2">
+                        <Shield size={16} className="text-[#007BE5] shrink-0 mt-0.5" />
+                        <p className="text-[13px] text-[#00274A] leading-tight">
+                          Volume above 6,000 requires a dedicated enterprise plan. Please contact our sales team.
+                        </p>
+                      </div>
+                    )}
                   </div>
                 </div>
-                <button style={{ marginTop: "auto", height: "46px", borderRadius: "999px", border: "1px solid #d1d5db", background: "#f9fafb", color: "#111827", fontWeight: 500, cursor: "pointer" }}>
-                  Book a demo
+              </div>
+
+              {/* Free Plan Card */}
+              <div className="bg-[#FAFAFA] border border-[#E5E5E5] rounded-[16px] p-8 flex flex-col h-full relative hover:border-[#D4D4D4] transition-colors">
+                <h3 className="text-[18px] text-[#00274A] mb-2" style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontWeight: 500 }}>Sandbox</h3>
+                <div className="flex items-baseline gap-1 mb-8">
+                  <span className="text-[48px] text-[#00274A] tracking-[-0.02em] leading-none" style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontWeight: 500 }}>$0</span>
+                  <span className="text-[14px] text-[#525252]">/forever</span>
+                </div>
+                
+                <div className="flex-1">
+                  <p className="text-[14px] text-[#00274A] mb-4" style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontWeight: 500 }}>Included Features</p>
+                  <ul className="flex flex-col gap-4">
+                    <li className="flex items-start gap-3 text-[15px] text-[#525252]">
+                      <CheckCircle2 size={18} className="text-[#007BE5] shrink-0" />
+                      <span><strong>500 credits</strong> per month</span>
+                    </li>
+                    <li className="flex items-start gap-3 text-[15px] text-[#525252]">
+                      <CheckCircle2 size={18} className="text-[#007BE5] shrink-0" />
+                      <span>Access to testing environments</span>
+                    </li>
+                    <li className="flex items-start gap-3 text-[15px] text-[#525252]">
+                      <CheckCircle2 size={18} className="text-[#007BE5] shrink-0" />
+                      <span>Community support via Slack</span>
+                    </li>
+                  </ul>
+                </div>
+                
+                <button className="w-full mt-8 h-[48px] rounded-[100px] border border-[#E5E5E5] bg-transparent hover:bg-white text-[#222222] text-[14px] font-medium transition-colors">
+                  Start Building Free
                 </button>
               </div>
 
-              <div
-                style={{
-                  background: "#2563EB",
-                  color: "#fff",
-                  borderRadius: "14px",
-                  padding: "20px",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-between",
-                  position: "relative",
-                  overflow: "hidden",
-                  minHeight: "500px",
-                }}
-              >
+              {/* Pro Plan Card */}
+              <div className="bg-[#2563EB] rounded-[16px] p-8 flex flex-col h-full relative overflow-hidden shadow-sm">
+                
                 <Image
                   src="/illustrations/pricingblob.png"
                   alt=""
@@ -301,235 +252,203 @@ export default function PricingPage() {
                     left: "50%",
                     bottom: 0,
                     transform: "translateX(-50%) rotate(0deg)",
-                    width: "789.9578857421875px",
-                    height: "175.29344177246094px",
-                    opacity: 0.2,
+                    width: "789.95px",
+                    height: "175.29px",
+                    opacity: 0.15,
                     pointerEvents: "none",
                   }}
                 />
-                <div style={{ position: "relative", zIndex: 1 }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                    <p style={{ margin: 0, fontSize: "31px", opacity: 0.96, fontWeight: 500 }}>Business</p>
-                    <span
-                      style={{
-                        fontSize: "11px",
-                        color: "#1f2937",
-                        background: "#FFF",
-                        borderRadius: "6px",
-                        padding: "3px 7px",
-                        fontWeight: 600,
-                      }}
-                    >
-                      MOST POPULAR
-                    </span>
-                  </div>
-                  <p
-                    style={{
-                      margin: "10px 0 6px",
-                      fontFamily: "var(--font-geist-sans, system-ui)",
-                      fontWeight: 600,
-                      fontSize: "40px",
-                      lineHeight: "48px",
-                      letterSpacing: "-1.2px",
-                    }}
-                  >
-                    {requiresSales ? "Custom" : "Rs. 50"}
-                  </p>
-                  <p style={{ margin: 0, fontSize: "19px", lineHeight: 1.4, opacity: 0.9 }}>
-                    {requiresSales ? "Talk to sales" : "/per verification"}
-                  </p>
-                  <div style={{ marginTop: "42px" }}>
-                    <p style={{ margin: "0 0 14px", color: "#dbeafe", fontSize: "18px", fontWeight: 500 }}>Features</p>
-                    <p style={{ margin: "0 0 12px", color: "#eff6ff", fontSize: "15px", display: "flex", gap: "9px" }}>
-                      <Shield size={16} />Rs. 50 per verification up to 6,000 credits
-                    </p>
-                    <p style={{ margin: 0, color: "#eff6ff", fontSize: "15px", display: "flex", gap: "9px" }}>
-                      <ScanFace size={16} />Includes access to all standard features
-                    </p>
-                  </div>
+
+                <div className="flex justify-between items-center mb-2 relative z-10">
+                  <h3 className="text-[18px] font-medium text-white" style={{ fontFamily: "var(--font-geist-sans, system-ui)" }}>Business</h3>
+                  <span className="text-[10px] font-bold tracking-wider text-[#007BE5] bg-white px-2 py-1 rounded-[4px] uppercase">
+                    Most Popular
+                  </span>
                 </div>
-                <button
-                  style={{
-                    marginTop: "18px",
-                    height: "46px",
-                    borderRadius: "999px",
-                    border: "none",
-                    background: "#fff",
-                    color: "#1d4ed8",
-                    fontWeight: 600,
-                    cursor: "pointer",
-                    position: "relative",
-                    zIndex: 1,
-                  }}
-                >
-                  {requiresSales ? "Talk to sales" : "Book a demo"}
+                
+                <div className="flex items-baseline gap-1 mb-8 relative z-10">
+                  <span className="text-[48px] text-white tracking-[-0.02em] leading-none" style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontWeight: 500 }}>
+                    {requiresSales ? "Custom" : "Rs. 50"}
+                  </span>
+                  {!requiresSales && <span className="text-[14px] text-blue-200">/verify</span>}
+                </div>
+                
+                <div className="flex-1 relative z-10">
+                  <p className="text-[14px] text-white mb-4" style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontWeight: 500 }}>Everything in Free, plus</p>
+                  <ul className="flex flex-col gap-4">
+                    <li className="flex items-start gap-3 text-[15px] text-white">
+                      <CheckCircle2 size={18} className="text-white shrink-0" />
+                      <span>{requiresSales ? "Volume discounts & SLAs" : "Rs. 50 per verification up to 6k"}</span>
+                    </li>
+                    <li className="flex items-start gap-3 text-[15px] text-white">
+                      <CheckCircle2 size={18} className="text-white shrink-0" />
+                      <span>Full production API access</span>
+                    </li>
+                    <li className="flex items-start gap-3 text-[15px] text-white">
+                      <CheckCircle2 size={18} className="text-white shrink-0" />
+                      <span>Dedicated email & chat support</span>
+                    </li>
+                  </ul>
+                </div>
+                
+                <button className={`w-full mt-8 h-[48px] rounded-[100px] text-[14px] font-medium transition-colors relative z-10 ${
+                  requiresSales 
+                    ? "bg-white text-[#2563EB] hover:bg-neutral-50" 
+                    : "bg-[#007BE5] text-white hover:bg-[#0069C2] border border-[#007BE5]"
+                }`}>
+                  {requiresSales ? "Talk to Sales" : "Upgrade to Business"}
                 </button>
               </div>
+
             </div>
-            <style>{`
-              .premium-slider {
-                -webkit-appearance: none;
-                appearance: none;
-                height: 4px;
-                border-radius: 999px;
-                outline: none;
-              }
-              .premium-slider::-webkit-slider-thumb {
-                -webkit-appearance: none;
-                appearance: none;
-                width: 18px;
-                height: 18px;
-                border-radius: 999px;
-                background: #2563eb;
-                border: 3px solid #ffffff;
-                box-shadow: 0 2px 8px rgba(37, 99, 235, 0.28);
-                cursor: pointer;
-              }
-              .premium-slider::-moz-range-track {
-                height: 4px;
-                border-radius: 999px;
-                background: #d1d5db;
-              }
-              .premium-slider::-moz-range-thumb {
-                width: 18px;
-                height: 18px;
-                border-radius: 999px;
-                background: #2563eb;
-                border: 3px solid #ffffff;
-                box-shadow: 0 2px 8px rgba(37, 99, 235, 0.28);
-                cursor: pointer;
-              }
-            `}</style>
+          </div>
+        </section>
 
-            <section style={{ maxWidth: "980px" }}>
-              <h2 style={{ margin: "0 0 14px", fontSize: "24px", fontWeight: 500, color: "#111827" }}>Per-Feature Pricing</h2>
-              <div style={{ border: "1px solid #e5e7eb", borderRadius: "12px", overflow: "hidden" }}>
-                <div
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "1.4fr 1fr 1fr",
-                    gap: "12px",
-                    padding: "12px 16px",
-                    background: "#f8fafc",
-                    borderBottom: "1px solid #e5e7eb",
-                  }}
-                >
-                  <span style={{ fontSize: "12px", color: "#64748b", fontWeight: 600 }}>Feature</span>
-                  <span style={{ fontSize: "12px", color: "#64748b", fontWeight: 600 }}>Unit</span>
-                  <span style={{ fontSize: "12px", color: "#64748b", fontWeight: 600 }}>Price</span>
-                </div>
-                {featureRows.map((row, idx) => (
-                  <div
-                    key={row.feature}
-                    style={{
-                      display: "grid",
-                      gridTemplateColumns: "1.4fr 1fr 1fr",
-                      gap: "12px",
-                      padding: "14px 16px",
-                      borderTop: idx === 0 ? "none" : "1px solid #f1f5f9",
-                      background: idx % 2 === 0 ? "#fff" : "#fcfdff",
-                    }}
-                  >
-                    <span style={{ fontSize: "14px", color: "#111827", fontWeight: 500 }}>{row.feature}</span>
-                    <span style={{ fontSize: "14px", color: "#6b7280" }}>{row.unit}</span>
-                    <span style={{ fontSize: "14px", color: "#111827" }}>{row.price}</span>
-                  </div>
-                ))}
+        {/* Detailed Data Tables */}
+        <section className="px-6 py-24 bg-white border-t border-[#E5E5E5]">
+          <div className="max-w-[980px] mx-auto flex flex-col gap-16">
+            
+            {/* Table 1 */}
+            <div>
+              <h2 className="text-[24px] text-[#00274A] mb-6 tracking-tight" style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontWeight: 500 }}>Per-Feature Pricing</h2>
+              <div className="border border-[#E5E5E5] rounded-[12px] overflow-hidden">
+                <table className="w-full text-left border-collapse">
+                  <thead>
+                    <tr className="bg-[#FAFAFA] border-b border-[#E5E5E5]">
+                      <th className="px-6 py-4 text-[13px] font-medium text-[#525252] uppercase tracking-wide">Feature</th>
+                      <th className="px-6 py-4 text-[13px] font-medium text-[#525252] uppercase tracking-wide">Unit</th>
+                      <th className="px-6 py-4 text-[13px] font-medium text-[#525252] uppercase tracking-wide">Price</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-[#E5E5E5] bg-white">
+                    {featureRows.map((row) => (
+                      <tr key={row.feature} className="hover:bg-[#FAFAFA] transition-colors">
+                        <td className="px-6 py-4 text-[15px] text-[#00274A] font-medium">{row.feature}</td>
+                        <td className="px-6 py-4 text-[15px] text-[#525252]">{row.unit}</td>
+                        <td className="px-6 py-4 text-[15px] text-[#00274A]">{row.price}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
-            </section>
+            </div>
 
-            <section style={{ maxWidth: "980px" }}>
-              <h2 style={{ margin: "0 0 14px", fontSize: "24px", fontWeight: 500, color: "#111827" }}>Premium Add-On Modules</h2>
-              <div style={{ border: "1px solid #e5e7eb", borderRadius: "12px", overflow: "hidden" }}>
-                <div
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "1.4fr 1fr 1fr",
-                    gap: "12px",
-                    padding: "12px 16px",
-                    background: "#f8fafc",
-                    borderBottom: "1px solid #e5e7eb",
-                  }}
-                >
-                  <span style={{ fontSize: "12px", color: "#64748b", fontWeight: 600 }}>Module</span>
-                  <span style={{ fontSize: "12px", color: "#64748b", fontWeight: 600 }}>Setup</span>
-                  <span style={{ fontSize: "12px", color: "#64748b", fontWeight: 600 }}>Notes</span>
-                </div>
-                {addOnRows.map((row, idx) => (
-                  <div
-                    key={row.module}
-                    style={{
-                      display: "grid",
-                      gridTemplateColumns: "1.4fr 1fr 1fr",
-                      gap: "12px",
-                      padding: "14px 16px",
-                      borderTop: idx === 0 ? "none" : "1px solid #f1f5f9",
-                      background: idx % 2 === 0 ? "#fff" : "#fcfdff",
-                    }}
-                  >
-                    <span style={{ fontSize: "14px", color: "#111827", fontWeight: 500 }}>{row.module}</span>
-                    <span style={{ fontSize: "14px", color: "#6b7280" }}>{row.setup}</span>
-                    <span style={{ fontSize: "14px", color: "#111827" }}>{row.notes}</span>
-                  </div>
-                ))}
+            {/* Table 2 */}
+            <div>
+              <h2 className="text-[24px] text-[#00274A] mb-6 tracking-tight" style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontWeight: 500 }}>Premium Add-On Modules</h2>
+              <div className="border border-[#E5E5E5] rounded-[12px] overflow-hidden">
+                <table className="w-full text-left border-collapse">
+                  <thead>
+                    <tr className="bg-[#FAFAFA] border-b border-[#E5E5E5]">
+                      <th className="px-6 py-4 text-[13px] font-medium text-[#525252] uppercase tracking-wide">Module</th>
+                      <th className="px-6 py-4 text-[13px] font-medium text-[#525252] uppercase tracking-wide">Setup</th>
+                      <th className="px-6 py-4 text-[13px] font-medium text-[#525252] uppercase tracking-wide">Notes</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-[#E5E5E5] bg-white">
+                    {addOnRows.map((row) => (
+                      <tr key={row.module} className="hover:bg-[#FAFAFA] transition-colors">
+                        <td className="px-6 py-4 text-[15px] text-[#00274A] font-medium">{row.module}</td>
+                        <td className="px-6 py-4 text-[15px] text-[#525252]">{row.setup}</td>
+                        <td className="px-6 py-4 text-[15px] text-[#00274A]">{row.notes}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
-            </section>
+            </div>
 
-            <section style={{ maxWidth: "980px" }}>
-              <h2 style={{ margin: "0 0 14px", fontSize: "24px", fontWeight: 500, color: "#111827" }}>Reverse Face Search Storage</h2>
-              <div style={{ border: "1px solid #e5e7eb", borderRadius: "12px", overflow: "hidden" }}>
-                <div
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "1.2fr 1fr 1fr",
-                    gap: "12px",
-                    padding: "12px 16px",
-                    background: "#f8fafc",
-                    borderBottom: "1px solid #e5e7eb",
-                  }}
-                >
-                  <span style={{ fontSize: "12px", color: "#64748b", fontWeight: 600 }}>Volume</span>
-                  <span style={{ fontSize: "12px", color: "#64748b", fontWeight: 600 }}>Retention</span>
-                  <span style={{ fontSize: "12px", color: "#64748b", fontWeight: 600 }}>Rate</span>
-                </div>
-                {storageRows.map((row, idx) => (
-                  <div
-                    key={row.volume}
-                    style={{
-                      display: "grid",
-                      gridTemplateColumns: "1.2fr 1fr 1fr",
-                      gap: "12px",
-                      padding: "14px 16px",
-                      borderTop: idx === 0 ? "none" : "1px solid #f1f5f9",
-                      background: idx % 2 === 0 ? "#fff" : "#fcfdff",
-                    }}
-                  >
-                    <span style={{ fontSize: "14px", color: "#111827", fontWeight: 500 }}>{row.volume}</span>
-                    <span style={{ fontSize: "14px", color: "#6b7280" }}>{row.retention}</span>
-                    <span style={{ fontSize: "14px", color: "#111827" }}>{row.rate}</span>
-                  </div>
-                ))}
+            {/* Table 3 */}
+            <div>
+              <h2 className="text-[24px] text-[#00274A] mb-6 tracking-tight" style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontWeight: 500 }}>Reverse Face Search Storage</h2>
+              <div className="border border-[#E5E5E5] rounded-[12px] overflow-hidden">
+                <table className="w-full text-left border-collapse">
+                  <thead>
+                    <tr className="bg-[#FAFAFA] border-b border-[#E5E5E5]">
+                      <th className="px-6 py-4 text-[13px] font-medium text-[#525252] uppercase tracking-wide">Volume</th>
+                      <th className="px-6 py-4 text-[13px] font-medium text-[#525252] uppercase tracking-wide">Retention</th>
+                      <th className="px-6 py-4 text-[13px] font-medium text-[#525252] uppercase tracking-wide">Rate</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-[#E5E5E5] bg-white">
+                    {storageRows.map((row) => (
+                      <tr key={row.volume} className="hover:bg-[#FAFAFA] transition-colors">
+                        <td className="px-6 py-4 text-[15px] text-[#00274A] font-medium">{row.volume}</td>
+                        <td className="px-6 py-4 text-[15px] text-[#525252]">{row.retention}</td>
+                        <td className="px-6 py-4 text-[15px] text-[#00274A]">{row.rate}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
-            </section>
+            </div>
 
-            <section style={{ maxWidth: "980px" }}>
-              <h2 style={{ margin: "0 0 10px", fontSize: "24px", fontWeight: 500, color: "#111827" }}>Frequently Asked Questions</h2>
-              <p style={{ margin: "0 0 12px", fontSize: "14px", color: "#6b7280" }}>
+            {/* FAQs */}
+            <div className="pt-8">
+              <h2 className="text-[32px] text-[#00274A] tracking-tight mb-2" style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontWeight: 400 }}>Frequently Asked Questions</h2>
+              <p className="text-[16px] text-[#525252] mb-8" style={{ fontFamily: "var(--font-geist-sans, system-ui)" }}>
                 Pricing questions from teams evaluating production rollout.
               </p>
-              <div style={{ borderTop: "1px solid #e5e7eb" }}>
+              <div className="border-t border-[#E5E5E5]">
                 {pricingFaqs.map((faq) => (
                   <FAQRow key={faq.q} q={faq.q} a={faq.a} />
                 ))}
               </div>
-            </section>
-          </div>
+            </div>
+
           </div>
         </section>
 
         <CTABanner />
+
       </main>
+
+      {/* Global styles for the custom slider */}
+      <style>{`
+        .brand-slider {
+          -webkit-appearance: none;
+          appearance: none;
+          height: 4px;
+          border-radius: 999px;
+          outline: none;
+          background: #E5E5E5;
+        }
+        .brand-slider::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          appearance: none;
+          width: 20px;
+          height: 20px;
+          border-radius: 999px;
+          background: #007BE5;
+          border: 3px solid #ffffff;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+          cursor: pointer;
+          transition: transform 0.1s;
+        }
+        .brand-slider::-webkit-slider-thumb:hover {
+          transform: scale(1.1);
+        }
+        .brand-slider::-moz-range-track {
+          height: 4px;
+          border-radius: 999px;
+          background: #E5E5E5;
+        }
+        .brand-slider::-moz-range-thumb {
+          width: 20px;
+          height: 20px;
+          border-radius: 999px;
+          background: #007BE5;
+          border: 3px solid #ffffff;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+          cursor: pointer;
+          transition: transform 0.1s;
+        }
+        .brand-slider::-moz-range-thumb:hover {
+          transform: scale(1.1);
+        }
+      `}</style>
+      
       <Footer />
-    </>
+    </div>
   );
 }

@@ -11,13 +11,7 @@ const stats = [
 
 export default function Testimonial() {
   return (
-    <section
-      style={{
-        background: "#EBF5FF",
-        paddingTop: "96px",
-        paddingBottom: "96px",
-      }}
-    >
+    <section className="bg-[#EBF5FF] py-20">
       <div
         style={{
           maxWidth: "1200px",
