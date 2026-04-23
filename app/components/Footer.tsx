@@ -24,8 +24,8 @@ export default function Footer() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "1fr repeat(3, auto)",
-              gap: "116px",
+              gridTemplateColumns: "1fr repeat(4, auto)",
+              gap: "72px",
               alignItems: "flex-start",
             }}
           >
@@ -105,6 +105,16 @@ export default function Footer() {
                 { label: "Blogs", href: "/blogs" },
                 { label: "Contact Us", href: "/contact" },
                 { label: "FAQs", href: "/faq" },
+              ]}
+            />
+
+            {/* Compare */}
+            <FooterCol
+              heading="COMPARE"
+              links={[
+                { label: "vs Sumsub", href: "/compare/sumsub" },
+                { label: "vs Onfido", href: "/compare/onfido" },
+                { label: "vs Jumio", href: "/compare/jumio" },
               ]}
             />
 
