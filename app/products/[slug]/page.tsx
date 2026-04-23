@@ -6,6 +6,7 @@ import TopBar from "../../components/TopBar";
 import Navbar from "../../components/Navbar";
 import CTABanner from "../../components/CTABanner";
 import Footer from "../../components/Footer";
+import Testimonial from "../../components/Testimonial";
 
 export function generateStaticParams() {
   return [
@@ -22,11 +23,9 @@ export function generateStaticParams() {
 const productsData: Record<string, any> = {
   verify: {
     name: "ThirdFactor Verify",
-    label: "IDENTITY VERIFICATION",
-    tagline: "Instant. Accurate. Unbiased.",
-    desc: "The core identity and document verification engine built specifically for emerging market demographics and complex local ID formats.",
-    color: "#007BE5",
-    bgColor: "#E6F2FF",
+    label: "IDENTITY & DOCUMENT VERIFICATION",
+    tagline: "Instant. Accurate. Built for emerging markets.",
+    desc: "The core identity engine built specifically to understand complex local ID formats, unstructured documents, and diverse demographics at enterprise scale.",
     img: "/illustrations/image.png",
     benefits: [
       { title: "Optical Character Recognition", desc: "Proprietary OCR optimized specifically for Nepali, Hindi, and regional scripts with 99.8% accuracy.", icon: FileText },
@@ -37,10 +36,8 @@ const productsData: Record<string, any> = {
   shield: {
     name: "ThirdFactor Shield",
     label: "FRAUD PREVENTION",
-    tagline: "Absolute Fraud Prevention.",
-    desc: "Enterprise-grade 3D liveness detection and deepfake prevention. Stop sophisticated presentation attacks before they enter your system.",
-    color: "#00274A",
-    bgColor: "#E6E9EC",
+    tagline: "Stop presentation attacks instantly.",
+    desc: "Enterprise-grade 3D liveness detection and deepfake prevention. Identify and stop sophisticated synthetic identity attacks before they enter your system.",
     img: "/illustrations/image2.png",
     benefits: [
       { title: "Passive 3D Liveness Check", desc: "Frictionless liveness detection that requires zero user action or complex head movements.", icon: Fingerprint },
@@ -51,10 +48,8 @@ const productsData: Record<string, any> = {
   comply: {
     name: "ThirdFactor Comply",
     label: "COMPLIANCE & AML",
-    tagline: "Stay ahead of regulations.",
+    tagline: "Stay ahead of regulatory shifts.",
     desc: "Automated AML screening and ongoing transaction monitoring designed to keep your financial institution compliant with evolving local and global laws.",
-    color: "#00B050",
-    bgColor: "#E6F7ED",
     img: "/illustrations/image3.png",
     benefits: [
       { title: "Global Watchlists", desc: "Screen instantly against OFAC, UN, Interpol, and localized PEP (Politically Exposed Persons) databases.", icon: Database },
@@ -67,8 +62,6 @@ const productsData: Record<string, any> = {
     label: "INFRASTRUCTURE",
     tagline: "The foundation of identity.",
     desc: "Scalable foundational infrastructure designed to run global identity systems with absolute data sovereignty and enterprise-grade reliability.",
-    color: "#222222",
-    bgColor: "#E9E9E9",
     img: "/illustrations/herosection.png",
     benefits: [
       { title: "On-Premise Deployment", desc: "Deploy entirely within your firewall. Keep 100% of your data on your own physical servers.", icon: Server },
@@ -86,85 +79,93 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const product = productsData[slugId] || productsData.verify;
 
   return (
-    <div className="bg-white min-h-screen">
+    <div style={{ background: "#ffffff", minHeight: "100vh" }}>
       <TopBar />
       <Navbar />
 
       <main>
-        {/* Product Hero Section */}
-        <section className="px-6 py-24 max-w-[1200px] mx-auto grid lg:grid-cols-[1fr_500px] gap-16 items-center">
-          <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-8" style={{ backgroundColor: product.bgColor }}>
-              <div className="w-2 h-2 rounded-full" style={{ backgroundColor: product.color }}></div>
-              <span className="text-[12px] font-semibold tracking-widest uppercase" style={{ color: product.color }}>
-                {product.label}
-              </span>
-            </div>
-            
-            <h1 
-              className="text-[44px] md:text-[64px] text-[#00274A] tracking-[-0.03em] leading-[1.05] mb-6 font-medium"
-              style={{ fontFamily: "var(--font-geist-sans, system-ui)" }}
-            >
-              {product.name}
-            </h1>
-            
-            <p className="text-[24px] text-[#007BE5] mb-4 tracking-[-0.01em]" style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontWeight: 400 }}>
-              {product.tagline}
-            </p>
-            
-            <p className="text-[18px] text-[#525252] leading-relaxed max-w-[540px] mb-10">
-              {product.desc}
-            </p>
-            
-            <div className="flex flex-wrap items-center gap-4">
-              <Link 
-                href="/contact" 
-                className="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-white text-[15px] font-medium transition-all shadow-sm hover:shadow-md"
-                style={{ backgroundColor: product.color }}
-              >
-                Request Access
-              </Link>
-              <Link 
-                href="/dev" 
-                className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-white border border-[#E5E5E5] text-[#00274A] text-[15px] font-medium hover:bg-neutral-50 transition-colors"
-              >
-                Read Documentation
-              </Link>
-            </div>
-          </div>
-          
-          <div className="w-full aspect-square rounded-3xl relative flex items-center justify-center p-8 bg-[#FAFAFA] border border-[#E5E5E5]">
-            <div className="absolute inset-0 opacity-20 rounded-3xl" style={{ backgroundImage: `radial-gradient(${product.color} 1px, transparent 1px)`, backgroundSize: '24px 24px' }}></div>
-            <div className="relative w-full h-full max-w-[400px] max-h-[400px]">
-              <Image 
-                src={product.img} 
-                alt={product.name} 
-                fill 
-                className="object-contain mix-blend-multiply drop-shadow-xl"
-                priority
-              />
+        {/* Enterprise Hero Section */}
+        <section style={{ background: "#ffffff", paddingTop: "120px", paddingBottom: "120px", borderBottom: "1px solid #E5E5E5" }}>
+          <div style={{ maxWidth: "1441px", margin: "0 auto", paddingLeft: "140px", paddingRight: "140px" }}>
+            <div style={{ display: "flex", gap: "72px", alignItems: "center" }}>
+              
+              {/* Left Copy */}
+              <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "24px" }}>
+                <div>
+                  <span style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.08em", color: "#A3A3A3", textTransform: "uppercase" }}>
+                    {product.label}
+                  </span>
+                  <h1 style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontSize: "56px", lineHeight: "1.1", letterSpacing: "-2px", color: "#00274A", margin: "16px 0", fontWeight: 400 }}>
+                    {product.name}
+                  </h1>
+                  <p style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontSize: "20px", color: "#00274A", margin: "0 0 8px 0", fontWeight: 400 }}>
+                    {product.tagline}
+                  </p>
+                  <p style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontSize: "16px", lineHeight: "1.6", color: "#525252", margin: 0, maxWidth: "480px" }}>
+                    {product.desc}
+                  </p>
+                </div>
+                
+                <div style={{ display: "flex", gap: "16px", marginTop: "16px" }}>
+                  <Link
+                    href="/contact"
+                    style={{
+                      display: "inline-flex", alignItems: "center", justifyContent: "center",
+                      height: "60px", padding: "0 32px", borderRadius: "100px",
+                      background: "#007BE5", color: "#ffffff", fontSize: "15px", fontWeight: 500,
+                      fontFamily: "var(--font-geist-sans, system-ui)", textDecoration: "none",
+                      transition: "background 150ms"
+                    }}
+                  >
+                    Contact Sales
+                  </Link>
+                  <Link
+                    href="/dev"
+                    style={{
+                      display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "8px",
+                      height: "60px", padding: "0 32px", borderRadius: "100px",
+                      background: "#ffffff", border: "1px solid #E5E5E5", color: "#00274A",
+                      fontSize: "15px", fontWeight: 500, fontFamily: "var(--font-geist-sans, system-ui)",
+                      textDecoration: "none", transition: "background 150ms"
+                    }}
+                  >
+                    Read Documentation <ArrowRight size={16} />
+                  </Link>
+                </div>
+              </div>
+
+              {/* Right Image Container */}
+              <div style={{ width: "576px", height: "560px", background: "#F5F5F5", borderRadius: "16px", position: "relative", flexShrink: 0, overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center", border: "1px solid #E5E5E5" }}>
+                <Image src={product.img} alt={product.name} fill style={{ objectFit: "contain", padding: "40px", mixBlendMode: "multiply" }} priority />
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Feature Highlights Grid */}
-        <section className="bg-[#FAFAFA] border-y border-[#E5E5E5] py-24 px-6">
-          <div className="max-w-[1200px] mx-auto">
-            <h2 className="text-[32px] text-[#00274A] tracking-[-0.02em] mb-16 text-center" style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontWeight: 400 }}>
-              Engineered for absolute reliability.
-            </h2>
+        {/* Structured Features Grid */}
+        <section style={{ background: "#ffffff", paddingTop: "120px", paddingBottom: "120px", borderBottom: "1px solid #E5E5E5" }}>
+          <div style={{ maxWidth: "1441px", margin: "0 auto", paddingLeft: "140px", paddingRight: "140px" }}>
+            <div style={{ marginBottom: "64px", maxWidth: "600px" }}>
+              <h2 style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontSize: "40px", lineHeight: "48px", letterSpacing: "-1.2px", color: "#00274A", margin: "0 0 16px 0", fontWeight: 400 }}>
+                Engineered for absolute reliability.
+              </h2>
+              <p style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontSize: "16px", lineHeight: "1.5", color: "#525252", margin: 0 }}>
+                Our infrastructure is built from the ground up to ensure high availability, local data sovereignty, and uncompromised compliance standards.
+              </p>
+            </div>
             
-            <div className="grid md:grid-cols-3 gap-8">
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "48px" }}>
               {product.benefits.map((benefit: any, idx: number) => {
                 const Icon = benefit.icon;
                 return (
-                  <div key={idx} className="bg-white p-8 rounded-2xl border border-[#E5E5E5] shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
-                    <div className="absolute top-0 left-0 w-full h-1 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" style={{ backgroundColor: product.color }}></div>
-                    <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-6" style={{ backgroundColor: product.bgColor, color: product.color }}>
-                      <Icon strokeWidth={1.5} size={28} />
+                  <div key={idx} style={{ display: "flex", flexDirection: "column" }}>
+                    <div style={{ width: "48px", height: "48px", background: "#F0F7FF", border: "1px solid #EBF5FF", borderRadius: "8px", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "24px" }}>
+                      <Icon color="#007BE5" strokeWidth={1.5} size={24} />
                     </div>
-                    <h3 className="text-[20px] text-[#00274A] font-medium mb-3 tracking-tight">{benefit.title}</h3>
-                    <p className="text-[15px] text-[#525252] leading-relaxed">
+                    <h3 style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontSize: "18px", color: "#00274A", fontWeight: 500, margin: "0 0 12px 0", letterSpacing: "-0.01em" }}>
+                      {benefit.title}
+                    </h3>
+                    <p style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontSize: "15px", lineHeight: "1.6", color: "#525252", margin: 0 }}>
                       {benefit.desc}
                     </p>
                   </div>
@@ -174,56 +175,69 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           </div>
         </section>
 
-        {/* API Integration Snippet */}
-        <section className="py-24 px-6">
-          <div className="max-w-[1200px] mx-auto grid lg:grid-cols-2 gap-16 items-center">
-            <div className="bg-[#0A0D12] rounded-2xl p-6 shadow-2xl border border-[#222]">
-              <div className="flex items-center gap-2 mb-6">
-                <div className="w-3 h-3 rounded-full bg-[#FF5F56]"></div>
-                <div className="w-3 h-3 rounded-full bg-[#FFBD2E]"></div>
-                <div className="w-3 h-3 rounded-full bg-[#27C93F]"></div>
+        {/* Clean API Integration Section */}
+        <section style={{ background: "#ffffff", paddingTop: "120px", paddingBottom: "120px", borderBottom: "1px solid #E5E5E5" }}>
+          <div style={{ maxWidth: "1441px", margin: "0 auto", paddingLeft: "140px", paddingRight: "140px" }}>
+            <div style={{ display: "flex", gap: "72px", alignItems: "center" }}>
+              
+              {/* White-mode clean code snippet UI */}
+              <div style={{ width: "576px", flexShrink: 0, background: "#ffffff", border: "1px solid #E5E5E5", borderRadius: "16px", overflow: "hidden", boxShadow: "0 4px 24px rgba(0,0,0,0.02)" }}>
+                <div style={{ display: "flex", gap: "8px", padding: "16px", borderBottom: "1px solid #E5E5E5", background: "#F9FAFB" }}>
+                  <div style={{ width: "12px", height: "12px", borderRadius: "50%", background: "#E5E5E5" }}></div>
+                  <div style={{ width: "12px", height: "12px", borderRadius: "50%", background: "#E5E5E5" }}></div>
+                  <div style={{ width: "12px", height: "12px", borderRadius: "50%", background: "#E5E5E5" }}></div>
+                </div>
+                <div style={{ padding: "32px", overflowX: "auto" }}>
+                  <pre style={{ fontFamily: "monospace", fontSize: "13px", lineHeight: "1.6", color: "#00274A", margin: 0 }}>
+                    <code style={{ color: "#007BE5" }}>import</code> {`{ ThirdFactor }`} <code style={{ color: "#007BE5" }}>from</code> <code style={{ color: "#00B050" }}>'thirdfactor-node'</code>;{`\n\n`}
+                    <code style={{ color: "#007BE5" }}>const</code> tf = <code style={{ color: "#007BE5" }}>new</code> ThirdFactor(<code style={{ color: "#00B050" }}>'sk_live_...'</code>);{`\n\n`}
+                    <code style={{ color: "#007BE5" }}>const</code> session = <code style={{ color: "#007BE5" }}>await</code> tf.sessions.create({`{\n`}
+                    {`  `}type: <code style={{ color: "#00B050" }}>'${product.name.toLowerCase().replace('thirdfactor ', '')}'</code>,{`\n`}
+                    {`  `}user_id: <code style={{ color: "#00B050" }}>'usr_12345'</code>,{`\n`}
+                    {`  `}return_url: <code style={{ color: "#00B050" }}>'https://app.com/callback'</code>{`\n`}
+                    {`}`});{`\n\n`}
+                    <span style={{ color: "#A3A3A3" }}>// Returns an instant, secure flow URL</span>{`\n`}
+                    console.log(session.url);
+                  </pre>
+                </div>
               </div>
-              <pre className="text-sm font-mono text-gray-300 overflow-x-auto">
-                <code className="text-[#54AFFF]">import</code> {`{ ThirdFactor }`} <code className="text-[#54AFFF]">from</code> <code className="text-[#BDE5FF]">'thirdfactor-node'</code>;{`\n\n`}
-                <code className="text-[#54AFFF]">const</code> tf = <code className="text-[#54AFFF]">new</code> ThirdFactor(<code className="text-[#BDE5FF]">'sk_live_...'</code>);{`\n\n`}
-                <code className="text-[#54AFFF]">const</code> session = <code className="text-[#54AFFF]">await</code> tf.sessions.create({`{\n`}
-                {`  `}type: <code className="text-[#BDE5FF]">'${product.name.toLowerCase().replace('thirdfactor ', '')}'</code>,{`\n`}
-                {`  `}user_id: <code className="text-[#BDE5FF]">'usr_12345'</code>,{`\n`}
-                {`  `}return_url: <code className="text-[#BDE5FF]">'https://app.com/callback'</code>{`\n`}
-                {`}`});{`\n\n`}
-                <span className="text-gray-500">// Returns an instant, secure flow URL</span>{`\n`}
-                console.log(session.url);
-              </pre>
-            </div>
-            
-            <div>
-              <h2 className="text-[32px] text-[#00274A] tracking-[-0.02em] mb-6" style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontWeight: 400 }}>
-                Integrate in minutes, not months.
-              </h2>
-              <p className="text-[16px] text-[#525252] leading-relaxed mb-8">
-                {product.name} is built developer-first. Our unified API allows you to initialize highly complex biometric and document workflows with just a few lines of code. We handle the heavy lifting, edge-case fallbacks, and local compliance.
-              </p>
-              
-              <ul className="flex flex-col gap-4 mb-8">
-                {[
-                  "RESTful APIs and Native SDKs for iOS, Android, and Web",
-                  "Comprehensive Webhooks for instant state updates",
-                  "Fully customizable UI themes to match your brand"
-                ].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3">
-                    <CheckCircle2 className="text-[#00B050]" size={20} />
-                    <span className="text-[15px] text-[#525252]">{item}</span>
-                  </li>
-                ))}
-              </ul>
-              
-              <Link href="/dev" className="inline-flex items-center gap-2 text-[15px] font-medium hover:underline" style={{ color: product.color }}>
-                View Full API Reference <ArrowRight size={16} />
-              </Link>
+
+              {/* Right Copy */}
+              <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "24px" }}>
+                <h2 style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontSize: "40px", lineHeight: "48px", letterSpacing: "-1.2px", color: "#00274A", margin: 0, fontWeight: 400 }}>
+                  Integrate in minutes,
+                  <br />not months.
+                </h2>
+                <p style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontSize: "16px", lineHeight: "1.6", color: "#525252", margin: 0 }}>
+                  {product.name} is built developer-first. Our unified API allows you to initialize highly complex biometric and document workflows with just a few lines of code. We handle the heavy lifting, edge-case fallbacks, and local compliance.
+                </p>
+                <div style={{ display: "flex", flexDirection: "column", gap: "16px", marginTop: "8px" }}>
+                  {[
+                    "RESTful APIs and Native SDKs for iOS, Android, and Web",
+                    "Comprehensive Webhooks for instant state updates",
+                    "Fully customizable UI themes to match your brand"
+                  ].map((item, i) => (
+                    <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
+                      <CheckCircle2 color="#007BE5" size={20} style={{ flexShrink: 0, marginTop: "2px" }} />
+                      <span style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontSize: "15px", color: "#525252", lineHeight: "1.4" }}>{item}</span>
+                    </div>
+                  ))}
+                </div>
+                <Link
+                  href="/dev"
+                  style={{
+                    display: "inline-flex", alignItems: "center", gap: "12px", marginTop: "16px",
+                    color: "#007BE5", fontSize: "15px", fontWeight: 500, fontFamily: "var(--font-geist-sans, system-ui)", textDecoration: "none"
+                  }}
+                >
+                  View API Documentation <ArrowRight size={16} />
+                </Link>
+              </div>
             </div>
           </div>
         </section>
 
+        <Testimonial />
         <CTABanner />
       </main>
 
