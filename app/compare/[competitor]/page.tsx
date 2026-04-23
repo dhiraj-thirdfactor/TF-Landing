@@ -70,7 +70,7 @@ export default async function ComparePage({ params }: { params: Promise<{ compet
 
       <main>
         {/* Hero Section */}
-        <section className="px-6 pt-24 pb-16 max-w-[1200px] mx-auto grid md:grid-cols-2 gap-12 items-center">
+        <section className="px-6 py-20 max-w-[1200px] mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div>
             <h1 
               className="text-[40px] md:text-[56px] text-[#00274A] tracking-[-0.02em] leading-[1.1] mb-6"
@@ -79,13 +79,13 @@ export default async function ComparePage({ params }: { params: Promise<{ compet
               Don't Waste Your Budget<br />
               on Failed Verifications.
             </h1>
-            <p className="text-[18px] text-[#525252] mb-8 leading-relaxed max-w-[480px]">
-              ThirdFactor provides 3x higher conversion in emerging markets with local data centers and specialized optical character recognition.
+            <p className="text-[18px] md:text-[20px] text-[#525252] mb-8 leading-relaxed max-w-[480px]" style={{ fontFamily: "var(--font-geist-sans, system-ui)" }}>
+              Global KYC tools reject valid Nepali IDs because they don't understand the local context. ThirdFactor.ai delivers 99%+ accuracy on local documents at 1/4th the cost.
             </p>
             <div className="flex items-center gap-4">
               <Link 
                 href="/contact" 
-                className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-[#007BE5] text-white font-medium hover:bg-[#0069C2] transition-colors"
+                className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-[#007BE5] text-white text-[15px] font-medium hover:bg-[#0069C2] transition-colors shadow-sm"
               >
                 Talk to sales
               </Link>

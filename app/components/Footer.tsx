@@ -92,8 +92,8 @@ export default function Footer() {
               links={[
                 { label: "Documentation", href: "/dev" },
                 { label: "Pricing", href: "/pricing" },
-                { label: "ThirdFactor Verify", href: "#" },
-                { label: "ThirdFactor Shield", href: "#" },
+                { label: "ThirdFactor Verify", href: "/products/verify" },
+                { label: "ThirdFactor Shield", href: "/products/shield" },
               ]}
             />
 

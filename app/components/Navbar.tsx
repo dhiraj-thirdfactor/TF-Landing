@@ -118,14 +118,14 @@ export default function Navbar() {
                         <span className="text-[12px] font-semibold uppercase tracking-wider text-neutral-400 mb-3 block px-3">Identity Solutions</span>
                         <div className="flex flex-col gap-1">
                           {[
-                            { name: "ThirdFactor Verify", desc: "Core identity & document checks", imgSrc: "/illustrations/image.png" },
-                            { name: "ThirdFactor Shield", desc: "Fraud prevention & liveness", imgSrc: "/illustrations/image2.png" },
-                            { name: "ThirdFactor Comply", desc: "AML & compliance monitoring", imgSrc: "/illustrations/image3.png" },
-                            { name: "ThirdFactor Access", desc: "Seamless authentication flows", imgSrc: "/illustrations/image.png" }
+                            { name: "ThirdFactor Verify", desc: "Core identity & document checks", imgSrc: "/illustrations/image.png", href: "/products/verify" },
+                            { name: "ThirdFactor Shield", desc: "Fraud prevention & liveness", imgSrc: "/illustrations/image2.png", href: "/products/shield" },
+                            { name: "ThirdFactor Comply", desc: "AML & compliance monitoring", imgSrc: "/illustrations/image3.png", href: "/products/comply" },
+                            { name: "ThirdFactor Access", desc: "Seamless authentication flows", imgSrc: "/illustrations/image.png", href: "/products/access" }
                           ].map((prod) => (
                             <Link
                               key={prod.name}
-                              href="#"
+                              href={prod.href}
                               className="flex items-start gap-3 p-3 rounded-md hover:bg-neutral-50 transition-colors group/item"
                             >
                               <div className="mt-0.5 shrink-0 w-8 h-8 relative rounded overflow-hidden flex items-center justify-center opacity-70 group-hover/item:opacity-100 transition-opacity">
@@ -145,13 +145,13 @@ export default function Navbar() {
                         <span className="text-[12px] font-semibold uppercase tracking-wider text-neutral-400 mb-3 block px-3">Platform</span>
                         <div className="flex flex-col gap-1">
                           {[
-                            { name: "ThirdFactor Lens", desc: "Analytics & risk scoring", imgSrc: "/illustrations/image2.png" },
-                            { name: "ThirdFactor Charter", desc: "Enterprise policy builder", imgSrc: "/illustrations/image3.png" },
-                            { name: "ThirdFactor Bedrock", desc: "Foundational infrastructure", imgSrc: "/illustrations/image.png" }
+                            { name: "ThirdFactor Lens", desc: "Analytics & risk scoring", imgSrc: "/illustrations/image2.png", href: "/products/lens" },
+                            { name: "ThirdFactor Charter", desc: "Enterprise policy builder", imgSrc: "/illustrations/image3.png", href: "/products/charter" },
+                            { name: "ThirdFactor Bedrock", desc: "Foundational infrastructure", imgSrc: "/illustrations/image.png", href: "/products/bedrock" }
                           ].map((prod) => (
                             <Link
                               key={prod.name}
-                              href="#"
+                              href={prod.href}
                               className="flex items-start gap-3 p-3 rounded-md hover:bg-neutral-50 transition-colors group/item"
                             >
                               <div className="mt-0.5 shrink-0 w-8 h-8 relative rounded overflow-hidden flex items-center justify-center opacity-70 group-hover/item:opacity-100 transition-opacity">
