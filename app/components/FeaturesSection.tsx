@@ -44,8 +44,10 @@ export default function FeaturesSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const stripRef = useRef<HTMLDivElement>(null);
   const mm = gsap.matchMedia();
-  useGSAP(() => {
-    mm.add("(min-width: 1024px)", () => {
+ useGSAP(() => {
+  const mm = gsap.matchMedia();
+
+  mm.add("(min-width: 1024px)", () => {
     const container = containerRef.current;
     const strip = stripRef.current;
 
@@ -78,11 +80,13 @@ export default function FeaturesSection() {
       tween.kill();
       ScrollTrigger.removeEventListener("refreshInit", calculate);
     };
-    });
-  }, []);
+  });
+
+  return () => mm.revert(); // 🔥 important cleanup
+}, []);
 
   return (
-    <section ref={containerRef} className=" min-h-screen w-full flex justify-center items-center bg-white border-t border-neutral-200 overflow-hidden xl:py-20">
+    <section suppressHydrationWarning ref={containerRef} className=" min-h-screen w-full flex justify-center items-center bg-white border-t border-neutral-200 overflow-hidden xl:py-20">
       <div className="max-w-[1440px] mx-auto">
 
         {/* Header */}

@@ -55,7 +55,7 @@ export default function Hero() {
       </div>
 
       {/* Client logos strip — full-width */}
-      <ClientLogos />
+      {/* <ClientLogos /> */}
     </section>
   );
 }
