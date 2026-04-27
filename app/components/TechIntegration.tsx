@@ -85,24 +85,24 @@ export default function TechIntegration() {
 
   return (
     <section className="bg-white py-16 md:py-20 border-t border-neutral-200 overflow-hidden">
-      <div className="max-w-[1441px] mx-auto px-6 md:px-[140px]">
+      <div className="max-w-[1441px] mx-auto px-6 md:px-[140px] flex flex-col lg:gap-10 gap-6">
         {/* ── Section header ─────────────────────────────── */}
-        <div className="mb-10 md:mb-16">
-          <h2 className="font-sans font-normal text-[32px] md:text-[48px] leading-[1.15] tracking-[-0.025em] text-[#00274A] mb-3">
+        <div className="">
+          <h2 className="font-sans font-normal text-[32px] md:text-[48px] leading-[1.15] tracking-[-0.025em] text-[#000000] mb-3">
             Technical Integration Made Simple
           </h2>
-          <p className="font-sans font-normal text-[16px] leading-[1.5] text-[#525252] m-0">
+          <p className="font-sans font-normal text-[16px] leading-[1.5] text-[#000000] m-0">
             Flexible APIs, SDKs, and fast implementation
           </p>
         </div>
 
         {/* ── Tab bar ── */}
-        <div className="flex flex-row lg:flex-row w-full gap-2 lg:gap-3 overflow-x-auto scrollbar-hide pb-4 lg:pb-0 mb-8 md:mb-12">
+        <div className="flex flex-row lg:flex-row w-full gap-2 lg:gap-3 overflow-x-auto scrollbar-hidden pb-4 lg:pb-0">
           {tabs.map((t) => (
             <button
               key={t.id}
               onClick={() => setActive(t.id)}
-              className="flex-shrink-0 lg:flex-1 h-[48px] px-6 lg:px-4 flex items-center justify-center gap-2.5 rounded-[100px] border text-[14px] font-sans transition-all duration-150"
+              className="flex-shrink-0 lg:flex-1 h-[48px] px-6 lg:px-4 flex items-center justify-center gap-2.5  border text-[14px] font-sans transition-all duration-150"
               style={{
                 borderColor: active === t.id ? "#A9D5F5" : "#D4D4D4",
                 fontWeight: active === t.id ? 500 : 400,
@@ -121,10 +121,10 @@ export default function TechIntegration() {
         </div>
 
         {/* ── Two columns ────────────────────────────────── */}
-        <div className="flex flex-col lg:flex-row gap-10 lg:gap-[41px] items-start w-full">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-[40px] items-start w-full  w-[500px] h-[678px]  ">
           
           {/* Left */}
-          <div className="w-full lg:w-[495px] shrink-0 flex flex-col gap-4 lg:gap-[17px]">
+          <div className="w-full lg:w-[495px] shrink-0 flex flex-col gap-4 lg:gap-[17px] items-start lg:justify-center  lg:h-full ">
             <h3 className="font-sans font-normal text-[24px] md:text-[32px] leading-[1.25] tracking-[-0.015em] text-[#00274A] m-0">
               {tab.heading}
             </h3>
@@ -135,20 +135,21 @@ export default function TechIntegration() {
 
             <Link
               href="#"
-              className="inline-flex items-center justify-center gap-2 h-[60px] px-7 mt-2 md:mt-4 rounded-[100px] bg-[#007BE5] hover:bg-[#0069C2] text-white text-[15px] font-medium font-sans transition-colors w-full sm:w-auto sm:self-start"
+              className="inline-flex items-center justify-center gap-2 h-[60px] px-7 mt-2 md:mt-4 rounded-[100px] bg-[#F2F2F7] hover:bg-[#0069C2] hover:text-white transition-all duration-300 text-black text-[15px] font-medium font-sans transition-colors w-full sm:w-auto sm:self-start"
             >
               Experience Center
             </Link>
           </div>
 
           {/* Right */}
-          <div className="w-full h-[300px] md:h-[400px] lg:h-[678px] rounded-2xl lg:rounded-[24px] overflow-hidden shrink-0 bg-[#F5F9FF] relative">
+          <div className="w-full h-full ">
             <Image
               src={tab.img}
               alt="Integration interface"
-              fill
-              style={{ objectFit: "contain", padding: "40px" }}
-              sizes="(max-width: 1024px) 100vw, 626px"
+              width={625}
+              height={678}
+              className="w-[625px] h-full"
+              style={{ objectFit: "cover", padding: "" }}
               priority
             />
           </div>

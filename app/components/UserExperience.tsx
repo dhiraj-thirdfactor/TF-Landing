@@ -76,14 +76,15 @@ export default function UserExperience() {
   }, []);
 
   return (
-    <section className="bg-white py-16 md:py-20 border-t border-neutral-200 overflow-hidden">
+    <section className="bg-[#FAE8FF] py-16 md:py-20 border-t border-neutral-200 overflow-hidden">
       <div className="max-w-[1441px] mx-auto px-6 md:px-[140px]">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-[72px] items-start w-full">
 
           {/* ── Left ─────────────── */}
           <div className="w-full lg:w-[485px] min-h-[auto] lg:h-[771px] flex flex-col justify-between shrink-0 gap-8 lg:gap-0">
             {/* Heading */}
-            <h2 className="font-sans font-normal text-[32px] md:text-[40px] leading-[1.2] tracking-[-1.2px] text-[#00274A] m-0">
+            <div className="flex flex-col gap-10">
+            <h2 className=" text-[32px] md:text-[40px] leading-[1.2] tracking-[-1.2px] text-[#00274A] m-0">
               What your users see
             </h2>
 
@@ -123,9 +124,10 @@ export default function UserExperience() {
                 </div>
               )}
             </div>
+            </div>
 
             {/* Text block */}
-            <div className="w-full flex flex-col gap-6 md:gap-[40px]">
+            <div className="w-full flex flex-col gap-6 md:gap-[40px] divide-amber-50 divide-y-2 ">
               {selected.items.map((item, i) => (
                 <div key={i} className="flex flex-col gap-2">
                   <p className="font-sans font-medium text-[15px] leading-[1.4] text-[#00274A] m-0">

@@ -10,7 +10,7 @@ export default function Home2() {
       <TopBar />
       <Navbar />
       <main>
-
+        
         {/* ── Hero — full-viewport dot-grid video ─────────────────── */}
         <section
           style={{
@@ -323,7 +323,7 @@ export default function Home2() {
             </div>
           </div>
         </section>
-
+        
       </main>
       <Footer />
     </>

@@ -39,8 +39,31 @@ export default function APISection() {
       <div className="max-w-[1441px] mx-auto px-6 md:px-[140px]">
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-[72px] items-start w-full">
 
-          {/* ── Left: apis.png illustration ── */}
-          <div className="w-full lg:w-[575px] h-[300px] sm:h-[450px] lg:h-[559px] rounded-2xl lg:rounded-[16px] overflow-hidden shrink-0 bg-[#F0F7FF] relative flex items-center justify-center">
+       
+
+          {/* ── Right: copy + accordion ─────────── */}
+          <div className="w-full  flex flex-col gap-8 shrink-0">
+            {/* Heading */}
+            <div className="flex w-full items-center justify-between">
+         
+              <h2 className="font-sans font-normal text-[32px] md:text-[40px] leading-[1.2] tracking-[-2px] text-[#00274A] mb-4">
+                Build anything with
+                <br className="hidden md:block" /> a powerful host of APIs
+              </h2>
+         
+
+            {/* View Documentation */}
+            <Link
+              href="#"
+              className="inline-flex items-center justify-center gap-4 w-full sm:w-[227px] h-[60px] rounded-[100px] bg-[#F2F2F7] text-black text-[14px] font-medium font-sans shrink-0 transition-colors hover:bg-[#0069C2] hover:text-white"
+              >
+              View Documentation
+              <ChevronRight size={16} />
+            </Link>
+              </div>
+              <div className="w-full flex justify-between gap-10">
+                <div className="img ">
+                 <div className="w-full lg:w-[575px] h-[300px] sm:h-[450px] lg:h-[559px] overflow-hidden shrink-0  relative flex items-center justify-center">
             <Image
               src="/illustrations/apis.png"
               alt="ThirdFactor API infrastructure"
@@ -50,43 +73,21 @@ export default function APISection() {
               priority
             />
           </div>
-
-          {/* ── Right: copy + accordion ─────────── */}
-          <div className="w-full lg:w-[513px] flex flex-col gap-8 shrink-0">
-            {/* Heading */}
-            <div>
-              <h2 className="font-sans font-normal text-[32px] md:text-[40px] leading-[1.2] tracking-[-2px] text-[#00274A] mb-4">
-                Build anything with
-                <br className="hidden md:block" /> a powerful host of APIs
-              </h2>
-              <p className="font-sans font-normal text-[16px] leading-[1.5] text-[#525252] m-0">
-                Every verification capability is exposed as a clean REST endpoint. Ship production integrations in days, not months.
-              </p>
-            </div>
-
-            {/* View Documentation */}
-            <Link
-              href="#"
-              className="inline-flex items-center justify-center gap-4 w-full sm:w-[227px] h-[60px] rounded-[100px] bg-[#007BE5] text-white text-[15px] font-medium font-sans shrink-0 transition-colors hover:bg-[#0069C2]"
-            >
-              View Documentation
-              <ChevronRight size={16} />
-            </Link>
-
+                </div>
             {/* Expandable rows */}
-            <div className="flex flex-col w-full mt-2 lg:mt-0">
+            <div className="flex flex-col w-full mt-2 lg:mt-0 max-w-[558px] divide-y divide-dashed divide-[#D9D9D9]">
               {items.map((item, idx) => {
                 const isOpen = openId === item.id;
                 return (
                   <div
                     key={item.id}
-                    className={`w-full border-b border-[#E5E5E5] ${idx === 0 ? "border-t" : ""}`}
+                    className={`w-full `}
                   >
                     <button
                       onClick={() => setOpenId(isOpen ? null : item.id)}
                       className="w-full h-[69px] flex items-center justify-between gap-4 bg-transparent border-none cursor-pointer p-0 text-left outline-none"
                     >
-                      <span className={`font-sans text-[15px] transition-colors ${isOpen ? "font-medium text-[#00274A]" : "font-normal text-[#404040]"}`}>
+                      <span className={`text-[30px]  transition-colors ${isOpen ? "font-medium text-[#00274A]" : "font-normal text-[#404040]"}`}>
                         {item.label}
                       </span>
                       <ChevronDown
@@ -106,6 +107,7 @@ export default function APISection() {
                 );
               })}
             </div>
+              </div>
           </div>
         </div>
       </div>

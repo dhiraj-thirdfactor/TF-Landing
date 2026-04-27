@@ -1,5 +1,12 @@
 "use client";
+
+import { useRef } from "react";
 import Image from "next/image";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const cards = [
   {
@@ -33,71 +40,98 @@ const cards = [
     imgAlt: "Multi-channel illustration",
   },
 ];
-
 export default function FeaturesSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const stripRef = useRef<HTMLDivElement>(null);
+  const mm = gsap.matchMedia();
+  useGSAP(() => {
+    mm.add("(min-width: 1024px)", () => {
+    const container = containerRef.current;
+    const strip = stripRef.current;
+
+    if (!container || !strip) return;
+
+    let scrollLength = 0;
+
+    const calculate = () => {
+      scrollLength = strip.scrollWidth * 0.4;
+    };
+
+    calculate();
+
+    const tween = gsap.to(strip, {
+      x: () => -scrollLength,
+      ease: "none",
+      scrollTrigger: {
+        trigger: container,
+        start: "top top",
+        end: () => `+=${strip.scrollWidth}`,
+        scrub: true,
+        pin: container,
+        invalidateOnRefresh: true,
+      },
+    });
+
+    ScrollTrigger.addEventListener("refreshInit", calculate);
+
+    return () => {
+      tween.kill();
+      ScrollTrigger.removeEventListener("refreshInit", calculate);
+    };
+    });
+  }, []);
+
   return (
-    <section className="py-20 bg-white border-t border-neutral-200 overflow-hidden">
+    <section ref={containerRef} className=" min-h-screen w-full flex justify-center items-center bg-white border-t border-neutral-200 overflow-hidden xl:py-20">
       <div className="max-w-[1440px] mx-auto">
 
         {/* Header */}
-        <div className="px-6 md:px-[140px] flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
-          <div className="max-w-2xl">
-            <p className="font-sans font-normal text-[16px] leading-[1.5] text-[#525252] mb-3">
-              One Platform for Every Identity Workflow
-            </p>
-            <h2 className="font-sans font-normal text-[32px] md:text-[40px] leading-[1.25] tracking-[-0.02em] text-[#00274A] m-0">
+        <div className="px-6 md:px-[140px] flex flex-col gap-4 mb-13.5">
+          <div className="flex">
+            <h2 className="text-[32px] md:text-[40px] text-[#00274A] lg:max-w-[80%]">
               Verify users, read documents, and manage compliance from a single dashboard
             </h2>
+
+            <a className="ml-4 h-[44px] px-6 flex items-center rounded-full cursor-pointer hover:bg-[#0069C2] hover:text-white transition-all duration-300 ease-in-out  ">
+              Book a Demo
+            </a>
           </div>
-          <a
-            href="#"
-            className="inline-flex items-center justify-center gap-2 h-[44px] px-6 text-[14px] font-medium text-white bg-[#007BE5] rounded-[100px] whitespace-nowrap shrink-0 hover:bg-[#0069C2] transition-colors w-full lg:w-auto"
-          >
-            Book a Demo
-          </a>
+
+          <p className="text-[16px]">
+            One Platform for Every Identity Workflow
+          </p>
         </div>
 
-        {/* Cards — horizontal scroll */}
-        <div
-          className="overflow-x-auto scrollbar-hide px-6 md:px-[140px]"
-          style={{ WebkitOverflowScrolling: "touch" }}
-        >
-          <div className="flex gap-6 md:gap-[36px] w-max pb-4">
+        {/* Horizontal Section */}
+        <div  className="horiz-gallery-wrapper px-6 md:px-[140px] overflow-x-auto scrollbar-hidden lg:overflow-hidden"  style={{ WebkitOverflowScrolling: "touch" }}>
+          <div
+            ref={stripRef}
+            className="horiz-gallery-strip flex gap-6 md:gap-[36px] w-max pb-4 will-change-transform"
+          >
             {cards.map((c, i) => (
               <div
                 key={i}
-                className="w-[300px] md:w-[370px] h-[420px] md:h-[452px] rounded-2xl border border-[#E5E5E5] p-6 md:p-8 flex flex-col gap-6 md:gap-8 bg-white shrink-0"
+                className="w-[300px] md:w-[370px] h-[420px] md:h-[452px] rounded-2xl border flex flex-col gap-6 bg-white shrink-0 justify-between px-8 pt-8 pb-13"
               >
-                {/* Illustration */}
-                <div className="w-[140px] md:w-[158px] h-[180px] md:h-[200px] border-[2px] border-[#2563EB] rounded-xl overflow-hidden bg-[#EFF6FF] shrink-0 self-center relative">
+                <div className="w-[140px] h-[180px] relative self-center">
                   <Image
                     src={c.img}
                     alt={c.imgAlt}
                     fill
-                    style={{ objectFit: "contain", padding: "12px" }}
-                    sizes="158px"
+                    style={{ objectFit: "contain" }}
                   />
                 </div>
 
-                {/* Text block */}
-                <div className="w-full flex flex-col gap-3">
-                  <p className="font-sans font-semibold text-[16px] md:text-[18px] leading-[1.3] tracking-[-0.01em] text-[#00274A] m-0">
-                    {c.title}
-                  </p>
-                  <p className="font-sans font-normal text-[13px] md:text-[14px] leading-[1.5] text-[#525252] m-0">
-                    {c.desc}
-                  </p>
+                <div>
+                  <p className="font-semibold">{c.title}</p>
+                  <p className="text-sm text-gray-500">{c.desc}</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
-      </div>
 
-      <style>{`
-        .scrollbar-hide::-webkit-scrollbar { display: none; }
-        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-      `}</style>
+      </div>
     </section>
   );
 }
