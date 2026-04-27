@@ -35,7 +35,7 @@ export default function APISection() {
   const [openId, setOpenId] = useState<string | null>("rest");
 
   return (
-    <section className="bg-white py-16 md:py-20 border-t border-neutral-200">
+    <section  className="bg-white py-16 md:py-20 border-t border-neutral-200">
       <div className="max-w-[1441px] mx-auto px-6 md:px-[140px]">
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-[72px] items-start w-full">
 
