@@ -11,15 +11,16 @@ const stats = [
 
 export default function Testimonial() {
   return (
-    <section className="bg-[#EBF5FF] py-12">
-      <div className="max-w-[1200px] mx-auto px-6">
+    <section className="bg-[#EBF5FF] py-[96px]">
+      <div className="max-w-[1400px] mx-auto flex flex-col  gap-[64px] px-6 lg:px-[140px] ">
         
         {/* Top row — quote left, stats right */}
-        <div className="flex flex-col md:flex-row justify-between items-start gap-12 lg:gap-16">
+        <div className="flex flex-col  justify-between items-start gap-12 lg:gap-[64px] ">
           
           {/* Left — quote block */}
           <div className="flex flex-col gap-6 max-w-[540px]">
             {/* Logo */}
+              <div className=" flex flex-col gap-10 items-start">
             <div className="flex items-center h-8 relative w-[120px]">
               <Image
                 src="/illustrations/vianetlogo.png"
@@ -28,7 +29,6 @@ export default function Testimonial() {
                 className="object-contain object-left"
               />
             </div>
-
             {/* Quote */}
             <blockquote className="font-sans text-[18px] leading-[1.5] text-neutral-900 m-0">
               &ldquo;ThirdFactor has become the backbone of our digital
@@ -42,24 +42,17 @@ export default function Testimonial() {
             <p className="font-sans text-[15px] text-neutral-500 m-0">
               Khemraj Bhujel, CEO
             </p>
+            </div>
             
             {/* Read Case Study button */}
-            <div className="mt-2">
-              <Link
-                href="#"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-neutral-300 bg-white text-neutral-900 text-[14px] font-medium font-sans hover:bg-neutral-50 hover:border-neutral-400 transition-colors"
-              >
-                Read Case Study
-              </Link>
-            </div>
           </div>
 
           {/* Right — stat cards */}
-          <div className="flex flex-col gap-3 shrink-0 w-full md:w-[380px]">
+          <div className="flex flex-col shrink-0 w-full  h-[322px] justify-between">
             {stats.map((s, i) => (
               <div
                 key={i}
-                className="bg-white rounded-[12px] px-6 py-4 flex items-center gap-5 shadow-sm"
+                className="bg-white rounded-[12px] px-6 py-5 flex items-center gap-5 "
               >
                 <span className="font-sans font-medium text-[28px] tracking-tight text-neutral-900 shrink-0">
                   {s.value}
@@ -71,10 +64,20 @@ export default function Testimonial() {
             ))}
           </div>
         </div>
+            <div className="">
+              <Link
+                href="#"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-neutral-300 bg-white text-neutral-900 text-[14px] font-medium font-sans hover:bg-neutral-50 hover:border-neutral-400 transition-colors"
+              >
+                Read Case Study
+              </Link>
+            </div>
 
         {/* Bottom separator with arrow */}
-        <div className="mt-8 border-t border-[#c7d2e0] pt-4 flex justify-end">
-          <ArrowRight size={20} className="text-neutral-700" />
+        <div className="w-full h-full flex items-center gap-[32px]">
+          <div className="line w-full h-px bg-[#0000003D]"/>
+          <div className="p-2 bg-white  rounded-full cursor-pointer">
+            <ArrowRight size={20} className="text-black" /></div>
         </div>
         
       </div>

@@ -37,10 +37,10 @@ export default function Home() {
       <main>
         <Hero />
         <FeaturesSection />
-        {/* <TechIntegration /> */}
-        {/* <APISection /> */}
-        {/* <UserExperience /> */}
-        {/* <AutomationSection /> */}
+        <TechIntegration />
+        <APISection />
+        <UserExperience />
+        <AutomationSection />
         <Testimonial />
         <FAQ />
         <CTABanner />

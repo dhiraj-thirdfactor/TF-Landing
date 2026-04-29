@@ -18,12 +18,6 @@ const items = [
       "Pre-built, embeddable UI components for face capture, document scan, and consent flow. Drop into any web or mobile app with a single import.",
   },
   {
-    id: "webhook",
-    label: "Webhooks & Real-Time Events",
-    content:
-      "Subscribe to session lifecycle events via signed webhooks. Supports retries, dead-letter queues, and per-event filtering.",
-  },
-  {
     id: "integration",
     label: "Integration Timeline",
     content:
@@ -35,8 +29,8 @@ export default function APISection() {
   const [openId, setOpenId] = useState<string | null>("rest");
 
   return (
-    <section  className="bg-white py-16 md:py-20 border-t border-neutral-200">
-      <div className="max-w-[1441px] mx-auto px-6 md:px-[140px]">
+    <section  className="bg-white py-16 lg:py-20 ">
+      <div className="max-w-[1440px] mx-auto px-6 lg:px-[140px]">
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-[72px] items-start w-full">
 
        
@@ -44,11 +38,10 @@ export default function APISection() {
           {/* ── Right: copy + accordion ─────────── */}
           <div className="w-full  flex flex-col gap-8 shrink-0">
             {/* Heading */}
-            <div className="flex w-full items-center justify-between">
+            <div className="flex w-full md:flex-row flex-col items-start md:items-center justify-between">
          
-              <h2 className="font-sans font-normal text-[32px] md:text-[40px] leading-[1.2] tracking-[-2px] text-[#00274A] mb-4">
-                Build anything with
-                <br className="hidden md:block" /> a powerful host of APIs
+              <h2 className=" font-normal text-[24px] md:text-[40px] leading-[130%] md:leading-[1.2] tracking-[-1px] text-[#101828] mb-4 md:max-w-full ">
+                Build anything with <br  className="md:hidden"/> a powerful host of APIs
               </h2>
          
 
@@ -61,9 +54,9 @@ export default function APISection() {
               <ChevronRight size={16} />
             </Link>
               </div>
-              <div className="w-full flex justify-between gap-10">
+              <div className="w-full flex justify-between flex-col md:flex-row items-start md:items-center gap-[32px] md:gap-[48px] lg:gap-[72px]">
                 <div className="img ">
-                 <div className="w-full lg:w-[575px] h-[300px] sm:h-[450px] lg:h-[559px] overflow-hidden shrink-0  relative flex items-center justify-center">
+                 <div className=" w-[330px] h-[350px] lg:w-[575px]  lg:h-[559px] overflow-hidden shrink-0  relative flex items-center justify-center">
             <Image
               src="/illustrations/apis.png"
               alt="ThirdFactor API infrastructure"
@@ -75,7 +68,7 @@ export default function APISection() {
           </div>
                 </div>
             {/* Expandable rows */}
-            <div className="flex flex-col w-full mt-2 lg:mt-0 max-w-[558px] divide-y divide-dashed divide-[#D9D9D9]">
+            <div className="flex flex-col w-full md:mt-[16px] md:w-[344px] lg:max-w-[558px] divide-y divide-dashed divide-[#D9D9D9]">
               {items.map((item, idx) => {
                 const isOpen = openId === item.id;
                 return (
@@ -87,7 +80,7 @@ export default function APISection() {
                       onClick={() => setOpenId(isOpen ? null : item.id)}
                       className="w-full h-[69px] flex items-center justify-between gap-4 bg-transparent border-none cursor-pointer p-0 text-left outline-none"
                     >
-                      <span className={`text-[30px]  transition-colors ${isOpen ? "font-medium text-[#00274A]" : "font-normal text-[#404040]"}`}>
+                      <span className={`md:text-[24px] text-[20px] leading-[36px]  lg:text-[30px]   lg:leading-[36px]    transition-colors ${isOpen ? "font-medium text-[#00274A]" : "font-normal text-[#404040]"}`}>
                         {item.label}
                       </span>
                       <ChevronDown

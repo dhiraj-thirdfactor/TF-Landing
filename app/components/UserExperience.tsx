@@ -9,10 +9,6 @@ const flows = [
     label: "Biometric Authentication",
     items: [
       {
-        title: "Passive liveness — no user action needed",
-        desc: "Our AI confirms presence in the background. No head turns, no blinking prompts, no frustrating retries.",
-      },
-      {
         title: "Spoof-proof at every attack class",
         desc: "Blocks printed photos, screen replays, 3D masks, and injection attacks — certified to ISO 30107-3 PAD Level 2.",
       },
@@ -76,15 +72,15 @@ export default function UserExperience() {
   }, []);
 
   return (
-    <section className="bg-[#FAE8FF] py-16 md:py-20 border-t border-neutral-200 overflow-hidden">
-      <div className="max-w-[1441px] mx-auto px-6 md:px-[140px]">
+    <section className="bg-[#FAE8FF] py-16 lg:py-20  overflow-hidden">
+      <div className="max-w-[1441px] mx-auto px-6 lg:px-[140px]">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-[72px] items-start w-full">
 
           {/* ── Left ─────────────── */}
           <div className="w-full lg:w-[485px] min-h-[auto] lg:h-[771px] flex flex-col justify-between shrink-0 gap-8 lg:gap-0">
             {/* Heading */}
             <div className="flex flex-col gap-10">
-            <h2 className=" text-[32px] md:text-[40px] leading-[1.2] tracking-[-1.2px] text-[#00274A] m-0">
+            <h2 className=" text-[24px] md:text-[32px] lg:text-[40px] leading-[1.2] tracking-[-1.2px] text-[#000000] ">
               What your users see
             </h2>
 
@@ -92,7 +88,7 @@ export default function UserExperience() {
             <div ref={dropRef} className="relative w-full">
               <button
                 onClick={() => setOpen(!open)}
-                className="w-full h-[60px] md:h-[71px] flex items-center justify-between px-6 md:px-[32px] rounded-[100px] border border-[#E5E5E5] bg-white cursor-pointer font-sans text-[14px] md:text-[15px] font-medium text-[#00274A] transition-colors hover:bg-[#FAFAFA] outline-none"
+                className="w-full h-[60px] md:h-[71px] flex items-center justify-between px-6 md:px-[32px] rounded-[100px]  bg-white cursor-pointer font-sans text-[14px] md:text-[15px] font-medium text-[#00274A] transition-colors hover:bg-[#FAFAFA] outline-none"
               >
                 {selected.label}
                 <ChevronDown
@@ -127,13 +123,13 @@ export default function UserExperience() {
             </div>
 
             {/* Text block */}
-            <div className="w-full flex flex-col gap-6 md:gap-[40px] divide-amber-50 divide-y-2 ">
+            <div className="w-full flex flex-col gap-6 md:gap-[40px] ">
               {selected.items.map((item, i) => (
-                <div key={i} className="flex flex-col gap-2">
-                  <p className="font-sans font-medium text-[15px] leading-[1.4] text-[#00274A] m-0">
+                <div key={i} className="flex flex-col  py-8 border-b border-[#00000066]">
+                  <p className="font-sans font-medium text-[18px] md:text-[20px] leading-[1.4] text-[#000000] m-0">
                     {item.title}
                   </p>
-                  <p className="font-sans font-normal text-[14px] leading-[1.6] text-[#525252] m-0">
+                  <p className="font-sans font-normal text-[16px] leading-[1.6] text-[#000000] m-0">
                     {item.desc}
                   </p>
                 </div>

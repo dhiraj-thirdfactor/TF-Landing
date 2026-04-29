@@ -84,20 +84,20 @@ export default function TechIntegration() {
   const tab = tabs.find((t) => t.id === active)!;
 
   return (
-    <section className="bg-white py-16 md:py-20 border-t border-neutral-200 overflow-hidden">
-      <div className="max-w-[1441px] mx-auto px-6 md:px-[140px] flex flex-col lg:gap-10 gap-6">
+    <section className="bg-white py-16 md:py-20 border-t border-neutral-200 overflow-hidden md:block hidden">
+      <div className="max-w-[1440px] mx-auto lg:px-[140px] md:px-[34px]   flex flex-col lg:gap-10 gap-6">
         {/* ── Section header ─────────────────────────────── */}
         <div className="">
-          <h2 className="font-sans font-normal text-[32px] md:text-[48px] leading-[1.15] tracking-[-0.025em] text-[#000000] mb-3">
+          <h2 className="font-sans font-normal md:text-[36px] lg:text-[48px] leading-[1.15] tracking-[-0.025em] text-[#000000] mb-3">
             Technical Integration Made Simple
           </h2>
-          <p className="font-sans font-normal text-[16px] leading-[1.5] text-[#000000] m-0">
+          <p className="     font-normal text-[16px] leading-[1.5] text-[#000000] m-0">
             Flexible APIs, SDKs, and fast implementation
           </p>
         </div>
 
         {/* ── Tab bar ── */}
-        <div className="flex flex-row lg:flex-row w-full gap-2 lg:gap-3 overflow-x-auto scrollbar-hidden pb-4 lg:pb-0">
+        <div className="flex  w-full gap-2 lg:gap-3 overflow-x-auto scrollbar-hidden pb-4 lg:pb-0">
           {tabs.map((t) => (
             <button
               key={t.id}
@@ -121,11 +121,11 @@ export default function TechIntegration() {
         </div>
 
         {/* ── Two columns ────────────────────────────────── */}
-        <div className="flex flex-col lg:flex-row gap-10 lg:gap-[40px] items-start w-full  w-[500px] h-[678px]  ">
+        <div className="flex  gap-10 lg:gap-[40px] md:items-center lg:items-start  lg:h-[678px]  ">
           
           {/* Left */}
-          <div className="w-full lg:w-[495px] shrink-0 flex flex-col gap-4 lg:gap-[17px] items-start lg:justify-center  lg:h-full ">
-            <h3 className="font-sans font-normal text-[24px] md:text-[32px] leading-[1.25] tracking-[-0.015em] text-[#00274A] m-0">
+          <div className="md:w-[324px] lg:w-[495px] shrink-0 flex flex-col gap-4 lg:gap-[17px] items-start lg:justify-center  lg:h-full ">
+            <h3 className="font-sans font-normal md:text-[24px] lg:text-[32px] leading-[1.25] tracking-[-0.015em] text-[#00274A] m-0">
               {tab.heading}
             </h3>
 
@@ -135,20 +135,20 @@ export default function TechIntegration() {
 
             <Link
               href="#"
-              className="inline-flex items-center justify-center gap-2 h-[60px] px-7 mt-2 md:mt-4 rounded-[100px] bg-[#F2F2F7] hover:bg-[#0069C2] hover:text-white transition-all duration-300 text-black text-[15px] font-medium font-sans transition-colors w-full sm:w-auto sm:self-start"
+              className="inline-flex items-center justify-center gap-2 h-[60px] px-7 mt-2 md:mt-4 rounded-[100px] bg-[#F2F2F7] hover:bg-[#0069C2] hover:text-white transition-all duration-300 text-black lg:text-[14px] md:text-[12px] font-medium font-sans transition-colors w-full sm:w-auto sm:self-start"
             >
               Experience Center
             </Link>
           </div>
 
           {/* Right */}
-          <div className="w-full h-full ">
+          <div className="lg:w-full lg:h-full md:w-[336px] md:h-[364px] ">
             <Image
               src={tab.img}
               alt="Integration interface"
               width={625}
               height={678}
-              className="w-[625px] h-full"
+              className="lg:w-[625px]  h-full"
               style={{ objectFit: "cover", padding: "" }}
               priority
             />

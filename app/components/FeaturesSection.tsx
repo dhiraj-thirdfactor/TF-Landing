@@ -43,20 +43,19 @@ const cards = [
 export default function FeaturesSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const stripRef = useRef<HTMLDivElement>(null);
-  const mm = gsap.matchMedia();
+
  useGSAP(() => {
   const mm = gsap.matchMedia();
 
-  mm.add("(min-width: 1024px)", () => {
+  const setup = (startValue:string, increment:number) => {
     const container = containerRef.current;
     const strip = stripRef.current;
-
     if (!container || !strip) return;
 
     let scrollLength = 0;
 
     const calculate = () => {
-      scrollLength = strip.scrollWidth * 0.4;
+      scrollLength = strip.scrollWidth * increment;
     };
 
     calculate();
@@ -66,11 +65,12 @@ export default function FeaturesSection() {
       ease: "none",
       scrollTrigger: {
         trigger: container,
-        start: "top top",
+        start: startValue, // 👈 dynamic per breakpoint
         end: () => `+=${strip.scrollWidth}`,
         scrub: true,
         pin: container,
         invalidateOnRefresh: true,
+        // markers: true,
       },
     });
 
@@ -80,42 +80,52 @@ export default function FeaturesSection() {
       tween.kill();
       ScrollTrigger.removeEventListener("refreshInit", calculate);
     };
+  };
+
+  // 💻 Desktop
+  mm.add("(min-width: 1024px)", () => {
+    return setup("top top", 0.4);
   });
 
-  return () => mm.revert(); // 🔥 important cleanup
+  // 📱 Tablet
+  mm.add("(min-width: 768px) and (max-width: 1023px)", () => {
+    return setup("30% top", 0.5);
+  });
+
+  return () => mm.revert();
 }, []);
 
   return (
-    <section suppressHydrationWarning ref={containerRef} className=" min-h-screen w-full flex justify-center items-center bg-white border-t border-neutral-200 overflow-hidden xl:py-20">
-      <div className="max-w-[1440px] mx-auto">
+    <section suppressHydrationWarning ref={containerRef} className=" min-h-screen w-full flex md:py-[104px] lg:py-[120px] py-[72px] bg-white border-t border-neutral-200 overflow-hidden ">
+      <div className="max-w-[1440px] mx-auto flex flex-col lg:gap-[54px]">
 
         {/* Header */}
-        <div className="px-6 md:px-[140px] flex flex-col gap-4 mb-13.5">
-          <div className="flex">
-            <h2 className="text-[32px] md:text-[40px] text-[#00274A] lg:max-w-[80%]">
+        <div className="px-4  md:px-8  lg:px-[140px] flex lg:items-center items-start lg:flex-row flex-col lg:gap-4 md:gap-6 gap-8 w-full">
+          <div className="flex flex-col items-start ">
+            <h2 className="text-[24px] font-semibold md:font-normal leading-[130%] lg:leading-[48px] md:leading-[48px] text-[#00274A] lg:max-w-[80%] md:max-w-[703px]">
               Verify users, read documents, and manage compliance from a single dashboard
             </h2>
-
-            <a className="ml-4 h-[44px] px-6 flex items-center rounded-full cursor-pointer hover:bg-[#0069C2] hover:text-white transition-all duration-300 ease-in-out  ">
-              Book a Demo
-            </a>
-          </div>
 
           <p className="text-[16px]">
             One Platform for Every Identity Workflow
           </p>
+          </div>
+
+            <a className=" h-[44px] px-6 flex items-center rounded-full cursor-pointer  bg-[#007BE5] text-white hover:bg-[#0069C2] text-nowrap hover:text-white transition-all duration-300 ease-in-out  ">
+              Book a Demo
+            </a>
         </div>
 
         {/* Horizontal Section */}
-        <div  className="horiz-gallery-wrapper px-6 md:px-[140px] overflow-x-auto scrollbar-hidden lg:overflow-hidden"  style={{ WebkitOverflowScrolling: "touch" }}>
+        <div  className="horiz-gallery-wrapper px-6 md:px-[140px] md:block flex  overflow-hidden md:mt-[54px] lg:mt-0 mt-[32px]"  style={{ WebkitOverflowScrolling: "touch" }}>
           <div
             ref={stripRef}
-            className="horiz-gallery-strip flex gap-6 md:gap-[36px] w-max pb-4 will-change-transform"
+            className="horiz-gallery-strip flex flex-col md:flex-row gap-6 md:gap-[36px] w-max pb-4 will-change-transform"
           >
             {cards.map((c, i) => (
               <div
                 key={i}
-                className="w-[300px] md:w-[370px] h-[420px] md:h-[452px] rounded-2xl border flex flex-col gap-6 bg-white shrink-0 justify-between px-8 pt-8 pb-13"
+                className="w-[330px] md:w-[370px] h-[420px] md:h-[452px] rounded-2xl border border-[#D7D7D7] flex flex-col gap-6 bg-white shrink-0 justify-between px-8 pt-8 pb-13"
               >
                 <div className="w-[140px] h-[180px] relative self-center">
                   <Image
@@ -126,8 +136,8 @@ export default function FeaturesSection() {
                   />
                 </div>
 
-                <div>
-                  <p className="font-semibold">{c.title}</p>
+                <div className="flex flex-col gap-3">
+                  <p className="font-semibold text-[18px] leading-[140%] text-neutral-900">{c.title}</p>
                   <p className="text-sm text-gray-500">{c.desc}</p>
                 </div>
               </div>

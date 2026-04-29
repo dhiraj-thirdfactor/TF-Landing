@@ -14,12 +14,12 @@ const all = [...logos, ...logos, ...logos];
 
 export default function ClientLogos() {
   return (
-    <div className="w-full border-t border-neutral-200 overflow-hidden bg-white py-6 md:py-8">
+    <div className="w-full overflow-hidden bg-white py-6 md:py-8">
       
-      <div className="max-w-[1440px] mx-auto flex flex-col md:flex-row items-center gap-4 md:gap-12 px-4 md:px-10">
+      <div className="max-w-[1440px] mx-auto flex flex-col lg:flex-row items-center gap-4 md:gap-12 px-4 md:px-10">
         
         {/* Label */}
-        <p className="hidden md:block shrink-0 text-sm text-[#1a1a1a]/50 whitespace-nowrap">
+        <p className=" shrink-0 text-sm text-[#1a1a1a]/50 whitespace-nowrap">
           Trusted by teams at:
         </p>
 
