@@ -5,6 +5,8 @@ import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import BookADemoButton from "../ui/components/BookADemoButton";
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -102,18 +104,16 @@ export default function FeaturesSection() {
         {/* Header */}
         <div className="px-4  md:px-8  lg:px-[140px] flex lg:items-center items-start lg:flex-row flex-col lg:gap-4 md:gap-6 gap-8 w-full">
           <div className="flex flex-col items-start ">
-            <h2 className="text-[24px] font-semibold md:font-normal leading-[130%] lg:leading-[48px] md:leading-[48px] text-[#00274A] lg:max-w-[80%] md:max-w-[703px]">
+            <h2 className="text-[24px] md:text-[40px] font-semibold md:font-normal leading-[130%] lg:leading-[48px] md:leading-[48px] text-[#00274A] lg:max-w-[80%] md:max-w-[703px] ">
               Verify users, read documents, and manage compliance from a single dashboard
             </h2>
 
-          <p className="text-[16px]">
+          <p className="text-body-m mt-[16px]">
             One Platform for Every Identity Workflow
           </p>
           </div>
 
-            <a className=" h-[44px] px-6 flex items-center rounded-full cursor-pointer  bg-[#007BE5] text-white hover:bg-[#0069C2] text-nowrap hover:text-white transition-all duration-300 ease-in-out  ">
-              Book a Demo
-            </a>
+            <BookADemoButton variant="secondary" />
         </div>
 
         {/* Horizontal Section */}

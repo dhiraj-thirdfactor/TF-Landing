@@ -3,6 +3,8 @@ import Link from "next/link";
 import HeroCard from "./HeroCard";
 import ClientLogos from "./ClientLogos";
 import { GeistPixelCircle } from "geist/font/pixel";
+import Button from "../ui/components/Button";
+import BookADemoButton from "../ui/components/BookADemoButton";
 
 export default function Hero() {
   return (
@@ -23,7 +25,7 @@ export default function Hero() {
           </h1>
 
           {/* Subtext */}
-          <p className="font-normal text-body-l text-[16px] leading-[140%] md:text-[20px] text-[#272727] lg:max-w-[709px] font-geist-sans text-center px-4 sm:px-0">
+          <p className="text-[#272727] lg:max-w-[709px]  text-center px-4 sm:px-0 text-body-s md:text-body-l">
             Full-stack platform for fast, secure, and compliant onboarding.
             Switch providers in a day. Deploy on-premise and maintain zero data
             retention.
@@ -31,18 +33,8 @@ export default function Hero() {
           <div className="flex flex-col gap-4">
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full px-6 sm:px-0 sm:w-auto">
-              <Link
-                href="/book-demo"
-                className="inline-flex items-center justify-center gap-2 w-full sm:w-[149px] h-[44px] px-6 text-[14px] font-medium text-white bg-[#007BE5] rounded-[100px] hover:bg-[#0069C2] transition-colors whitespace-nowrap shrink-0"
-              >
-                Book a Demo
-              </Link>
-              <Link
-                href="#"
-                className="inline-flex items-center justify-center gap-2 w-full sm:w-[188px] h-[44px] px-6 text-[14px] font-medium text-[#222222] bg-transparent border border-[#E5E5E5] rounded-[100px] hover:bg-[#FAFAFA] transition-colors whitespace-nowrap shrink-0"
-              >
-                Experience Center
-              </Link>
+             <BookADemoButton variant="primary" text="Book a Demo" href="/demo" />
+             <BookADemoButton variant="secondary" text="Experience Center" href="/experience" />
             </div>
 
             {/* Trust badges */}

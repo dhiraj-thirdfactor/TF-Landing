@@ -103,23 +103,22 @@ export default function AboutPage() {
         </section>
 
         {/* Hero Text */}
-        <section className="px-6 py-16">
-          <div className="max-w-[1200px] mx-auto">
+        <section className=" py-16 ">
+          <div className="max-w-[1400px] md:px-6 px-4 lg:px-[140px] mx-auto">
             <h1 
-              className="text-[40px] md:text-[56px] text-[#00274A] tracking-[-0.02em] leading-[1.1] mb-12 max-w-[800px]"
-              style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontWeight: 400 }}
+              className="text-[40px] md:text-[56px] text-[#000000] tracking-[-0.02em] leading-[1.1] mb-10 max-w-[800px]"
+              style={{  fontWeight: 400 }}
             >
               Experience Instant,<br />
               Trusted <span className="font-pixel tracking-normal font-normal">Identity Verification</span>
             </h1>
             
-            <div className="grid md:grid-cols-2 gap-12 md:gap-24">
-              <p className="text-[20px] md:text-[24px] text-[#00274A] leading-[1.4]" style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontWeight: 400 }}>
-                The Trust Layer for the digital world.<br />
-                Authentic, Accurate and friction-free.
+            <div className=" flex justify-between w-full flex-wrap md:gap-0 gap-4">
+              <p className="text-[20px] md:text-[24px] md:max-w-[426px]  text-[#000000] leading-[130%]" style={{  fontWeight: 400 }}>
+                Third Factor exists to make identity verification effortless, secure, and human at scale.
               </p>
-              <p className="text-[16px] text-[#525252] leading-[1.6]" style={{ fontFamily: "var(--font-geist-sans, system-ui)" }}>
-                We are building an identity verification and KYC platform that replaces friction with confidence and helps organizations empower users, not gatekeep them.
+              <p className="text-[16px] text-[#525252] leading-[1.6] max-w-[535px]" style={{ }}>
+               As digital interactions grow, proving identity often becomes slow and frustrating. We built Third Factor to remove friction, so organizations can onboard users, prevent fraud, and ensure compliance instantly, without compromising privacy.
               </p>
             </div>
           </div>
@@ -140,26 +139,30 @@ export default function AboutPage() {
               />
             </div>
             
-            <h2 className="text-[28px] md:text-[36px] text-[#00274A] tracking-[-0.02em] mb-6" style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontWeight: 400 }}>
-              Humans at the Center of<br />Every Digital Interaction
+            <h2 className="text-[28px] md:text-[40px] leading-[100%]  tracking-[-2px]  text-[#0D0D0D]  mb-6" >
+              Humans at the Center of 
+              <br />
+              <span className={` font-pixel`}>
+              Every Digital Interaction
+              </span>
             </h2>
-            <p className="text-[16px] text-[#525252] leading-relaxed max-w-[600px] mx-auto" style={{ fontFamily: "var(--font-geist-sans, system-ui)" }}>
-              We believe that the future of identity is seamless, secure, and user-centric. Our mission is to build the trust layer for the digital world, empowering both organizations and individuals.
+            <p className="text-[16px] text-[#525252] leading-relaxed max-w-[600px] mx-auto">
+              Our AI-powered platform combines facial recognition, dual liveness detection, and intelligent document processing. We verify users quickly and accurately, reducing multi-day processes to seconds.
             </p>
           </div>
         </section>
 
         {/* Leadership Team */}
-        <section className="py-24 px-6">
+        <section className="md:pt-[70px] pt-[40px] px-6">
           <div className="max-w-[1200px] mx-auto">
-            <h2 className="text-[32px] text-[#00274A] tracking-[-0.02em] mb-12" style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontWeight: 400 }}>
+            <h2 className="text-[32px] text-[#000000] tracking-[-0.02em] mb-12" style={{  fontWeight: 400 }}>
               Leadership Team
             </h2>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {team.map((member) => (
                 <div key={member.name} className="flex flex-col group cursor-pointer">
-                  <div className="w-full aspect-[4/5] bg-[#F5F5F5] mb-6 overflow-hidden relative rounded-xl shadow-sm border border-[#E5E5E5]">
+                  <div className="w-full aspect-[4/5] bg-[#F5F5F5] mb-6 overflow-hidden relative">
                     <Image 
                       src={member.img} 
                       alt={member.name}
@@ -167,9 +170,9 @@ export default function AboutPage() {
                       className="object-cover transition-all duration-500 ease-in-out group-hover:scale-105"
                     />
                   </div>
-                  <h3 className="text-[18px] text-[#00274A] mb-1 tracking-tight" style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontWeight: 500 }}>{member.name}</h3>
-                  <p className="text-[14px] text-[#007BE5] mb-3 font-medium">{member.role}</p>
-                  <p className="text-[14px] text-[#525252] leading-relaxed">{member.desc}</p>
+                  <h3 className="text-[20px] text-[#000000] mb-1 tracking-tight" style={{  fontWeight: 500 }}>{member.name}</h3>
+                  <p className="text-[16px] leading-[130%] text-[#000000] mb-3 ">{member.role}</p>
+                  <p className="text-[14px] leading-[130%] text-[#000000] ">{member.desc}</p>
                 </div>
               ))}
             </div>
@@ -179,7 +182,7 @@ export default function AboutPage() {
         {/* Our Story Timeline */}
         <section className="py-24 px-6 bg-white overflow-hidden">
           <div className="max-w-[1000px] mx-auto">
-            <h2 className="text-[32px] text-[#00274A] tracking-[-0.02em] text-center mb-24" style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontWeight: 400 }}>
+            <h2 className="text-[32px] md:text-[40px] text-[#000000] tracking-[-0.02em] text-center mb-24" style={{  fontWeight: 400 }}>
               Our Story
             </h2>
             
@@ -191,17 +194,17 @@ export default function AboutPage() {
                 {storyMilestones.map((milestone, idx) => {
                   const isEven = idx % 2 === 0;
                   return (
-                    <div key={milestone.title} className={`flex flex-col md:flex-row items-center gap-12 md:gap-24 ${isEven ? '' : 'md:flex-row-reverse'}`}>
+                    <div key={milestone.title} className={`flex flex-col  md:flex-row items-center gap-12 md:gap-24 ${isEven ? '' : 'md:flex-row-reverse'}`}>
                       
                       {/* Text Content */}
-                      <div className={`flex-1 ${isEven ? 'md:text-right' : 'md:text-left'}`}>
-                        <span className="text-[12px] font-semibold tracking-wider text-[#A3A3A3] uppercase mb-2 block">
+                      <div className={`flex-1 ${isEven ? 'md:text-left' : 'md:text-left'}`}>
+                        <span className="text-[20px] font-pixel  text-[#000000]  mb-2 block">
                           {milestone.year}
                         </span>
-                        <h3 className="text-[24px] text-[#00274A] tracking-tight mb-4" style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontWeight: 400 }}>
+                        <h3 className="text-[24px] text-[#000000] " style={{  fontWeight: 400 }}>
                           {milestone.title}
                         </h3>
-                        <p className="text-[16px] text-[#525252] leading-relaxed">
+                        <p className="text-[16px] text-[#000000]">
                           {milestone.desc}
                         </p>
                       </div>
@@ -224,30 +227,10 @@ export default function AboutPage() {
 
         {/* Mission & Vision Deep Blue Banner */}
         <section className="bg-[#2563EB] text-white py-24 px-6 relative overflow-hidden">
-          {/* Subtle background pattern */}
-          <div className="absolute inset-0 opacity-10">
-            <div className="w-full h-full grid grid-cols-12 grid-rows-6 gap-2 mix-blend-overlay">
-              {Array.from({ length: 72 }).map((_, i) => (
-                <div key={i} className={`bg-white rounded-sm ${(i % 7 === 0 || i % 11 === 0) ? 'opacity-100' : 'opacity-0'}`}></div>
-              ))}
-            </div>
-          </div>
-
-          <div className="max-w-[1200px] mx-auto relative z-10 grid md:grid-cols-2 gap-16 md:gap-24">
-            <div>
-              <h3 className="text-[14px] font-semibold tracking-widest uppercase text-blue-200 mb-6">Our Mission</h3>
-              <p className="text-[24px] md:text-[32px] leading-[1.4] tracking-[-0.01em]" style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontWeight: 400 }}>
-                Prevent fraud and ensure data sovereignty. Bridge the gap between proving you exist and being allowed to act. Help people prove identity and operate with trust across digital systems. Keep humans at the center of every digital interaction.
-              </p>
-            </div>
-            
-            <div className="flex flex-col justify-end">
-              <h3 className="text-[14px] font-semibold tracking-widest uppercase text-blue-200 mb-6 md:text-right">Our Vision</h3>
-              <p className="text-[20px] md:text-[24px] leading-[1.5] text-blue-50 md:text-right" style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontWeight: 400 }}>
-                Become the trust layer for emerging markets. Deliver instant, predictable identity verification. Make proving "I am" effortless. Replace friction with confidence and help organizations empower users, not gatekeep them.
-              </p>
-            </div>
-          </div>
+         <div className="flex max-w-[1160px] flex-col gap-[36px]">
+          <h3 className=" text-[32px] leading-[130%]">Our Mission</h3>
+          <p className="text-[40px] leading-[130%]">Prevent fraud and ensure data sovereignty. Bridge the gap between proving you exist and being allowed to act. Help people prove identity and operate with trust across digital systems. Keep humans at the center of every digital interaction.</p>
+         </div>
         </section>
 
         {/* Testimonial Section */}

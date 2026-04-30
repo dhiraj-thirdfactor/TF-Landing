@@ -15,10 +15,10 @@ export default function Testimonial() {
       <div className="max-w-[1400px] mx-auto flex flex-col  gap-[64px] px-6 lg:px-[140px] ">
         
         {/* Top row — quote left, stats right */}
-        <div className="flex flex-col  justify-between items-start gap-12 lg:gap-[64px] ">
+        <div className="flex flex-col md:flex-row  justify-between items-start gap-8 md:gap-12 lg:gap-[64px] ">
           
           {/* Left — quote block */}
-          <div className="flex flex-col gap-6 max-w-[540px]">
+          <div className="flex flex-col  gap-6 max-w-[540px]">
             {/* Logo */}
               <div className=" flex flex-col gap-10 items-start">
             <div className="flex items-center h-8 relative w-[120px]">
@@ -48,16 +48,16 @@ export default function Testimonial() {
           </div>
 
           {/* Right — stat cards */}
-          <div className="flex flex-col shrink-0 w-full  h-[322px] justify-between">
+          <div className="flex flex-col  w-full  md:h-[322px]  gap-[16px] justify-between">
             {stats.map((s, i) => (
               <div
                 key={i}
-                className="bg-white rounded-[12px] px-6 py-5 flex items-center gap-5 "
+                className="bg-white rounded-[12px] px-6 py-5 flex flex-col items-start md:flex-row md:items-center gap-6 md:gap-5 "
               >
-                <span className="font-sans font-medium text-[28px] tracking-tight text-neutral-900 shrink-0">
+                <span className="font-medium text-[28px] tracking-tight text-neutral-900 shrink-0 ">
                   {s.value}
                 </span>
-                <span className="font-sans text-[14px] leading-tight text-neutral-500">
+                <span className=" text-[16px] md:text-[20px] leading-tight text-[#000000] max-w-[250px] md:max-w-full">
                   {s.label}
                 </span>
               </div>

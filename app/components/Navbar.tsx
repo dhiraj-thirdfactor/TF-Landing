@@ -2,7 +2,9 @@
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+
 import { ChevronDown, Menu, X, ShieldCheck, FileText, Activity, Key, PieChart, Settings, Database, ArrowRight } from "lucide-react";
+import BookADemoButton from "../ui/components/BookADemoButton";
 
 const navLinks = [
   { label: "Products", href: "#product", dropdown: true },
@@ -38,7 +40,7 @@ function RegionDropdown() {
       {/* NP trigger — with border */}
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-neutral-200 hover:bg-neutral-50 transition-colors duration-150"
+        className="flex items-center gap-1.5 px-4 py-3 rounded-full border border-neutral-200 hover:bg-neutral-50 transition-colors duration-150 h-[44px]"
         aria-expanded={open}
       >
         <span className="text-base leading-none">{selected.flag}</span>
@@ -205,12 +207,8 @@ export default function Navbar() {
         {/* Right side */}
         <div className="hidden lg:flex items-center gap-2">
           <RegionDropdown />
-          <Link
-            href="/book-demo"
-            className="px-4 py-1.5 text-sm font-medium text-white rounded-full bg-[#007BE5] hover:bg-[#0069C2] transition-colors duration-150"
-          >
-            Book a Demo
-          </Link>
+          <BookADemoButton variant="primary" text="Book a Demo" href="/demo" />
+        
         </div>
 
         {/* Hamburger — mobile (spans grid properly) */}

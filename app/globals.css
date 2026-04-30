@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-:root {
+@theme inline {
   --background: #ffffff;
   --foreground: #00274A;
   --tf-blue: #007BE5;
@@ -10,9 +10,59 @@
   --tf-sky: #BDE5FF;
   --tf-lilac: #E1BCFF;
   --tf-charcoal: #222222;
-}
 
-@theme inline {
+  /* --- DISPLAY --- */
+  --text-display-hero-desktop:64px;
+  --text-display-hero-desktop-lh:110%;
+  --text-display-hero-desktop-ls:-3px;
+  
+
+  /* Desktop */
+  --text-d1-desktop: 56px;
+  --text-d1-desktop-lh: 110%;
+  --text-d1-desktop-ls: -3px;
+
+  /* Tablet */
+  --text-d1-tablet: 40px;
+  --text-d1-tablet-lh: 110%;
+  --text-d1-tablet-ls: -2px;
+
+  /* Mobile */
+  --text-d1-mobile: 32px;
+  --text-d1-mobile-lh: 120%;
+  --text-d1-mobile-ls: -1.5px;
+
+  /* --- HEADINGS (H1-H4) --- */
+  /* Desktop H1 */
+  --text-h1: 32px;
+  --text-h1-lh: 120%;
+  --text-h1-ls: -1px;
+  --weight-semibold: 600;
+
+  /* --- BODY --- */
+  --text-body-l: 18px;
+  --text-body-l-lh: 150%;
+  --text-body-l-ls: -0.3px;
+
+  --text-body-m: 16px;
+  --text-body-m-lh: 150%;
+  --text-body-m-ls: -0.31px;
+
+  --text-body-s: 14px;
+  --text-body-s-lh: 150%;
+  --text-body-s-ls: -0.15px;
+
+  /* --- LABELS & BUTTONS --- */
+  --text-label: 14px;
+  --text-label-lh: 150%;
+  --text-label-ls: 0px;
+
+  /* --- CAPTION --- */
+  --text-caption: 12px;
+  --text-caption-lh: 140%;
+  --text-caption-ls: 0px;
+
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -26,6 +76,7 @@
   --color-tf-lilac: var(--tf-lilac);
   --color-tf-charcoal: var(--tf-charcoal);
 }
+
 
 * {
   box-sizing: border-box;
