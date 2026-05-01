@@ -68,191 +68,201 @@ export default async function ComparePage({ params }: { params: Promise<{ compet
       <TopBar />
       <Navbar />
 
-      <main>
-        {/* Hero Section */}
-        <section className="px-6 py-20 max-w-[1200px] mx-auto grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h1 
-              className="text-[40px] md:text-[56px] text-[#00274A] tracking-[-0.02em] leading-[1.1] mb-6"
-              style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontWeight: 400 }}
-            >
-              Don't Waste Your Budget<br />
-              on Failed Verifications.
-            </h1>
-            <p className="text-[18px] md:text-[20px] text-[#525252] mb-8 leading-relaxed max-w-[480px]" style={{ fontFamily: "var(--font-geist-sans, system-ui)" }}>
-              Global KYC tools reject valid Nepali IDs because they don't understand the local context. ThirdFactor.ai delivers 99%+ accuracy on local documents at 1/4th the cost.
-            </p>
-            <div className="flex items-center gap-4">
-              <Link 
-                href="/contact" 
-                className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-[#007BE5] text-white text-[15px] font-medium hover:bg-[#0069C2] transition-colors shadow-sm"
-              >
-                Talk to sales
-              </Link>
+     <main>
+
+  {/* HERO */}
+  <section className="px-6 py-16 md:py-20 max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+    <div>
+      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#00274A] tracking-tight leading-tight mb-6">
+        Don't Waste Your Budget on Failed Verifications.
+      </h1>
+
+      <p className="text-base md:text-lg text-gray-600 mb-8 leading-relaxed max-w-xl">
+        Global KYC tools reject valid Nepali IDs because they don't understand
+        the local context. ThirdFactor.ai delivers 99%+ accuracy on local
+        documents at 1/4th the cost.
+      </p>
+
+      <Link
+        href="/contact"
+        className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-[#007BE5] text-white text-sm font-medium hover:bg-blue-600 transition shadow-sm"
+      >
+        Talk to sales
+      </Link>
+    </div>
+
+    <div className="relative w-full aspect-[4/3] flex items-center justify-center">
+      <Image
+        src="/illustrations/vspage.png"
+        alt="Comparison"
+        fill
+        className="object-contain mix-blend-multiply scale-105 md:scale-110"
+      />
+    </div>
+  </section>
+
+  {/* NAV */}
+  <section className="px-6 py-5 border-y border-gray-200 bg-gray-50">
+    <div className="max-w-6xl mx-auto flex flex-wrap gap-6 justify-center">
+      {competitorsList.map((c) => (
+        <Link
+          key={c}
+          href={`/compare/${c}`}
+          className={`text-sm font-medium transition ${
+            competitorId === c
+              ? "text-[#007BE5] border-b-2 border-[#007BE5] pb-1"
+              : "text-gray-400 hover:text-gray-600"
+          }`}
+        >
+          ThirdFactor vs {competitorsData[c].name}
+        </Link>
+      ))}
+    </div>
+  </section>
+
+  {/* TABLE */}
+  <section className="px-6 py-16 md:py-24 max-w-5xl mx-auto">
+    <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+
+      {/* SCROLL WRAPPER (important) */}
+      <div className="overflow-x-auto">
+        <div className="min-w-[600px]">
+
+          {/* HEADER */}
+          <div className="grid grid-cols-3 p-5 border-b bg-gray-50 items-center text-sm font-semibold text-gray-400 uppercase tracking-wide">
+            <div>Features</div>
+
+            <div className="flex justify-center">
+              <Image src="/logo.svg" alt="ThirdFactor" width={120} height={20} />
+            </div>
+
+            <div className="flex justify-center relative h-8">
+              {competitor.logoImage ? (
+                <Image src={competitor.logoImage} alt={competitor.name} fill className="object-contain" />
+              ) : (
+                <span className="text-lg font-bold" style={{ color: competitor.textColor }}>
+                  {competitor.logoText}
+                </span>
+              )}
             </div>
           </div>
-          
-          <div className="relative w-full aspect-[4/3] flex items-center justify-center">
-             <Image src="/illustrations/vspage.png" alt="Infrastructure Comparison" fill className="object-contain mix-blend-multiply scale-110 md:scale-125 md:translate-x-4" />
-          </div>
-        </section>
 
-        {/* Competitor Links Navigation */}
-        <section className="px-6 py-6 border-y border-[#E5E5E5] bg-[#FAFAFA]">
-          <div className="max-w-[1200px] mx-auto flex flex-wrap gap-8 justify-center items-center">
-            {competitorsList.map((c) => (
-              <Link 
-                key={c}
-                href={`/compare/${c}`}
-                className={`text-[15px] font-medium transition-all ${competitorId === c ? "text-[#007BE5] border-b-2 border-[#007BE5] pb-1" : "text-[#A3A3A3] hover:text-[#525252]"}`}
+          {/* BODY */}
+          <div className="flex flex-col">
+            {commonFeatures.map((feat, idx) => (
+              <div
+                key={idx}
+                className={`grid grid-cols-3 px-5 py-4 items-center text-sm ${
+                  idx !== commonFeatures.length - 1 && "border-b"
+                } hover:bg-gray-50`}
               >
-                ThirdFactor vs {competitorsData[c].name}
-              </Link>
+                <div className="text-gray-600 font-medium">{feat.name}</div>
+
+                <div className="flex justify-center">
+                  {feat.us ? (
+                    <Check className="text-[#007BE5]" size={20} />
+                  ) : (
+                    <X className="text-gray-400" size={18} />
+                  )}
+                </div>
+
+                <div className="flex justify-center">
+                  {feat.them ? (
+                    <Check className="text-gray-400" size={18} />
+                  ) : (
+                    <X className="text-gray-300" size={18} />
+                  )}
+                </div>
+              </div>
             ))}
-          </div>
-        </section>
 
-        {/* Comparison Table */}
-        <section className="px-6 py-24 max-w-[1000px] mx-auto">
-          <div className="bg-white rounded-2xl border border-[#E5E5E5] overflow-hidden shadow-sm">
-            
-            {/* Table Header */}
-            <div className="grid grid-cols-[1fr_200px_200px] p-6 border-b border-[#E5E5E5] bg-[#FAFAFA] items-center">
-              <div className="text-[14px] font-semibold text-[#A3A3A3] uppercase tracking-wider">Features</div>
-              
-              {/* ThirdFactor Logo */}
-              <div className="flex items-center justify-center">
-                <Image src="/logo.svg" alt="ThirdFactor.ai" width={140} height={24} className="h-6 w-auto" />
+            {/* EXTRA ROWS */}
+            <div className="grid grid-cols-3 px-5 py-4 border-t bg-gray-50 text-sm items-center">
+              <div className="text-gray-600 font-medium">Implementation Time</div>
+              <div className="text-center text-[#00274A] font-medium bg-blue-50 py-1 rounded-full">
+                Days
               </div>
-              
-              {/* Competitor Logo / Name */}
-              <div className="flex items-center justify-center h-8 relative w-full px-4">
-                {competitor.logoImage ? (
-                  <Image src={competitor.logoImage} alt={competitor.name} fill className="object-contain" />
-                ) : (
-                  <span className="text-[22px] font-bold tracking-tight" style={{ color: competitor.textColor }}>
-                    {competitor.logoText}
-                  </span>
-                )}
-              </div>
+              <div className="text-center text-gray-400">Weeks</div>
             </div>
 
-            {/* Table Body */}
-            <div className="flex flex-col">
-              {commonFeatures.map((feat, idx) => (
-                <div key={idx} className={`grid grid-cols-[1fr_200px_200px] px-6 py-5 items-center hover:bg-neutral-50 transition-colors ${idx !== commonFeatures.length - 1 ? 'border-b border-[#F5F5F5]' : ''}`}>
-                  <div className="text-[15px] text-[#525252] font-medium">{feat.name}</div>
-                  
-                  <div className="flex justify-center">
-                    {feat.us ? <Check className="text-[#007BE5]" size={22} strokeWidth={2.5} /> : <X className="text-[#A3A3A3]" size={20} />}
-                  </div>
-                  
-                  <div className="flex justify-center">
-                    {feat.them ? <Check className="text-[#A3A3A3]" size={20} strokeWidth={2} /> : <X className="text-[#E5E5E5]" size={20} strokeWidth={2} />}
-                  </div>
-                </div>
-              ))}
-              
-              {/* Manual Row - Implementation */}
-              <div className="grid grid-cols-[1fr_200px_200px] px-6 py-5 items-center border-t border-[#E5E5E5] bg-[#FAFAFA]">
-                <div className="text-[15px] text-[#525252] font-medium">Implementation Time</div>
-                <div className="text-[14px] text-[#00274A] text-center font-medium bg-blue-50 py-1.5 rounded-full">Days (Local Support)</div>
-                <div className="text-[14px] text-[#A3A3A3] text-center">Weeks (Global Ticket)</div>
+            <div className="grid grid-cols-3 px-5 py-4 border-t bg-gray-50 text-sm items-center">
+              <div className="text-gray-600 font-medium">Pricing Model</div>
+              <div className="text-center text-[#00274A] font-medium bg-blue-50 py-1 rounded-full">
+                Flat Fee
               </div>
-              
-              {/* Manual Row - Pricing */}
-              <div className="grid grid-cols-[1fr_200px_200px] px-6 py-5 items-center border-t border-[#E5E5E5] bg-[#FAFAFA]">
-                <div className="text-[15px] text-[#525252] font-medium">Pricing Model</div>
-                <div className="text-[14px] text-[#00274A] text-center font-medium bg-blue-50 py-1.5 rounded-full">Flat Fee / Transparent</div>
-                <div className="text-[14px] text-[#A3A3A3] text-center">API Requests + Add-ons</div>
-              </div>
-            </div>
-            
-          </div>
-        </section>
-
-        {/* Benefits Section */}
-        <section className="px-6 pb-24 max-w-[1200px] mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-[32px] text-[#00274A] tracking-[-0.02em] mb-4" style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontWeight: 400 }}>
-              Stop overpaying for lower conversion.
-            </h2>
-            <p className="text-[16px] text-[#525252]">We built the engine that understands emerging market documents.</p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Box 1 */}
-            <div className="bg-[#2563EB] rounded-2xl p-10 text-white overflow-hidden relative shadow-sm">
-              <h3 className="text-[24px] font-medium mb-4 z-10 relative tracking-tight">Guaranteed Accuracy</h3>
-              <p className="text-blue-100 text-[15px] leading-relaxed max-w-[360px] z-10 relative">
-                Our models are specifically trained on diverse demographics and local IDs, ensuring valid users are never wrongly rejected.
-              </p>
-              {/* Abstract element */}
-              <div className="absolute right-[-10%] bottom-[-20%] opacity-20 w-[240px] h-[240px]">
-                <div className="w-full h-full border-[2px] border-white/40 rounded-xl rotate-12 flex items-center justify-center">
-                  <div className="w-[70%] h-[70%] border-[2px] border-white/40 rounded-lg -rotate-6"></div>
-                </div>
-              </div>
-            </div>
-
-            {/* Box 2 */}
-            <div className="bg-white border border-[#E5E5E5] rounded-2xl p-10 overflow-hidden relative shadow-sm">
-              <h3 className="text-[24px] text-[#00274A] font-medium mb-4 z-10 relative tracking-tight">Local Identity Infrastructure</h3>
-              <p className="text-[#525252] text-[15px] leading-relaxed max-w-[360px] z-10 relative">
-                Deploy on-premise or use our localized cloud zones to ensure absolute data sovereignty and ultra-low latency verifications.
-              </p>
-              {/* Abstract element */}
-              <div className="absolute right-[8%] bottom-[15%] opacity-70 flex items-end gap-3">
-                 <div className="w-12 h-12 bg-white border border-[#E5E5E5] rounded shadow-sm relative"><div className="absolute top-2 left-2 right-2 bottom-2 bg-neutral-100 rounded-sm"></div></div>
-                 <div className="w-12 h-16 bg-white border border-[#E5E5E5] rounded shadow-sm relative"><div className="absolute top-2 left-2 right-2 bottom-2 bg-neutral-100 rounded-sm"></div></div>
-                 <div className="w-12 h-20 bg-white border border-[#007BE5] rounded shadow-sm relative"><div className="absolute top-2 left-2 right-2 bottom-2 bg-blue-50 rounded-sm"></div></div>
-              </div>
+              <div className="text-center text-gray-400">API + Add-ons</div>
             </div>
           </div>
-        </section>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        {/* FAQ Section */}
-        <section className="px-6 py-24 bg-white border-t border-[#E5E5E5]">
-          <div className="max-w-[1200px] mx-auto grid md:grid-cols-2 gap-16 items-start">
-            <div>
-              <h2 className="text-[32px] md:text-[40px] text-[#00274A] tracking-[-0.02em] mb-12" style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontWeight: 400 }}>
-                Frequently Asked<br />Questions
-              </h2>
-              
-              <div className="flex flex-col gap-0">
-                {[
-                  "How easy is it to migrate from another provider?",
-                  "Does ThirdFactor support non-English documents?",
-                  "Can we host the solution on our own servers?",
-                  "What is your SLA for verification speed?"
-                ].map((q, i) => (
-                  <div key={i} className="border-b border-[#E5E5E5] py-6 first:pt-0">
-                    <div className="flex justify-between items-center cursor-pointer group">
-                      <h4 className="text-[16px] text-[#00274A] font-medium group-hover:text-[#007BE5] transition-colors">{q}</h4>
-                      <div className="text-[#A3A3A3] text-xl font-light">+</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+  {/* BENEFITS */}
+  <section className="px-6 pb-16 md:pb-24 max-w-6xl mx-auto">
+    <div className="text-center mb-12 md:mb-16">
+      <h2 className="text-2xl md:text-3xl text-[#00274A] mb-4">
+        Stop overpaying for lower conversion.
+      </h2>
+      <p className="text-gray-600 text-sm md:text-base">
+        We built the engine that understands emerging market documents.
+      </p>
+    </div>
+
+    <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+
+      <div className="bg-blue-600 rounded-2xl p-8 md:p-10 text-white relative overflow-hidden">
+        <h3 className="text-xl md:text-2xl font-medium mb-4">
+          Guaranteed Accuracy
+        </h3>
+        <p className="text-blue-100 text-sm md:text-base max-w-sm">
+          Our models are trained on local IDs ensuring valid users are never rejected.
+        </p>
+      </div>
+
+      <div className="bg-white border rounded-2xl p-8 md:p-10 relative">
+        <h3 className="text-xl md:text-2xl text-[#00274A] mb-4">
+          Local Infrastructure
+        </h3>
+        <p className="text-gray-600 text-sm md:text-base max-w-sm">
+          Deploy on-premise or localized cloud zones for sovereignty & speed.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  {/* FAQ */}
+  <section className="px-6 py-16 md:py-24 border-t">
+    <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16">
+
+      <div>
+        <h2 className="text-2xl md:text-4xl text-[#00274A] mb-10">
+          Frequently Asked Questions
+        </h2>
+
+        <div className="divide-y">
+          {[
+            "How easy is it to migrate?",
+            "Support for non-English docs?",
+            "On-premise hosting?",
+            "Verification SLA?",
+          ].map((q, i) => (
+            <div key={i} className="py-5 flex justify-between items-center group cursor-pointer">
+              <h4 className="text-sm md:text-base text-[#00274A] group-hover:text-[#007BE5] transition">
+                {q}
+              </h4>
+              <span className="text-gray-400 text-lg">+</span>
             </div>
-            
-            {/* Abstract Graphic representing network/nodes */}
-            {/* <div className="w-full h-full min-h-[400px] rounded-2xl relative overflow-hidden bg-white border border-[#E5E5E5] flex items-center justify-center p-8">
-               <div className="w-full h-full grid grid-cols-10 grid-rows-10 gap-1 md:gap-2">
-                 {Array.from({ length: 100 }).map((_, i) => {
-                   const isBlue = i === 12 || i === 25 || i === 34 || i === 48 || i === 76 || i === 89;
-                   const isLight = i % 7 === 0 || i % 11 === 0;
-                   return (
-                     <div key={i} className={`rounded-sm ${isBlue ? 'bg-[#007BE5]' : isLight ? 'bg-[#F0F7FF]' : 'bg-[#FAFAFA]'}`}></div>
-                   );
-                 })}
-               </div>
-            </div> */}
-          </div>
-        </section>
+          ))}
+        </div>
+      </div>
 
-        <CTABanner />
-      </main>
+    </div>
+  </section>
+
+  <CTABanner />
+</main>
 
       <Footer />
     </div>

@@ -1,25 +1,33 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, Shield, Zap, Box, Lock, Fingerprint, Activity, Server, FileText, Database } from "lucide-react";
+import {
+  ArrowRight,
+  CheckCircle2,
+  Shield,
+  Zap,
+  Box,
+  Lock,
+  Fingerprint,
+  Activity,
+  Server,
+  FileText,
+  Database,
+} from "lucide-react";
+
 import TopBar from "../../components/TopBar";
 import Navbar from "../../components/Navbar";
 import CTABanner from "../../components/CTABanner";
 import Footer from "../../components/Footer";
 import Testimonial from "../../components/Testimonial";
 
-export function generateStaticParams() {
-  return [
-    { slug: 'verify' },
-    { slug: 'shield' },
-    { slug: 'comply' },
-    { slug: 'access' },
-    { slug: 'lens' },
-    { slug: 'charter' },
-    { slug: 'bedrock' }
-  ];
-}
-
+export default async function ProductPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const resolvedParams = await params;
+  const slugId = resolvedParams.slug?.toLowerCase() || "verify";
 const productsData: Record<string, any> = {
   verify: {
     name: "ThirdFactor Verify",
@@ -70,102 +78,102 @@ const productsData: Record<string, any> = {
     ]
   }
 };
-
-export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
-  const resolvedParams = await params;
-  const slugId = resolvedParams.slug?.toLowerCase() || "verify";
-  
-  // Fallback to verify if product is not explicitly defined in our data store
   const product = productsData[slugId] || productsData.verify;
 
   return (
-    <div style={{ background: "#ffffff", minHeight: "100vh" }}>
+    <div className="bg-white min-h-screen">
       <TopBar />
       <Navbar />
 
       <main>
-        {/* Enterprise Hero Section */}
-        <section style={{ background: "#ffffff", paddingTop: "120px", paddingBottom: "120px", borderBottom: "1px solid #E5E5E5" }}>
-          <div style={{ maxWidth: "1441px", margin: "0 auto", paddingLeft: "140px", paddingRight: "140px" }}>
-            <div style={{ display: "flex", gap: "72px", alignItems: "center" }}>
-              
-              {/* Left Copy */}
-              <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "24px" }}>
+        {/* HERO */}
+        <section className="py-20 lg:py-28 border-b border-gray-200">
+          <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
+            <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+              {/* LEFT */}
+              <div className="flex-1 space-y-6">
                 <div>
-                  <span style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.08em", color: "#A3A3A3", textTransform: "uppercase" }}>
+                  <span className="text-xs font-semibold tracking-widest text-gray-400 uppercase">
                     {product.label}
                   </span>
-                  <h1 style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontSize: "56px", lineHeight: "1.1", letterSpacing: "-2px", color: "#00274A", margin: "16px 0", fontWeight: 400 }}>
+
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl leading-tight tracking-tight text-[#00274A] mt-4">
                     {product.name}
                   </h1>
-                  <p style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontSize: "20px", color: "#00274A", margin: "0 0 8px 0", fontWeight: 400 }}>
+
+                  <p className="text-lg md:text-xl text-[#00274A] mt-3">
                     {product.tagline}
                   </p>
-                  <p style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontSize: "16px", lineHeight: "1.6", color: "#525252", margin: 0, maxWidth: "480px" }}>
+
+                  <p className="text-base text-gray-600 mt-2 max-w-lg">
                     {product.desc}
                   </p>
                 </div>
-                
-                <div style={{ display: "flex", gap: "16px", marginTop: "16px" }}>
+
+                <div className="flex flex-wrap gap-4">
                   <Link
                     href="/contact"
-                    style={{
-                      display: "inline-flex", alignItems: "center", justifyContent: "center",
-                      height: "60px", padding: "0 32px", borderRadius: "100px",
-                      background: "#007BE5", color: "#ffffff", fontSize: "15px", fontWeight: 500,
-                      fontFamily: "var(--font-geist-sans, system-ui)", textDecoration: "none",
-                      transition: "background 150ms"
-                    }}
+                    className="h-14 px-8 rounded-full bg-[#007BE5] text-white flex items-center justify-center text-sm font-medium hover:bg-blue-600 transition"
                   >
                     Contact Sales
                   </Link>
+
                   <Link
                     href="/dev"
-                    style={{
-                      display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "8px",
-                      height: "60px", padding: "0 32px", borderRadius: "100px",
-                      background: "#ffffff", border: "1px solid #E5E5E5", color: "#00274A",
-                      fontSize: "15px", fontWeight: 500, fontFamily: "var(--font-geist-sans, system-ui)",
-                      textDecoration: "none", transition: "background 150ms"
-                    }}
+                    className="h-14 px-8 rounded-full border border-gray-200 text-[#00274A] flex items-center gap-2 text-sm font-medium hover:bg-gray-50 transition"
                   >
                     Read Documentation <ArrowRight size={16} />
                   </Link>
                 </div>
               </div>
 
-              {/* Right Image Container */}
-              <div style={{ width: "576px", height: "560px", background: "#F5F5F5", borderRadius: "16px", position: "relative", flexShrink: 0, overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center", border: "1px solid #E5E5E5" }}>
-                <Image src={product.img} alt={product.name} fill style={{ objectFit: "contain", padding: "40px", mixBlendMode: "multiply" }} priority />
+              {/* RIGHT IMAGE */}
+              <div className="w-full max-w-xl h-[400px] md:h-[500px] bg-gray-100 rounded-2xl border border-gray-200 relative flex items-center justify-center overflow-hidden">
+                <Image
+                  src={product.img}
+                  alt={product.name}
+                  fill
+                  className="object-contain p-10 mix-blend-multiply"
+                  priority
+                />
               </div>
             </div>
           </div>
         </section>
 
-        {/* Structured Features Grid */}
-        <section style={{ background: "#ffffff", paddingTop: "120px", paddingBottom: "120px", borderBottom: "1px solid #E5E5E5" }}>
-          <div style={{ maxWidth: "1441px", margin: "0 auto", paddingLeft: "140px", paddingRight: "140px" }}>
-            <div style={{ marginBottom: "64px", maxWidth: "600px" }}>
-              <h2 style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontSize: "40px", lineHeight: "48px", letterSpacing: "-1.2px", color: "#00274A", margin: "0 0 16px 0", fontWeight: 400 }}>
+        {/* FEATURES */}
+        <section className="py-20 lg:py-28 border-b border-gray-200">
+          <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
+            <div className="mb-16 max-w-xl">
+              <h2 className="text-3xl md:text-4xl text-[#00274A] tracking-tight">
                 Engineered for absolute reliability.
               </h2>
-              <p style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontSize: "16px", lineHeight: "1.5", color: "#525252", margin: 0 }}>
-                Our infrastructure is built from the ground up to ensure high availability, local data sovereignty, and uncompromised compliance standards.
+              <p className="text-gray-600 mt-4">
+                Our infrastructure is built from the ground up to ensure high
+                availability, local data sovereignty, and uncompromised
+                compliance standards.
               </p>
             </div>
-            
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "48px" }}>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
               {product.benefits.map((benefit: any, idx: number) => {
                 const Icon = benefit.icon;
+
                 return (
-                  <div key={idx} style={{ display: "flex", flexDirection: "column" }}>
-                    <div style={{ width: "48px", height: "48px", background: "#F0F7FF", border: "1px solid #EBF5FF", borderRadius: "8px", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "24px" }}>
-                      <Icon color="#007BE5" strokeWidth={1.5} size={24} />
+                  <div key={idx}>
+                    <div className="w-12 h-12 bg-blue-50 border border-blue-100 rounded-lg flex items-center justify-center mb-6">
+                      <Icon
+                        className="text-[#007BE5]"
+                        strokeWidth={1.5}
+                        size={24}
+                      />
                     </div>
-                    <h3 style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontSize: "18px", color: "#00274A", fontWeight: 500, margin: "0 0 12px 0", letterSpacing: "-0.01em" }}>
+
+                    <h3 className="text-lg font-medium text-[#00274A] mb-2">
                       {benefit.title}
                     </h3>
-                    <p style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontSize: "15px", lineHeight: "1.6", color: "#525252", margin: 0 }}>
+
+                    <p className="text-gray-600 text-sm leading-relaxed">
                       {benefit.desc}
                     </p>
                   </div>
@@ -175,60 +183,66 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           </div>
         </section>
 
-        {/* Clean API Integration Section */}
-        <section style={{ background: "#ffffff", paddingTop: "120px", paddingBottom: "120px", borderBottom: "1px solid #E5E5E5" }}>
-          <div style={{ maxWidth: "1441px", margin: "0 auto", paddingLeft: "140px", paddingRight: "140px" }}>
-            <div style={{ display: "flex", gap: "72px", alignItems: "center" }}>
-              
-              {/* White-mode clean code snippet UI */}
-              <div style={{ width: "576px", flexShrink: 0, background: "#ffffff", border: "1px solid #E5E5E5", borderRadius: "16px", overflow: "hidden", boxShadow: "0 4px 24px rgba(0,0,0,0.02)" }}>
-                <div style={{ display: "flex", gap: "8px", padding: "16px", borderBottom: "1px solid #E5E5E5", background: "#F9FAFB" }}>
-                  <div style={{ width: "12px", height: "12px", borderRadius: "50%", background: "#E5E5E5" }}></div>
-                  <div style={{ width: "12px", height: "12px", borderRadius: "50%", background: "#E5E5E5" }}></div>
-                  <div style={{ width: "12px", height: "12px", borderRadius: "50%", background: "#E5E5E5" }}></div>
+        {/* API SECTION */}
+        <section className="py-20 lg:py-28 border-b border-gray-200">
+          <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
+            <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+              {/* CODE BLOCK */}
+              <div className="w-full lg:max-w-xl bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm">
+                <div className="flex gap-2 p-4 border-b bg-gray-50">
+                  <div className="w-3 h-3 rounded-full bg-gray-300"></div>
+                  <div className="w-3 h-3 rounded-full bg-gray-300"></div>
+                  <div className="w-3 h-3 rounded-full bg-gray-300"></div>
                 </div>
-                <div style={{ padding: "32px", overflowX: "auto" }}>
-                  <pre style={{ fontFamily: "monospace", fontSize: "13px", lineHeight: "1.6", color: "#00274A", margin: 0 }}>
-                    <code style={{ color: "#007BE5" }}>import</code> {`{ ThirdFactor }`} <code style={{ color: "#007BE5" }}>from</code> <code style={{ color: "#00B050" }}>'thirdfactor-node'</code>;{`\n\n`}
-                    <code style={{ color: "#007BE5" }}>const</code> tf = <code style={{ color: "#007BE5" }}>new</code> ThirdFactor(<code style={{ color: "#00B050" }}>'sk_live_...'</code>);{`\n\n`}
-                    <code style={{ color: "#007BE5" }}>const</code> session = <code style={{ color: "#007BE5" }}>await</code> tf.sessions.create({`{\n`}
-                    {`  `}type: <code style={{ color: "#00B050" }}>'${product.name.toLowerCase().replace('thirdfactor ', '')}'</code>,{`\n`}
-                    {`  `}user_id: <code style={{ color: "#00B050" }}>'usr_12345'</code>,{`\n`}
-                    {`  `}return_url: <code style={{ color: "#00B050" }}>'https://app.com/callback'</code>{`\n`}
-                    {`}`});{`\n\n`}
-                    <span style={{ color: "#A3A3A3" }}>// Returns an instant, secure flow URL</span>{`\n`}
-                    console.log(session.url);
+
+                <div className="p-6 overflow-x-auto text-sm font-mono text-[#00274A]">
+                  <pre>
+                    {`import { ThirdFactor } from 'thirdfactor-node';
+
+const tf = new ThirdFactor('sk_live_...');
+
+const session = await tf.sessions.create({
+  type: '${product.name.toLowerCase().replace("thirdfactor ", "")}',
+  user_id: 'usr_12345',
+  return_url: 'https://app.com/callback'
+});
+
+// Returns an instant, secure flow URL
+console.log(session.url);`}
                   </pre>
                 </div>
               </div>
 
-              {/* Right Copy */}
-              <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "24px" }}>
-                <h2 style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontSize: "40px", lineHeight: "48px", letterSpacing: "-1.2px", color: "#00274A", margin: 0, fontWeight: 400 }}>
+              {/* RIGHT TEXT */}
+              <div className="flex-1 space-y-6">
+                <h2 className="text-3xl md:text-4xl text-[#00274A]">
                   Integrate in minutes,
-                  <br />not months.
+                  <br />
+                  not months.
                 </h2>
-                <p style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontSize: "16px", lineHeight: "1.6", color: "#525252", margin: 0 }}>
-                  {product.name} is built developer-first. Our unified API allows you to initialize highly complex biometric and document workflows with just a few lines of code. We handle the heavy lifting, edge-case fallbacks, and local compliance.
+
+                <p className="text-gray-600">
+                  {product.name} is built developer-first. Our unified API
+                  allows you to initialize complex workflows with just a few
+                  lines of code.
                 </p>
-                <div style={{ display: "flex", flexDirection: "column", gap: "16px", marginTop: "8px" }}>
+
+                <div className="space-y-4">
                   {[
                     "RESTful APIs and Native SDKs for iOS, Android, and Web",
                     "Comprehensive Webhooks for instant state updates",
-                    "Fully customizable UI themes to match your brand"
+                    "Fully customizable UI themes to match your brand",
                   ].map((item, i) => (
-                    <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
-                      <CheckCircle2 color="#007BE5" size={20} style={{ flexShrink: 0, marginTop: "2px" }} />
-                      <span style={{ fontFamily: "var(--font-geist-sans, system-ui)", fontSize: "15px", color: "#525252", lineHeight: "1.4" }}>{item}</span>
+                    <div key={i} className="flex gap-3">
+                      <CheckCircle2 className="text-[#007BE5] mt-1" size={18} />
+                      <span className="text-gray-600 text-sm">{item}</span>
                     </div>
                   ))}
                 </div>
+
                 <Link
                   href="/dev"
-                  style={{
-                    display: "inline-flex", alignItems: "center", gap: "12px", marginTop: "16px",
-                    color: "#007BE5", fontSize: "15px", fontWeight: 500, fontFamily: "var(--font-geist-sans, system-ui)", textDecoration: "none"
-                  }}
+                  className="inline-flex items-center gap-2 text-[#007BE5] font-medium mt-4"
                 >
                   View API Documentation <ArrowRight size={16} />
                 </Link>
