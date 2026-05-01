@@ -226,10 +226,14 @@ export default function AboutPage() {
         </section>
 
         {/* Mission & Vision Deep Blue Banner */}
-        <section className="bg-[#2563EB] text-white py-24 px-6 relative overflow-hidden">
-         <div className="flex max-w-[1160px] flex-col gap-[36px]">
-          <h3 className=" text-[32px] leading-[130%]">Our Mission</h3>
-          <p className="text-[40px] leading-[130%]">Prevent fraud and ensure data sovereignty. Bridge the gap between proving you exist and being allowed to act. Help people prove identity and operate with trust across digital systems. Keep humans at the center of every digital interaction.</p>
+        <section className="bg-[#2563EB] text-white py-24 px-6 relative overflow-hidden flex flex-col items-center justify-between lg:gap-[120px] md:gap-[60px] gap-[30px] ">
+         <div className="flex max-w-[1160px] flex-col gap-[20px] md:gap-[36px] ">
+          <h3 className="  text-[24px] md:text-[32px] leading-[130%]">Our Mission</h3>
+          <p className=" text-[18px] md:text-[40px] leading-[130%]">Prevent fraud and ensure data sovereignty. Bridge the gap between proving you exist and being allowed to act. Help people prove identity and operate with trust across digital systems. Keep humans at the center of every digital interaction.</p>
+         </div>
+         <div className="flex items-end  text-end max-w-[1160px] flex-col gap-[20px] md:gap-[36px]">
+          <h3 className=" text-[24px] md:text-[32px] leading-[130%]">Our Mission</h3>
+          <p className=" text-[18px] md:text-[40px] leading-[130%]">Become the core trust layer for emerging markets. Deliver instant and reliable identity verification. Make proving "I am" effortless. Replace friction with confidence and help organizations empower users, not gatekeep them.</p>
          </div>
         </section>
 
