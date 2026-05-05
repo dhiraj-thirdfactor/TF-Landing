@@ -5,6 +5,7 @@ import ClientLogos from "./ClientLogos";
 import { GeistPixelCircle } from "geist/font/pixel";
 import Button from "../ui/components/Button";
 import BookADemoButton from "../ui/components/BookADemoButton";
+import DotGridVideo from "./DotGridVideo";
 
 export default function Hero() {
   return (
@@ -33,8 +34,16 @@ export default function Hero() {
           <div className="flex flex-col gap-4">
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full px-6 sm:px-0 sm:w-auto">
-             <BookADemoButton variant="primary" text="Book a Demo" href="/demo" />
-             <BookADemoButton variant="secondary" text="Experience Center" href="/experience" />
+              <BookADemoButton
+                variant="primary"
+                text="Book a Demo"
+                href="/demo"
+              />
+              <BookADemoButton
+                variant="secondary"
+                text="Experience Center"
+                href="/experience"
+              />
             </div>
 
             {/* Trust badges */}
@@ -45,8 +54,14 @@ export default function Hero() {
         </div>
 
         {/* Hero card */}
-        <HeroCard />
       </div>
+        <DotGridVideo
+          videoSource="/illustrations/video.mp4"
+          enableMask
+          loopAt={0}
+          baseFPS={60}
+          className="absolute inset-0 w-full h-screen"
+        />
 
       {/* Client logos strip — full-width */}
       <ClientLogos />

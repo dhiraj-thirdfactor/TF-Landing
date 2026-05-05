@@ -29,7 +29,6 @@ export default function Home2() {
             enableMask
             loopAt={0}
             baseFPS={24}
-            dotTheme="light"
             className="absolute inset-0 w-full h-full"
           />
 
