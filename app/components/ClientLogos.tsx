@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import LayoutWrapper from "./common/wrapper/LayoutWrapper";
 
 const logos = [
   { src: "/illustrations/vianetlogo.png", alt: "Vianet" },
@@ -14,9 +15,9 @@ const all = [...logos, ...logos, ...logos];
 
 export default function ClientLogos() {
   return (
-    <div className="w-full overflow-hidden bg-white py-6 md:py-8">
-      
-      <div className="max-w-[1440px] mx-auto flex flex-col lg:flex-row items-center gap-4 md:gap-12 px-4 md:px-10">
+    <div className="w-full overflow-hidden bg-white ">
+      <LayoutWrapper>
+      <div className=" flex flex-col lg:flex-row items-center gap-4 md:gap-12 ">
         
         {/* Label */}
         <p className=" shrink-0 text-sm text-[#1a1a1a]/50 whitespace-nowrap">
@@ -48,6 +49,7 @@ export default function ClientLogos() {
           </div>
         </div>
       </div>
+      </LayoutWrapper>
 
       <style jsx>{`
         @keyframes logos-scroll {

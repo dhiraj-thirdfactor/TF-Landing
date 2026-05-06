@@ -6,6 +6,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import BookADemoButton from "../ui/components/BookADemoButton";
+import LayoutWrapper from "./common/wrapper/LayoutWrapper";
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -98,8 +99,9 @@ export default function FeaturesSection() {
 }, []);
 
   return (
+    
     <section suppressHydrationWarning ref={containerRef} className=" min-h-screen w-full flex md:py-[104px] lg:py-[120px] py-[72px] bg-white border-t border-neutral-200 overflow-hidden ">
-      <div className="max-w-[1440px] mx-auto flex flex-col lg:gap-[54px]">
+      <LayoutWrapper className=" flex flex-col lg:gap-[54px]" >
 
         {/* Header */}
         <div className="px-4  md:px-8  lg:px-[140px] flex lg:items-center items-start lg:flex-row flex-col lg:gap-4 md:gap-6 gap-8 w-full">
@@ -145,7 +147,7 @@ export default function FeaturesSection() {
           </div>
         </div>
 
-      </div>
+      </LayoutWrapper>
     </section>
   );
 }

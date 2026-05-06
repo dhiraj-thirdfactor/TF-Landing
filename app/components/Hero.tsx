@@ -6,24 +6,28 @@ import { GeistPixelCircle } from "geist/font/pixel";
 import Button from "../ui/components/Button";
 import BookADemoButton from "../ui/components/BookADemoButton";
 import DotGridVideo from "./DotGridVideo";
+import { HoverPixelText } from "./common/anim/ScrambleText";
+import LayoutWrapper from "./common/wrapper/LayoutWrapper";
+
 
 export default function Hero() {
   return (
     <section className="bg-white overflow-hidden">
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
+      <LayoutWrapper>
+
         {/* ── Centered copy ─────────────────────────────── */}
         <div className="text-center pt-16 pb-10 flex flex-col items-center  md:gap-[16px] gap-[24px] lg:gap-[36px]">
           {/* Heading */}
-          <h1 className="font-sans font-normal text-[32px] max-w-[330px] md:max-w-[700px] lg:max-w-[709px] leading-[1.1] md:text-[56px] tracking-[-2px] md:tracking-[-3px] text-[#00274A]  mx-auto lg:text-[64px]">
-            Instant Identity Verification
-            <br />
-            For{" "}
-            <span
-              className={`${GeistPixelCircle.className} text-[32px] md:text-[56px] lg:text-[64px]`}
-            >
-              Regulated Markets
-            </span>
-          </h1>
+        <h1 className="font-sans font-normal text-[32px] max-w-[330px] md:max-w-[700px]  lg:max-w-[760px] leading-[1.1] md:text-[56px] tracking-[-2px] md:tracking-[-3px] text-[#00274A] mx-auto lg:text-[64px]">
+  
+  <HoverPixelText text="Instant Identity Verification " />  
+  <HoverPixelText text="For " />
+  
+  
+    <HoverPixelText text="Regulated Markets" />
+  
+
+</h1>
 
           {/* Subtext */}
           <p className="text-[#272727] lg:max-w-[709px]  text-center px-4 sm:px-0 text-body-s md:text-body-l">
@@ -38,12 +42,12 @@ export default function Hero() {
                 variant="primary"
                 text="Book a Demo"
                 href="/demo"
-              />
+                />
               <BookADemoButton
                 variant="secondary"
                 text="Experience Center"
                 href="/experience"
-              />
+                />
             </div>
 
             {/* Trust badges */}
@@ -52,19 +56,21 @@ export default function Hero() {
             </p>
           </div>
         </div>
+                </LayoutWrapper>
 
         {/* Hero card */}
-      </div>
+      <div className=" w-full  flex flex-col  gap-[5vw] -mt-[20vw]">
         <DotGridVideo
           videoSource="/illustrations/video.mp4"
           enableMask
           loopAt={0}
           baseFPS={60}
-          className="absolute inset-0 w-full h-screen"
-        />
+          className="  w-full h-screen "
+          />
 
       {/* Client logos strip — full-width */}
-      <ClientLogos />
+      <ClientLogos  />
+          </div>
     </section>
   );
 }
