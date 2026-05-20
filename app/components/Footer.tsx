@@ -108,13 +108,15 @@ export default function Footer() {
 
           {/* Bottom bar */}
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 mt-12 border-t border-gray-200">
+           <a href="https://prixa.org/" target="_blank" rel="noopener noreferrer">
             <Image
               src="/illustrations/prixa.png"
               alt="A PRIXA Company"
               width={180}
               height={28}
               className="h-[28px] w-auto"
-            />
+              />
+              </a>
             <Link
               href="#"
               className="font-sans text-[14px] text-gray-700 no-underline hover:text-gray-900 transition-colors"

@@ -100,7 +100,7 @@ export default function FeaturesSection() {
 
   return (
     
-    <section suppressHydrationWarning ref={containerRef} className=" min-h-screen w-full flex md:py-[104px] lg:py-[120px] py-[72px] bg-white border-t border-neutral-200 overflow-hidden ">
+    <section suppressHydrationWarning ref={containerRef} className=" min-h-screen w-full flex md:py-[104px] lg:py-[120px] py-[72px] bg-white  overflow-hidden ">
       <LayoutWrapper className=" flex flex-col lg:gap-[54px]" >
 
         {/* Header */}

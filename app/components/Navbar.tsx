@@ -88,7 +88,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 left-0 right-0 z-40 bg-white border-b border-neutral-200">
+    <header className="sticky top-0 left-0 right-0 z-40 bg-white ">
       {/* 3-column layout: logo | nav (centered) | actions */}
       <div className="max-w-[1440px] mx-auto px-6 h-14 grid grid-cols-[auto_1fr_auto] items-center gap-4">
 

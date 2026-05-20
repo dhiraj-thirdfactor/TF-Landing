@@ -18,6 +18,7 @@ const BLOOM_STRENGTH = 2.5;
 
 export default function DotGridVideo({
   videoSource,
+
   enableMask = false,
   loopAt = 0,
   baseFPS = 30,
@@ -50,14 +51,13 @@ export default function DotGridVideo({
     video.src = videoSource;
     video.autoplay = true;
     video.muted = true;
+
     video.loop = loopAt === 0;
     video.playsInline = true;
     video.style.cssText =
       "position:absolute;opacity:0;pointer-events:none;width:1px;height:1px;";
     wrapper.appendChild(video);
     video.play().catch(() => {});
-
-    
 
     // Resize sync
     const syncSize = () => {
@@ -142,7 +142,7 @@ export default function DotGridVideo({
     return () => {
       cancelAnimationFrame(rafRef.current);
       ro.disconnect();
-     
+
       video.pause();
       if (video.parentNode) video.parentNode.removeChild(video);
     };
@@ -168,11 +168,10 @@ export default function DotGridVideo({
     >
       <canvas
         ref={canvasRef}
+        className="w-full h-auto max-w-[1440px]  mx-auto"
         style={{
           position: "absolute",
           inset: 0,
-          width: "100%",
-          height: "100%",
           pointerEvents: "none",
           ...maskStyle,
         }}
