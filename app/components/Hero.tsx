@@ -8,16 +8,21 @@ import BookADemoButton from "../ui/components/BookADemoButton";
 import DotGridVideo from "./DotGridVideo";
 import { HoverPixelText } from "./common/anim/ScrambleText";
 import LayoutWrapper from "./common/wrapper/LayoutWrapper";
+import HeroBackground from "./HeroBackground";
 
 export default function Hero() {
   return (
-    <section className=" overflow-hidden min-h-[700px] relative flex items-end">
+    
+    <section className=" overflow-hidden min-h-[700px] relative flex items-end ">
+      <div className=" w-full h-screen absolute pointer-events-none  ">
+      <HeroBackground/>      
+      </div>
       <LayoutWrapper>
         {/* ── Centered copy ─────────────────────────────── */}
-        <div className="  flex lg:flex-row flex-col lg:items-end lg:justify-center gap-[40px] w-full ">
+        <div className="   flex lg:flex-row flex-col lg:items-end lg:justify-center gap-[40px] w-full pb-10 ">
         <div className="  flex flex-col    md:gap-[16px] gap-[24px] lg:gap-[36px] ">
           {/* Heading */}
-          <h1 className="font-sans font-normal text-[32px] max-w-[350px] md:max-w-[650px]  lg:max-w-[760px] leading-[1.1] md:text-[56px] tracking-[-2px] md:tracking-[-3px] text-[#00274A]  lg:text-[64px]">
+          <h1 className="font-sans font-normal text-[32px] max-w-[350px] md:max-w-[650px]  lg:max-w-[760px] leading-[1.1] md:text-[56px] tracking-[-2px] md:tracking-[-3px] text-white  lg:text-[64px]">
             <HoverPixelText text="Instant Identity Verification " />
             <HoverPixelText text="For " />
 
@@ -25,7 +30,7 @@ export default function Hero() {
           </h1>
 
           {/* Subtext */}
-          <p className="text-[#272727] max-w-[680px]  lg:px-4 sm:px-0 text-body-s md:text-body-l">
+          <p className="text-white max-w-[680px]  lg:px-4 sm:px-0 text-body-s md:text-body-l">
             Full-stack platform for fast, secure, and compliant onboarding.
             Switch providers in a day. Deploy on-premise and maintain zero data
             retention.
@@ -47,7 +52,7 @@ export default function Hero() {
             </div>
 
             {/* Trust badges */}
-            <p className="font-sans font-normal text-[12px] md:text-[14px] leading-[1.5] text-[#1A1A1A]/60 m-0">
+            <p className="font-sans font-normal text-[12px] md:text-[14px] leading-[1.5] text-white m-0">
               NRB Compliant • VAPT Certified • Sub-0.1ms 1:N Search
             </p>
           </div>

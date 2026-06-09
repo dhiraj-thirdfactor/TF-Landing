@@ -46,6 +46,12 @@ export function HoverPixelText({
 }
 
 function Letter({ char, mouseX, mouseY, proximityRadius }: any) {
+  const [isMounted, SetIsMounted] = useState(false);
+
+  useEffect(() => {
+    SetIsMounted(true);
+  }, []);
+
   const [isPixel, setIsPixel] = useState(false);
   const ref = useRef<HTMLSpanElement>(null);
 
@@ -53,10 +59,11 @@ function Letter({ char, mouseX, mouseY, proximityRadius }: any) {
   const centerRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
-    if (!ref.current || char === " ") return;
+    if (!ref.current || char === " " || !isMounted) return;
 
     const updatePosition = () => {
       const rect = ref.current!.getBoundingClientRect();
+
       centerRef.current = {
         x: rect.left + rect.width / 2,
         y: rect.top + rect.height / 2,
@@ -112,7 +119,8 @@ function Letter({ char, mouseX, mouseY, proximityRadius }: any) {
         ease: [0.25, 0.1, 0.25, 1], // smoother than easeInOut
       }}
       style={{
-        willChange: "transform, opacity, font-family, letter-spacing, font-weight, width",
+        willChange:
+          "transform, opacity, font-family, letter-spacing, font-weight, width",
       }}
     >
       {char}

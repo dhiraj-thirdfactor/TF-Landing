@@ -30,20 +30,11 @@ const TabIcons: Record<string, React.ReactNode> = {
       className="w-5 h-5"
     />,
 
-  video: (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-      <rect
-        x="1"
-        y="4"
-        width="10"
-        height="8"
-        rx="1.5"
-        stroke="currentColor"
-        strokeWidth="1.5"
-      />
-      <path d="M11 7l4-2v6l-4-2V7z" fill="currentColor" />
-    </svg>
-  ),
+  video: <Lottie
+      animationData={anim1}
+      loop
+      className="w-5 h-5"
+    />,
 };
 
 const tabs = [
@@ -164,7 +155,7 @@ export default function TechIntegration() {
               <button
                 key={t.id}
                 onClick={() => handleTabClick(t.id)}
-                className="flex-shrink-0 lg:flex-1 h-[48px] px-6 lg:px-4 flex items-center justify-center gap-2.5 border text-[14px] font-sans transition-all duration-150 relative overflow-hidden"
+                className="flex-shrink-0 lg:flex-1 h-[48px] px-6 lg:px-4 flex items-center justify-start gap-2.5 border text-[14px] font-sans transition-all duration-150 relative overflow-hidden"
                 style={{
                   borderColor: isCurrent ? "#A9D5F5" : "#D4D4D4",
                   fontWeight: isCurrent ? 500 : 400,
@@ -225,7 +216,7 @@ export default function TechIntegration() {
               
               width={625}
               height={678}
-              className="lg:w-[625px] h-full rounded-[20px]"
+              className="lg:w-[625px] h-full rounded-[22px]"
               autoPlay loop muted
               style={{ objectFit: "cover" }}
               

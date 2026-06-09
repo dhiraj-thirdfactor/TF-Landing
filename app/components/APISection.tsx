@@ -47,7 +47,7 @@ export default function APISection() {
 
             {/* View Documentation */}
             <Link
-              href="#"
+              href="/dev"
               className="inline-flex items-center justify-center gap-4 w-full sm:w-[227px] h-[60px] rounded-[100px] bg-[#F2F2F7] text-black text-[14px] font-medium font-sans shrink-0 transition-colors hover:bg-[#0069C2] hover:text-white"
               >
               View Documentation

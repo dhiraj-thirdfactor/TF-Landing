@@ -1,6 +1,9 @@
 "use client";
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
+import PromoBanner from "./PromoBanner";
+import UnicornScene from "unicornstudio-react";
+
 
 export default function TopBar() {
   return (
@@ -9,23 +12,14 @@ export default function TopBar() {
       style={{ backgroundColor: "#007BE5" }}
     >
       {/* Background Texture with Fade Mask */}
-      <div 
-        className="absolute inset-0 z-0 pointer-events-none"
-        style={{
-          maskImage: "linear-gradient(to right, black 0%, black calc(50% - 350px), transparent calc(50% - 220px), transparent calc(50% + 220px), black calc(50% + 350px), black 100%)",
-          WebkitMaskImage: "linear-gradient(to right, black 0%, black calc(50% - 350px), transparent calc(50% - 220px), transparent calc(50% + 220px), black calc(50% + 350px), black 100%)"
-        }}
-      >
-        <Image
-          src="/illustrations/textures.png"
-          alt=""
-          fill
-          style={{ objectFit: "cover", objectPosition: "center", opacity: 0.8 }}
-          priority
-          aria-hidden="true"
-        />
-      </div>
 
+     <div className=" absolute inset-0">
+       <UnicornScene
+      projectId="bF7EQH0irJwl3ENDEVhw"
+      
+      sdkUrl="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v2.2.1/dist/unicornStudio.umd.js"
+    />
+     </div>
       {/* Content */}
       <a
         href="#"
@@ -34,7 +28,7 @@ export default function TopBar() {
       >
         Third Factor AI raises $25.4M and opens a new chapter
         <ChevronRight size={14} className="shrink-0" />
-      </a>
+      </a>  
     </div>
   );
 }
