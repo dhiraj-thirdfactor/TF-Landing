@@ -54,7 +54,7 @@ const tabs = [
     heading: "Passive AI confirms the user is physically present.",
     subtext:
       "Works in seconds, requires no extra actions, and prevents automated bots.",
-    img: "/illustrations/facedetection.png",
+    img: "/techIntegration-video/1.mp4",
   },
   {
     id: "gesture",
@@ -64,7 +64,7 @@ const tabs = [
       "Challenge-response liveness prevents any replay or injection attack.",
     subtext:
       "Random gesture prompts ensure the user is live and in-frame in real time.",
-    img: "/illustrations/facedetection.png",
+    img: "/techIntegration-video/Comp 1.mp4",
   },
   {
     id: "upload",
@@ -74,7 +74,7 @@ const tabs = [
       "OCR reads and validates any government-issued ID in real time.",
     subtext:
       "Supports 200+ document types. MRZ, barcode, and NFC chip extraction — all in one pass.",
-    img: "/illustrations/facedetection.png",
+    img: "/techIntegration-video/Comp 2.mp4",
   },
   {
     id: "video",  
@@ -84,7 +84,7 @@ const tabs = [
       "Agent-assisted video verification for high-value or complex onboarding.",
     subtext:
       "Encrypted session recording, consent capture, and audit-ready transcripts built in.",
-    img: "/illustrations/facedetection.png",
+    img: "/techIntegration-video/Comp 2.mp4",
   },
 ];
 
@@ -220,14 +220,15 @@ export default function TechIntegration() {
 
           {/* Right */}
           <div className="lg:w-full lg:h-full md:w-[336px] md:h-[364px]">
-            <Image
+            <video
               src={tab.img}
-              alt="Integration interface"
+              
               width={625}
               height={678}
-              className="lg:w-[625px] h-full"
+              className="lg:w-[625px] h-full rounded-[20px]"
+              autoPlay loop muted
               style={{ objectFit: "cover" }}
-              priority
+              
             />
           </div>
         </div>
