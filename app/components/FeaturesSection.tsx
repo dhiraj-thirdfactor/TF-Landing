@@ -15,31 +15,31 @@ const cards = [
   {
     title: "White-Label Mobile SDK",
     desc: "Native SDK for iOS and Android. Embed liveness and document capture directly into your branded app with no WebView.",
-    img: "/illustrations/image.png",
+    img: "/feature-section-imgs/whitelabel ui.svg",
     imgAlt: "Mobile SDK illustration",
   },
   {
-    title: "White-Label Web Components",
+    title: "Create any flow",
     desc: "Drop-in verification iFrame or headless React components. Full styling control for browser-first onboarding flows.",
-    img: "/illustrations/image3.png",
+    img: "/feature-section-imgs/create any identity flow.svg",
     imgAlt: "Web components illustration",
   },
   {
-    title: "White-Label Data Layer",
+    title: "Unified Identity stack",
     desc: "Backend API with full data ownership. Raw biometric scores, document data, and audit logs stay in your infrastructure.",
-    img: "/illustrations/image2.png",
+    img: "/feature-section-imgs/Unified Identity Stack.svg",
     imgAlt: "Database illustration",
   },
   {
     title: "REST API & Webhooks",
     desc: "Every verification capability exposed as a clean REST endpoint with real-time webhooks and streaming callback support.",
-    img: "/illustrations/image.png",
+    img: "/feature-section-imgs/Developer-First Integration.svg",
     imgAlt: "API illustration",
   },
   {
     title: "Multi-Channel Orchestration",
     desc: "Route verification through any channel — branch kiosk, mobile app, or web portal — from a single integration point.",
-    img: "/illustrations/image3.png",
+    img: "/feature-section-imgs/Transparent Pricing.svg",
     imgAlt: "Multi-channel illustration",
   },
 ];
@@ -127,14 +127,14 @@ export default function FeaturesSection() {
             {cards.map((c, i) => (
               <div
                 key={i}
-                className="w-[330px] md:w-[370px] h-[420px] md:h-[452px] rounded-2xl border border-[#D7D7D7] flex flex-col gap-6 bg-white shrink-0 justify-between px-8 pt-8 pb-13"
+                className="w-full lg:w-[370px] h-[420px] md:h-[452px] rounded-2xl border border-[#D7D7D7] flex flex-col gap-6 bg-white shrink-0 justify-between px-8 pt-8 pb-13"
               >
-                <div className="w-[140px] h-[180px] relative self-center">
+                <div className=" w-[200px] h-[200px] relative self-center">
                   <Image
                     src={c.img}
                     alt={c.imgAlt}
                     fill
-                    style={{ objectFit: "contain" }}
+                    style={{ objectFit: "cover" }}
                   />
                 </div>
 

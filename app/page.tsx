@@ -10,6 +10,7 @@ import Testimonial from "./components/Testimonial";
 import FAQ from "./components/FAQ";
 import CTABanner from "./components/CTABanner";
 import Footer from "./components/Footer";
+import CircularAnimation from "./components/CircularAnimation";
 
 export const metadata = {
   title: "ThirdFactor | Instant Identity Verification for Regulated Markets",
@@ -43,6 +44,7 @@ export default function Home() {
         <APISection />
         <UserExperience />
         <AutomationSection />
+        <CircularAnimation/>
         <Testimonial />
         <FAQ />
         <CTABanner />

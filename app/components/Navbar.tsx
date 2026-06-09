@@ -86,9 +86,11 @@ function RegionDropdown() {
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
 
   return (
     <header className="sticky top-0 left-0 right-0 z-40 bg-white ">
+      
       {/* 3-column layout: logo | nav (centered) | actions */}
       <div className="max-w-[1440px] mx-auto px-6 h-14 grid grid-cols-[auto_1fr_auto] items-center gap-4">
 
@@ -102,10 +104,9 @@ export default function Navbar() {
           {navLinks.map((l) => {
             if (l.label === "Products") {
               return (
-                <div key={l.label} className="relative group">
+                <div key={l.label} className="relative group ">
                   <button
-                    className="flex items-center gap-0.5 px-3 py-1.5 text-sm rounded-full hover:bg-neutral-100 transition-colors duration-150"
-                    style={{ color: "#A3A3A3" }}
+                    className="flex items-center gap-0.5 text-[#A3A3A3] px-3 py-1.5 text-sm rounded-full hover:bg-neutral-100 hover:text-[#007BE5] transition-all duration-150"
                   >
                     {l.label}
                     <ChevronDown size={13} className="text-neutral-300 transition-transform group-hover:rotate-180" />
@@ -128,7 +129,7 @@ export default function Navbar() {
                             <Link
                               key={prod.name}
                               href={prod.href}
-                              className="flex items-start gap-3 p-3 rounded-md hover:bg-neutral-50 transition-colors group/item"
+                              className="flex items-start  gap-3 p-3 rounded-md hover:bg-neutral-50 transition-colors group/item"
                             >
                               <div className="mt-0.5 shrink-0 w-8 h-8 relative rounded overflow-hidden flex items-center justify-center opacity-70 group-hover/item:opacity-100 transition-opacity">
                                 <Image src={prod.imgSrc} alt={prod.name} fill className="object-contain p-0.5" />
@@ -195,8 +196,7 @@ export default function Navbar() {
               <Link
                 key={l.label}
                 href={l.href}
-                className="flex items-center gap-0.5 px-3 py-1.5 text-sm rounded-full hover:bg-neutral-100 transition-colors duration-150"
-                style={{ color: "#A3A3A3" }}
+                className="flex items-center gap-0.5 px-3 text-[#A3A3A3] hover:bg-neutral-100 hover:text-[#007BE5] py-1.5 text-sm rounded-full  transition-colors duration-150"
               >
                 {l.label}
               </Link>
@@ -208,7 +208,6 @@ export default function Navbar() {
         <div className="hidden lg:flex items-center gap-2">
           <RegionDropdown />
           <BookADemoButton variant="primary" text="Book a Demo" href="/demo" />
-        
         </div>
 
         {/* Hamburger — mobile (spans grid properly) */}
@@ -224,18 +223,87 @@ export default function Navbar() {
       {/* Mobile menu */}
       {mobileOpen && (
         <div className="lg:hidden border-t border-neutral-200 bg-white px-4 py-4 flex flex-col gap-1">
-          {navLinks.map((l) => (
-            <Link
-              key={l.label}
-              href={l.href}
-              className="flex items-center gap-1 px-3 py-2 text-sm rounded-md hover:bg-neutral-50"
-              style={{ color: "#A3A3A3" }}
-              onClick={() => setMobileOpen(false)}
-            >
-              {l.label}
-              {l.dropdown && <ChevronDown size={13} />}
-            </Link>
-          ))}
+          {navLinks.map((l) => {
+            if (l.label === "Products") {
+              return (
+                <div key={l.label} className="flex flex-col">
+                  <button
+                    className="flex items-center justify-between gap-1 px-3 py-2 text-sm rounded-md hover:bg-neutral-50 text-left w-full"
+                    style={{ color: "#A3A3A3" }}
+                    onClick={() => setMobileProductsOpen(!mobileProductsOpen)}
+                  >
+                    <span className="flex items-center gap-1">
+                      {l.label}
+                    </span>
+                    <ChevronDown size={13} className={`transition-transform duration-150 ${mobileProductsOpen ? "rotate-180" : ""}`} />
+                  </button>
+                  
+                  {/* Mobile Submenu Container */}
+                  {mobileProductsOpen && (
+                    <div className="pl-4 pr-2 py-1 flex flex-col gap-4 mt-1 bg-neutral-50 rounded-lg border border-neutral-100">
+                      {/* Identity Solutions Sub-section */}
+                      <div>
+                        <span className="text-[11px] font-semibold uppercase tracking-wider text-neutral-400 block px-2 py-1.5">Identity Solutions</span>
+                        {[
+                          { name: "ThirdFactor Verify", href: "/products/verify" },
+                          { name: "ThirdFactor Shield", href: "/products/shield" },
+                          { name: "ThirdFactor Comply", href: "/products/comply" },
+                          { name: "ThirdFactor Access", href: "/products/access" }
+                        ].map((subItem) => (
+                          <Link
+                            key={subItem.name}
+                            href={subItem.href}
+                            className="block px-2 py-1.5 text-sm text-neutral-700 hover:text-[#007BE5] rounded transition-colors"
+                            onClick={() => {
+                              setMobileOpen(false);
+                              setMobileProductsOpen(false);
+                            }}
+                          >
+                            {subItem.name}
+                          </Link>
+                        ))}
+                      </div>
+
+                      {/* Platform Sub-section */}
+                      <div className="border-t border-neutral-200/60 pt-2">
+                        <span className="text-[11px] font-semibold uppercase tracking-wider text-neutral-400 block px-2 py-1.5">Platform</span>
+                        {[
+                          { name: "ThirdFactor Lens", href: "/products/lens" },
+                          { name: "ThirdFactor Charter", href: "/products/charter" },
+                          { name: "ThirdFactor Bedrock", href: "/products/bedrock" }
+                        ].map((subItem) => (
+                          <Link
+                            key={subItem.name}
+                            href={subItem.href}
+                            className="block px-2 py-1.5 text-sm text-neutral-700 hover:text-[#007BE5] rounded transition-colors"
+                            onClick={() => {
+                              setMobileOpen(false);
+                              setMobileProductsOpen(false);
+                            }}
+                          >
+                            {subItem.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            }
+
+            return (
+              <Link
+                key={l.label}
+                href={l.href}
+                className="flex items-center gap-1 px-3 py-2 text-sm rounded-md hover:bg-neutral-50"
+                style={{ color: "#A3A3A3" }}
+                onClick={() => setMobileOpen(false)}
+              >
+                {l.label}
+              </Link>
+            );
+          })}
+          
           <div className="flex items-center gap-2 mt-3 pt-3 border-t border-neutral-200">
             <RegionDropdown />
             <Link href="/book-demo" className="flex-1 text-center px-4 py-2 text-sm font-medium text-white rounded-full bg-[#007BE5]">

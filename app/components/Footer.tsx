@@ -8,12 +8,12 @@ import {
   Globe,
   Play,
 } from "lucide-react";
+import BackgroundFooter from "./BackgroundFooter";
 
 export default function Footer() {
   return (
     <>
-      {/* ── Main footer ─────────────────────────────── */}
-      <footer className="bg-white border-t border-gray-200">
+      {/* ── Main footer ─────────────────────────────── */}      <footer className="bg-white border-t border-gray-200">
         <div className="max-w-[1163px] mx-auto py-12 md:pt-16 md:pb-12 px-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_repeat(4,auto)] gap-10 lg:gap-[72px] items-start">
             {/* Brand */}
@@ -128,16 +128,10 @@ export default function Footer() {
       </footer>
 
       {/* ── Dot-grid strip ──────────────────────────── */}
-      <div style={{ width: "100%", lineHeight: 0 }}>
-        <Image
-          src="/illustrations/footer.png"
-          alt=""
-          width={1440}
-          height={220}
-          style={{ width: "100%", height: "auto", display: "block" }}
-          aria-hidden="true"
-        />
+      <div className=" w-full h-[800px] relative   ">
+      <BackgroundFooter/>
       </div>
+
     </>
   );
 }

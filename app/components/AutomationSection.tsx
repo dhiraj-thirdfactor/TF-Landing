@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function AutomationSection() {
   return (
     <section
-      className="bg-white py-20 border-t border-neutral-200 overflow-hidden"
+      className="bg-white lg:hidden block py-20 border-t border-neutral-200 overflow-hidden"
     >
       <div
         style={{

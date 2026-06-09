@@ -7,7 +7,7 @@ type LayoutWrapperProps = {
 
 export default function LayoutWrapper({ children, className }: LayoutWrapperProps) {
   return (
-    <div className={`mx-auto w-full max-w-[1440px] max-xl:px-8 max-md:px-4 ${className}`}>
+    <div className={`mx-auto w-full max-w-[1440px]  max-xl:px-8 max-md:px-4 ${className}`}>
       {children}
     </div>
   );
