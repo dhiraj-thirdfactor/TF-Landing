@@ -31,14 +31,6 @@ const columns = [
     ],
   },
   {
-    heading: "Compare",
-    links: [
-      { label: "vs Sumsub", href: "/compare/sumsub" },
-      { label: "vs Onfido", href: "/compare/onfido" },
-      { label: "vs Jumio", href: "/compare/jumio" },
-    ],
-  },
-  {
     heading: "Legal",
     links: [
       { label: "Privacy Policy", href: "/privacy" },
@@ -109,7 +101,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-5">
+          <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
             {columns.map((column) => (
               <div key={column.heading}>
                 <p className="mb-5 font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-[#64748B]">
