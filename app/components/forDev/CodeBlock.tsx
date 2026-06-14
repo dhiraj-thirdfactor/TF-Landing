@@ -12,14 +12,10 @@ const CodeBlock = ({ code }: { code: string }) => {
   };
 
   return (
-    <div className="group relative bg-[#0a0d12] rounded-xl border border-neutral-800 overflow-hidden shadow-lg transition-all">
+    <div className="group relative overflow-hidden border border-[#1D2B38] bg-[#0B1219]">
       {/* Terminal Header */}
-      <div className="px-4 py-3 border-b border-neutral-800 flex justify-between items-center bg-[#0d1117]">
-        <div className="flex gap-2">
-          <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f56]"></div>
-          <div className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]"></div>
-          <div className="w-2.5 h-2.5 rounded-full bg-[#27c93f]"></div>
-        </div>
+      <div className="flex items-center justify-between border-b border-[#1D2B38] bg-[#101A24] px-4 py-2.5">
+        <span className="font-mono text-[9px] uppercase tracking-[0.12em] text-[#718391]">Example</span>
         
         {/* Copy Button */}
         <button 
@@ -38,7 +34,7 @@ const CodeBlock = ({ code }: { code: string }) => {
       </div>
 
       {/* Code Area */}
-      <pre className="p-5 overflow-x-auto text-[13px] text-neutral-300 font-mono leading-relaxed selection:bg-[#007BE5]/30">
+      <pre className="overflow-x-auto p-5 font-mono text-[12px] leading-[1.7] text-[#D5E2EC] selection:bg-[#007BE5]/30 md:text-[13px]">
         <code>{code.trim()}</code>
       </pre>
     </div>
