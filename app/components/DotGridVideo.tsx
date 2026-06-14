@@ -7,6 +7,7 @@ interface DotGridVideoProps {
   enableMask?: boolean;
   loopAt?: number;
   baseFPS?: number;
+  dotTheme?: "light" | "dark";
   className?: string;
 }
 
@@ -22,6 +23,7 @@ export default function DotGridVideo({
   enableMask = false,
   loopAt = 0,
   baseFPS = 30,
+  dotTheme = "light",
   className = "",
 }: DotGridVideoProps) {
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -75,7 +77,7 @@ export default function DotGridVideo({
     const ro = new ResizeObserver(syncSize);
     ro.observe(wrapper);
 
-    const DOT_COLOR = "#007DED";
+    const DOT_COLOR = dotTheme === "dark" ? "#BDE5FF" : "#007DED";
     const INTERVAL = 1000 / baseFPS;
 
     const draw = (ts: number) => {
@@ -146,7 +148,7 @@ export default function DotGridVideo({
       video.pause();
       if (video.parentNode) video.parentNode.removeChild(video);
     };
-  }, [videoSource, loopAt, baseFPS]);
+  }, [videoSource, loopAt, baseFPS, dotTheme]);
 
   const maskStyle: React.CSSProperties = enableMask
     ? {

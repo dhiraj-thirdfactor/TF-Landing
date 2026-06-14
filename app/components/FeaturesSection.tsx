@@ -38,7 +38,7 @@ const cards = [
   },
   {
     title: "Multi-Channel Orchestration",
-    desc: "Route verification through any channel — branch kiosk, mobile app, or web portal — from a single integration point.",
+    desc: "Route verification through any channel, including branch kiosk, mobile app, or web portal, from a single integration point.",
     img: "/feature-section-imgs/Transparent Pricing.svg",
     imgAlt: "Multi-channel illustration",
   },
@@ -100,8 +100,8 @@ export default function FeaturesSection() {
 
   return (
     
-    <section suppressHydrationWarning ref={containerRef} className=" min-h-screen w-full flex md:py-[104px] lg:py-[120px] py-[72px] bg-white  overflow-hidden ">
-      <LayoutWrapper className=" flex flex-col lg:gap-[54px]" >
+    <section suppressHydrationWarning ref={containerRef} className="w-full flex py-[72px] md:min-h-screen md:py-[104px] lg:py-[120px] bg-white overflow-hidden">
+      <LayoutWrapper className="flex flex-col lg:gap-[54px]" >
 
         {/* Header */}
         <div className="px-4  md:px-8  lg:px-[140px] flex lg:items-center items-start lg:flex-row flex-col lg:gap-4 md:gap-6 gap-8 w-full">
@@ -119,15 +119,15 @@ export default function FeaturesSection() {
         </div>
 
         {/* Horizontal Section */}
-        <div  className="horiz-gallery-wrapper px-6 md:px-[140px] md:block flex  overflow-hidden md:mt-[54px] lg:mt-0 mt-[32px]"  style={{ WebkitOverflowScrolling: "touch" }}>
+        <div  className="horiz-gallery-wrapper px-4 md:px-[140px] md:block flex overflow-hidden md:mt-[54px] lg:mt-0 mt-[32px]"  style={{ WebkitOverflowScrolling: "touch" }}>
           <div
             ref={stripRef}
-            className="horiz-gallery-strip flex flex-col md:flex-row gap-6 md:gap-[36px] w-max pb-4 will-change-transform"
+            className="horiz-gallery-strip flex w-full flex-col md:w-max md:flex-row gap-6 md:gap-[36px] pb-4 md:will-change-transform"
           >
             {cards.map((c, i) => (
               <div
                 key={i}
-                className="w-full lg:w-[370px] h-[420px] md:h-[452px] rounded-2xl border border-[#D7D7D7] flex flex-col gap-6 bg-white shrink-0 justify-between px-8 pt-8 pb-13"
+                className="w-full md:w-[330px] lg:w-[370px] min-h-[420px] md:h-[452px] rounded-2xl border border-[#D7D7D7] flex flex-col gap-6 bg-white shrink-0 justify-between px-6 md:px-8 pt-8 pb-10 md:pb-13"
               >
                 <div className=" w-[200px] h-[200px] relative self-center">
                   <Image

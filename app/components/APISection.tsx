@@ -21,7 +21,7 @@ const items = [
     id: "integration",
     label: "Integration Timeline",
     content:
-      "Most teams ship a production integration in 3–5 business days. Our integration team provides a dedicated Slack channel and sandbox environment.",
+      "Most teams ship a production integration in 3 to 5 business days. Our integration team provides a dedicated Slack channel and sandbox environment.",
   },
 ];
 
@@ -40,7 +40,7 @@ export default function APISection() {
             {/* Heading */}
             <div className="flex w-full md:flex-row flex-col items-start md:items-center justify-between">
          
-              <h2 className=" font-normal text-[24px] md:text-[40px] leading-[130%] md:leading-[1.2] tracking-[-1px] text-[#101828] mb-4 md:max-w-full ">
+              <h2 className="font-normal text-[24px] md:text-[40px] leading-[130%] md:leading-[1.2] tracking-normal text-[#101828] mb-4 md:max-w-full">
                 Build anything with <br  className="md:hidden"/> a powerful host of APIs
               </h2>
          
@@ -55,8 +55,8 @@ export default function APISection() {
             </Link>
               </div>
               <div className="w-full flex justify-between flex-col md:flex-row items-start md:items-center gap-[32px] md:gap-[48px] lg:gap-[72px]">
-                <div className="img ">
-                 <div className=" w-[330px] h-[350px] lg:w-[575px]  lg:h-[559px] overflow-hidden shrink-0  relative flex items-center justify-center">
+                <div className="img w-full md:w-auto">
+                 <div className="w-full max-w-[330px] h-[350px] lg:max-w-none lg:w-[575px] lg:h-[559px] overflow-hidden shrink-0 relative flex items-center justify-center mx-auto md:mx-0">
             <Image
               src="/illustrations/apis.png"
               alt="ThirdFactor API infrastructure"
@@ -69,7 +69,7 @@ export default function APISection() {
                 </div>
             {/* Expandable rows */}
             <div className="flex flex-col w-full md:mt-[16px] md:w-[344px] lg:max-w-[558px] divide-y divide-dashed divide-[#D9D9D9]">
-              {items.map((item, idx) => {
+              {items.map((item) => {
                 const isOpen = openId === item.id;
                 return (
                   <div
@@ -78,9 +78,9 @@ export default function APISection() {
                   >
                     <button
                       onClick={() => setOpenId(isOpen ? null : item.id)}
-                      className="w-full h-[69px] flex items-center justify-between gap-4 bg-transparent border-none cursor-pointer p-0 text-left outline-none"
+                    className="w-full min-h-[69px] flex items-center justify-between gap-4 bg-transparent border-none cursor-pointer p-0 text-left outline-none"
                     >
-                      <span className={`md:text-[24px] text-[20px] leading-[36px]  lg:text-[30px]   lg:leading-[36px]    transition-colors ${isOpen ? "font-medium text-[#00274A]" : "font-normal text-[#404040]"}`}>
+                      <span className={`md:text-[24px] text-[20px] leading-[1.2] lg:text-[30px] transition-colors ${isOpen ? "font-medium text-[#00274A]" : "font-normal text-[#404040]"}`}>
                         {item.label}
                       </span>
                       <ChevronDown

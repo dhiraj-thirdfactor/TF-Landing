@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Image from "next/image";
 import TopBar from "../../components/TopBar";
 import Navbar from "../../components/Navbar";
@@ -8,6 +7,7 @@ import Footer from "../../components/Footer";
 // Example blog data fetching logic
 const getPostData = (slug: string) => {
   return {
+    slug,
     title: "TingTing at Web Summit Qatar",
     description: "Web Summit Qatar wrapped up with over 30,000 attendees from 127 countries, and a strong conversation around AI-led trust infrastructure.",
     date: "March 15, 2026",

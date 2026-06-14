@@ -1,65 +1,45 @@
 "use client";
-import Link from "next/link";
-import HeroCard from "./HeroCard";
-import ClientLogos from "./ClientLogos";
-import { GeistPixelCircle } from "geist/font/pixel";
-import Button from "../ui/components/Button";
+
 import BookADemoButton from "../ui/components/BookADemoButton";
-import DotGridVideo from "./DotGridVideo";
-import { HoverPixelText } from "./common/anim/ScrambleText";
-import LayoutWrapper from "./common/wrapper/LayoutWrapper";
-import HeroBackground from "./HeroBackground";
+import HeroLottie from "./HeroLottie";
 
 export default function Hero() {
   return (
-    
-    <section className=" overflow-hidden min-h-[700px] relative flex items-end ">
-      <div className=" w-full h-screen absolute pointer-events-none  ">
-      <HeroBackground/>      
-      </div>
-      <LayoutWrapper>
-        {/* ── Centered copy ─────────────────────────────── */}
-        <div className="   flex lg:flex-row flex-col lg:items-end lg:justify-center gap-[40px] w-full pb-10 ">
-        <div className="  flex flex-col    md:gap-[16px] gap-[24px] lg:gap-[36px] ">
-          {/* Heading */}
-          <h1 className="font-sans font-normal text-[32px] max-w-[350px] md:max-w-[650px]  lg:max-w-[760px] leading-[1.1] md:text-[56px] tracking-[-2px] md:tracking-[-3px] text-white  lg:text-[64px]">
-            <HoverPixelText text="Instant Identity Verification " />
-            <HoverPixelText text="For " />
+    <section
+      className="relative overflow-hidden bg-white font-sans"
+      style={{ fontFamily: "var(--font-geist-sans, system-ui)" }}
+    >
+      <div className="relative z-10 mx-auto flex w-full max-w-[1440px] flex-1 items-center">
+        <div className="relative grid min-h-[620px] w-full grid-cols-1 items-center gap-8 px-4 py-12 md:px-8 md:py-16 lg:min-h-[720px] lg:grid-cols-[minmax(360px,520px)_minmax(0,1fr)] lg:gap-0 lg:px-[120px] lg:py-20 xl:px-[140px]">
+          <div className="flex max-w-[640px] flex-col gap-7 lg:pb-10">
+            <h1 className="font-sans text-[42px] font-normal leading-[1] tracking-normal text-[#00274A] md:text-[56px] lg:text-[60px]">
+              Intelligent Identity Infrastructure for Continuous Trust
+            </h1>
 
-            <HoverPixelText text="Regulated Markets" />
-          </h1>
+            <p className="max-w-[520px] text-body-l font-normal text-[#475569]">
+              The full-stack AI identity platform. Sovereign by design, the only engine trained natively on Nepal&apos;s documents, languages, and identities.
+            </p>
 
-          {/* Subtext */}
-          <p className="text-white max-w-[680px]  lg:px-4 sm:px-0 text-body-s md:text-body-l">
-            Full-stack platform for fast, secure, and compliant onboarding.
-            Switch providers in a day. Deploy on-premise and maintain zero data
-            retention.
-          </p>
-        </div>
-          <div className="flex  flex-col gap-4">
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row  gap-4 w-full lg:px-6 sm:px-0 sm:w-auto">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
               <BookADemoButton
                 variant="primary"
                 text="Book a Demo"
                 href="/book-demo"
               />
-              <BookADemoButton
-                variant="secondary"
-                text="Experience Center"
-                href="/experience"
-              />
             </div>
 
-            {/* Trust badges */}
-            <p className="font-sans font-normal text-[12px] md:text-[14px] leading-[1.5] text-white m-0">
-              NRB Compliant • VAPT Certified • Sub-0.1ms 1:N Search
+            <p className="text-caption text-[#64748B]">
+              NRB Compliant · VAPT Certified
             </p>
           </div>
-        </div>
-      </LayoutWrapper>
 
-   
+          <div className="relative flex justify-center lg:justify-end">
+            <div className="relative w-full max-w-[720px] lg:-mr-20 lg:w-[820px] lg:max-w-none xl:-mr-28 xl:w-[900px]">
+              <HeroLottie />
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }

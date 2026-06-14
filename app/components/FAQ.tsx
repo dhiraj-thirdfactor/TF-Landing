@@ -98,19 +98,24 @@ function FAQItem({
 
 export default function FAQ() {
   return (
-    <section className="bg-white py-24">
-      <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-16">
-        
-        {/* Heading */}
-        <h2 className="font-sans font-medium text-[40px] leading-[0.9] tracking-[-0.05em] text-neutral-900 m-0">
-          Frequently Asked Questions
-        </h2>
+    <section className="border-t border-[#E3EAF0] bg-white py-16 md:py-24">
+      <div className="mx-auto grid max-w-[1200px] gap-12 px-6 lg:grid-cols-[320px_minmax(0,1fr)] lg:gap-24">
+        <div className="self-start lg:sticky lg:top-28">
+          <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#007BE5]">
+            Support
+          </p>
+          <h2 className="mt-4 max-w-[280px] font-sans text-[38px] font-normal leading-[1.05] tracking-[-0.035em] text-[#00274A] md:text-[46px]">
+            Frequently asked questions
+          </h2>
+          <p className="mt-5 max-w-[290px] text-[15px] leading-[1.65] text-[#64748B]">
+            Practical answers about implementation, security, deployment, and support.
+          </p>
+        </div>
 
-        {/* Sectioned accordions */}
-        <div className="flex flex-col gap-10">
+        <div className="flex flex-col gap-12">
           {faqSections.map((section, sectionIndex) => (
-            <div key={section.title} className="flex flex-col gap-3">
-              <h3 className="font-sans font-medium text-[22px] leading-[1.3] tracking-[-0.01em] text-[#00274A] m-0 mb-2">
+            <div key={section.title}>
+              <h3 className="mb-2 border-b border-[#AFC4D7] pb-4 font-mono text-[11px] font-medium uppercase tracking-[0.1em] text-[#526476]">
                 {section.title}
               </h3>
               <div className="flex flex-col">

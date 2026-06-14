@@ -11,7 +11,7 @@ export default function Home2() {
       <Navbar />
       <main>
         
-        {/* ── Hero — full-viewport dot-grid video ─────────────────── */}
+        {/* Full-viewport dot-grid video hero */}
         <section
           style={{
             position: "relative",
@@ -86,7 +86,7 @@ export default function Home2() {
                 maxWidth: "520px",
               }}
             >
-              Biometric liveness, document verification, and video KYC — built for compliance teams that can&apos;t afford false positives.
+              Biometric liveness, document verification, and video KYC, built for compliance teams that can&apos;t afford false positives.
             </p>
 
             <div style={{ display: "flex", gap: "16px", flexWrap: "wrap", justifyContent: "center" }}>
@@ -158,7 +158,7 @@ export default function Home2() {
           </div>
         </section>
 
-        {/* ── DotGrid Playground — light theme on white ───────────── */}
+        {/* DotGrid playground on white */}
         <section
           style={{
             background: "#F5F9FF",
@@ -188,7 +188,7 @@ export default function Home2() {
                   margin: "0 0 12px 0",
                 }}
               >
-                Dot Grid — Dark Theme
+                Dot Grid: Dark Theme
               </h2>
               <p
                 style={{
@@ -237,7 +237,7 @@ export default function Home2() {
                   margin: "0 0 12px 0",
                 }}
               >
-                Dot Grid — Light Theme
+                Dot Grid: Light Theme
               </h2>
               <p
                 style={{
@@ -286,7 +286,7 @@ export default function Home2() {
                   margin: "0 0 12px 0",
                 }}
               >
-                Dot Grid — No Mask
+                Dot Grid: No Mask
               </h2>
               <p
                 style={{

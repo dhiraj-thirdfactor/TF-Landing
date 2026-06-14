@@ -23,7 +23,7 @@ export default function HeroGraphic() {
         {/* Background dots */}
         <rect x="0" y="0" width="480" height="480" fill="url(#dots)" opacity="0.6" />
 
-        {/* Outer ring — dashed */}
+        {/* Dashed outer ring */}
         <circle cx="240" cy="240" r="180" stroke="#BDE5FF" strokeWidth="1.5" strokeDasharray="6 6" />
         <circle cx="240" cy="240" r="130" stroke="#BDE5FF" strokeWidth="1" strokeDasharray="4 8" opacity="0.6" />
         <circle cx="240" cy="240" r="80" stroke="#54AFFF" strokeWidth="1" strokeDasharray="3 6" opacity="0.5" />
@@ -34,7 +34,7 @@ export default function HeroGraphic() {
         {/* TF monogram */}
         <text x="240" y="247" textAnchor="middle" fill="#007BE5" fontSize="18" fontWeight="700" fontFamily="system-ui">TF</text>
 
-        {/* Satellite nodes — outer ring */}
+        {/* Satellite nodes on the outer ring */}
         {[
           { angle: 0,   label: "Face" },
           { angle: 60,  label: "Doc" },

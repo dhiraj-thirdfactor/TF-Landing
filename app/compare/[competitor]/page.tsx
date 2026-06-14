@@ -15,7 +15,14 @@ export function generateStaticParams() {
   ];
 }
 
-const competitorsData: Record<string, any> = {
+type CompetitorData = {
+  name: string;
+  logoText: string;
+  textColor: string;
+  logoImage?: string;
+};
+
+const competitorsData: Record<string, CompetitorData> = {
   sumsub: {
     name: "Sumsub",
     logoText: "sumsub",
@@ -74,11 +81,11 @@ export default async function ComparePage({ params }: { params: Promise<{ compet
   <section className="px-6 py-16 md:py-20 max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
     <div>
       <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#00274A] tracking-tight leading-tight mb-6">
-        Don't Waste Your Budget on Failed Verifications.
+        Don&apos;t Waste Your Budget on Failed Verifications.
       </h1>
 
       <p className="text-base md:text-lg text-gray-600 mb-8 leading-relaxed max-w-xl">
-        Global KYC tools reject valid Nepali IDs because they don't understand
+        Global KYC tools reject valid Nepali IDs because they don&apos;t understand
         the local context. ThirdFactor.ai delivers 99%+ accuracy on local
         documents at 1/4th the cost.
       </p>
