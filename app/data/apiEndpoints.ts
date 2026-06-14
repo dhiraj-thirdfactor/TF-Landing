@@ -1,4 +1,4 @@
-import { ApiEndpoint } from "@/types/api";
+import { ApiEndpoint } from "@/app/types/api";
 
 export const apiEndpoints: ApiEndpoint[] = [
   {

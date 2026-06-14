@@ -1,4 +1,5 @@
-import { tv } from "tailwind-variants";
+import { type ButtonHTMLAttributes } from "react";
+import { tv, type VariantProps } from "tailwind-variants";
 
 const buttonClasses = tv({
   base: "inline-flex text-c2 font-bold! items-center justify-center gap-2 min-w-max transition-all duration-300 ease-in-out cursor-pointer disabled:cursor-default",
@@ -23,13 +24,16 @@ const buttonClasses = tv({
   },
 });
 
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
+  VariantProps<typeof buttonClasses>;
+
 export default function Button({
   variant = "primary",
   size = "default",
   className,
   children,
   ...otherProps
-}) {
+}: ButtonProps) {
   return (
     <button
       className={buttonClasses({ variant, size, className })}

@@ -33,8 +33,8 @@ export default function ContactPage() {
       <TopBar />
       <Navbar />
       <LayoutWrapper>
-        <div className="flex flex-col gap-[28px] mb-10  mt-[60px] ">
-          <h1 className="text-d1-desktop leading-[90%] ">
+        <div className="flex flex-col gap-[28px] mb-10 mt-[60px] md:mt-20">
+          <h1 className="text-[40px] leading-[0.95] md:text-d1-desktop md:leading-[90%]">
             We’re <br />
             <span className=" font-pixel">Ready to Assist</span>
           </h1>
@@ -45,7 +45,7 @@ export default function ContactPage() {
 
         <form 
           onSubmit={handleSubmit}
-          className="w-full border border-[#CBD5E1] p-[32px] rounded-[8px] bg-white flex flex-col gap-6 shadow-sm"
+          className="w-full border border-[#CBD5E1] p-5 md:p-[32px] rounded-[8px] bg-white flex flex-col gap-6 shadow-sm"
         >
           {/* Grid for Name, Email, Company, Phone */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">

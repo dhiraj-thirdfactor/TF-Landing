@@ -82,11 +82,16 @@
   box-sizing: border-box;
 }
 
+html {
+  overflow-x: clip;
+}
+
 body {
   background: #ffffff;
   color: var(--tf-charcoal);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
 }
 
 /* Hide scrollbar globally */
@@ -97,4 +102,40 @@ body {
 .scrollbar-hidden {
   -ms-overflow-style: none; /* * For Internet Explorer 10+ */
   scrollbar-width: none; /* * For Firefox */
+}
+
+@keyframes testimonial-progress {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes solution-dash-flow {
+  to {
+    stroke-dashoffset: -11;
+  }
+}
+
+.solution-dash {
+  animation: solution-dash-flow 1s linear infinite;
+}
+
+@keyframes trust-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.trust-marquee {
+  animation: trust-marquee 24s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trust-marquee {
+    animation-play-state: paused;
+  }
 }

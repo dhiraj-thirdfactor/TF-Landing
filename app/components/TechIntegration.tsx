@@ -2,7 +2,6 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import Lottie from "lottie-react";
 
@@ -64,7 +63,7 @@ const tabs = [
     heading:
       "OCR reads and validates any government-issued ID in real time.",
     subtext:
-      "Supports 200+ document types. MRZ, barcode, and NFC chip extraction — all in one pass.",
+      "Supports 200+ document types. MRZ, barcode, and NFC chip extraction, all in one pass.",
     img: "/techIntegration-video/Comp 2.mp4",
   },
   {
@@ -99,8 +98,6 @@ export default function TechIntegration() {
   };
 
   useEffect(() => {
-    setProgress(0);
-
     const startTime = Date.now();
 
     progressRef.current = window.setInterval(() => {
@@ -202,7 +199,7 @@ export default function TechIntegration() {
             </p>
 
             <Link
-              href="#"
+              href="/book-demo"
               className="inline-flex items-center justify-center gap-2 h-[60px] px-7 mt-2 md:mt-4 rounded-[100px] bg-[#F2F2F7] hover:bg-[#0069C2] hover:text-white transition-all duration-300 text-black lg:text-[14px] md:text-[12px] font-medium font-sans w-full sm:w-auto sm:self-start"
             >
               Experience Center
@@ -227,4 +224,3 @@ export default function TechIntegration() {
     </section>
   );
 }
-

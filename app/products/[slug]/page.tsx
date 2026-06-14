@@ -13,6 +13,7 @@ import {
   Server,
   FileText,
   Database,
+  type LucideIcon,
 } from "lucide-react";
 
 import TopBar from "../../components/TopBar";
@@ -21,14 +22,22 @@ import CTABanner from "../../components/CTABanner";
 import Footer from "../../components/Footer";
 import Testimonial from "../../components/Testimonial";
 
-export default async function ProductPage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-  const resolvedParams = await params;
-  const slugId = resolvedParams.slug?.toLowerCase() || "verify";
-const productsData: Record<string, any> = {
+type ProductBenefit = {
+  title: string;
+  desc: string;
+  icon: LucideIcon;
+};
+
+type ProductData = {
+  name: string;
+  label: string;
+  tagline: string;
+  desc: string;
+  img: string;
+  benefits: ProductBenefit[];
+};
+
+const productsData: Record<string, ProductData> = {
   verify: {
     name: "ThirdFactor Verify",
     label: "IDENTITY & DOCUMENT VERIFICATION",
@@ -65,6 +74,42 @@ const productsData: Record<string, any> = {
       { title: "Automated Audits & Reporting", desc: "Generate exhaustive compliance reports and audit trails with a single click for regulators.", icon: FileText },
     ]
   },
+  access: {
+    name: "ThirdFactor Access",
+    label: "AUTHENTICATION & ACCESS",
+    tagline: "Let trusted users move without friction.",
+    desc: "Step-up authentication and secure account access flows for high-risk sessions, password resets, and sensitive actions.",
+    img: "/illustrations/image.png",
+    benefits: [
+      { title: "Adaptive Step-Up", desc: "Trigger liveness, document, or OTP challenges only when risk signals require extra assurance.", icon: Lock },
+      { title: "Account Recovery", desc: "Recover users safely with identity proofing flows that reduce support tickets and social engineering risk.", icon: Fingerprint },
+      { title: "Session Risk Signals", desc: "Combine device, location, and biometric checks before users perform sensitive actions.", icon: Activity },
+    ]
+  },
+  lens: {
+    name: "ThirdFactor Lens",
+    label: "RISK INTELLIGENCE",
+    tagline: "See risk patterns before they become losses.",
+    desc: "Analytics and risk scoring for identity operations, fraud teams, and compliance leaders who need clear decisions, not noisy dashboards.",
+    img: "/illustrations/image2.png",
+    benefits: [
+      { title: "Risk Scoring", desc: "Unify document, biometric, device, and behavioral signals into explainable customer-level scores.", icon: Activity },
+      { title: "Operations Visibility", desc: "Monitor approval rates, rejection reasons, review queues, and fraud trends from one place.", icon: Database },
+      { title: "Decision Insights", desc: "Trace every decision back to the signals and policies that shaped it for faster review.", icon: FileText },
+    ]
+  },
+  charter: {
+    name: "ThirdFactor Charter",
+    label: "POLICY ORCHESTRATION",
+    tagline: "Turn compliance rules into live workflows.",
+    desc: "A policy builder for identity teams that need to change onboarding logic, review paths, and risk thresholds without long engineering cycles.",
+    img: "/illustrations/image3.png",
+    benefits: [
+      { title: "Workflow Rules", desc: "Define document, liveness, KYB, AML, and manual review paths with clear policy controls.", icon: Box },
+      { title: "Change Control", desc: "Version policies, test changes, and keep an audit trail for regulators and internal governance.", icon: Shield },
+      { title: "Role-Based Review", desc: "Route exceptions to the right operations or compliance team based on risk, region, and account type.", icon: Server },
+    ]
+  },
   bedrock: {
     name: "ThirdFactor Bedrock",
     label: "INFRASTRUCTURE",
@@ -78,6 +123,18 @@ const productsData: Record<string, any> = {
     ]
   }
 };
+
+export function generateStaticParams() {
+  return Object.keys(productsData).map((slug) => ({ slug }));
+}
+
+export default async function ProductPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const resolvedParams = await params;
+  const slugId = resolvedParams.slug?.toLowerCase() || "verify";
   const product = productsData[slugId] || productsData.verify;
 
   return (
@@ -156,7 +213,7 @@ const productsData: Record<string, any> = {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-              {product.benefits.map((benefit: any, idx: number) => {
+              {product.benefits.map((benefit, idx) => {
                 const Icon = benefit.icon;
 
                 return (

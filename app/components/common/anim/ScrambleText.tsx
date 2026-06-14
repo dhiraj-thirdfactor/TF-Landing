@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useSpring, useMotionValue } from "framer-motion";
+import { motion, useSpring, useMotionValue, type MotionValue } from "framer-motion";
 
 interface HoverPixelTextProps {
   text: string;
@@ -45,13 +45,17 @@ export function HoverPixelText({
   );
 }
 
-function Letter({ char, mouseX, mouseY, proximityRadius }: any) {
-  const [isMounted, SetIsMounted] = useState(false);
-
-  useEffect(() => {
-    SetIsMounted(true);
-  }, []);
-
+function Letter({
+  char,
+  mouseX,
+  mouseY,
+  proximityRadius,
+}: {
+  char: string;
+  mouseX: MotionValue<number>;
+  mouseY: MotionValue<number>;
+  proximityRadius: number;
+}) {
   const [isPixel, setIsPixel] = useState(false);
   const ref = useRef<HTMLSpanElement>(null);
 
@@ -59,7 +63,7 @@ function Letter({ char, mouseX, mouseY, proximityRadius }: any) {
   const centerRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
-    if (!ref.current || char === " " || !isMounted) return;
+    if (!ref.current || char === " ") return;
 
     const updatePosition = () => {
       const rect = ref.current!.getBoundingClientRect();

@@ -1,13 +1,10 @@
 import Link from "next/link";
-import { Search } from "lucide-react";
 import TopBar from "../components/TopBar";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import AskQuestionChat from "../components/AskQuestionChat";
 import DocSearch from "../components/DocSearch";
 import CodeBlock from "../components/forDev/CodeBlock";
-import { apiEndpoints } from "../data/apiEndpoints";
-import ApiCard from "../components/forDev/ApiCard";
 
 export const metadata = {
   title: "Developer Documentation | ThirdFactor",
